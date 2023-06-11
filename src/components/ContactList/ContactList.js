@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 
 import { Contact } from '../Contact/Contact';
 import { List } from './ContactList.styled';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
-export const ContactsList = ({ removeContactById }) => {
-  const contacts = useSelector(state => state.contacts);
+export const ContactsList = ({ contacts, removeContactById }) => {
   return (
     <List>
       {contacts.map(contact => (
@@ -25,5 +24,4 @@ ContactsList.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  removeContactById: PropTypes.func.isRequired,
 };

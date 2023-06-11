@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import { Wrapper } from './Filter.styled';
+import { useDispatch } from 'react-redux';
+import { addFilter } from 'redux/filterSlice';
 
-export const Filter = ({ addFilterQuery, filter }) => {
+export const Filter = ({ filter }) => {
+  const dispatch = useDispatch();
   const onInputChange = event => {
-    addFilterQuery(event.target.value);
+    dispatch(addFilter(event.target.value));
   };
   return (
     <Wrapper>
@@ -14,6 +17,5 @@ export const Filter = ({ addFilterQuery, filter }) => {
 };
 
 Filter.propTypes = {
-  addFilterQuery: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
 };

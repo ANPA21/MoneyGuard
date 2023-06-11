@@ -3,10 +3,7 @@ import { Button, ContactItem } from './Contact.styled';
 import { useDispatch } from 'react-redux';
 import { remove } from 'redux/contactsSlice';
 
-export const Contact = ({
-  contact: { name, number, id },
-  removeContactById,
-}) => {
+export const Contact = ({ contact: { name, number, id } }) => {
   const dispatch = useDispatch();
   return (
     <ContactItem>
@@ -18,12 +15,10 @@ export const Contact = ({
     </ContactItem>
   );
 };
-// () => removeContactById(id),
 Contact.propTypes = {
   contact: PropTypes.shape({
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   }).isRequired,
-  removeContactById: PropTypes.func.isRequired,
 };

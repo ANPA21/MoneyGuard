@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
@@ -22,7 +22,7 @@ const SignupSchema = Yup.object().shape({
     .typeError('Must be a number!')
     .required('Required'),
 });
-export const ContactForm = ({ onAdd }) => {
+export const ContactForm = () => {
   const dispatch = useDispatch();
 
   return (
@@ -32,7 +32,6 @@ export const ContactForm = ({ onAdd }) => {
         number: '',
       }}
       onSubmit={(values, actions) => {
-        // onAdd({ id: nanoid(), ...values });
         dispatch(add({ id: nanoid(), ...values }));
         actions.resetForm();
       }}
@@ -55,6 +54,4 @@ export const ContactForm = ({ onAdd }) => {
   );
 };
 
-ContactForm.propTypes = {
-  onAdd: PropTypes.func.isRequired,
-};
+// ContactForm.propTypes = {};
