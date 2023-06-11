@@ -9,6 +9,8 @@ import {
   FormLabel,
   StyledForm,
 } from './Form.styled';
+import { useDispatch } from 'react-redux';
+import { add } from 'redux/contactsSlice';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -20,8 +22,9 @@ const SignupSchema = Yup.object().shape({
     .typeError('Must be a number!')
     .required('Required'),
 });
-
 export const ContactForm = ({ onAdd }) => {
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{
@@ -29,7 +32,8 @@ export const ContactForm = ({ onAdd }) => {
         number: '',
       }}
       onSubmit={(values, actions) => {
-        onAdd({ id: nanoid(), ...values });
+        // onAdd({ id: nanoid(), ...values });
+        dispatch(add({ id: nanoid(), ...values }));
         actions.resetForm();
       }}
       validationSchema={SignupSchema}
