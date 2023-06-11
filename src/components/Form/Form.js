@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
@@ -53,5 +52,3 @@ export const ContactForm = () => {
     </Formik>
   );
 };
-
-// ContactForm.propTypes = {};

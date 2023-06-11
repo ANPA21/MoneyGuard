@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
-
 import { Contact } from '../Contact/Contact';
 import { List } from './ContactList.styled';
-// import { useSelector } from 'react-redux';
 
 export const ContactsList = ({ contacts, removeContactById }) => {
   return (
