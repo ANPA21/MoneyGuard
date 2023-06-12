@@ -8,8 +8,10 @@ import {
   FormLabel,
   StyledForm,
 } from './Form.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { add } from 'redux/contactsSlice';
+import { checkExistingContacts } from 'components/utils/checkExistingContact';
+import { contactsSelector } from 'redux/selectors';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -23,6 +25,7 @@ const SignupSchema = Yup.object().shape({
 });
 export const ContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(contactsSelector);
 
   return (
     <Formik
@@ -31,6 +34,10 @@ export const ContactForm = () => {
         number: '',
       }}
       onSubmit={(values, actions) => {
+        if (checkExistingContacts(contacts, values.name)) {
+          alert(`${values.name} is already in contacts!`);
+          return;
+        }
         dispatch(add({ id: nanoid(), ...values }));
         actions.resetForm();
       }}

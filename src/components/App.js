@@ -1,9 +1,16 @@
-import Contacts from './Contacts/Contacts';
+import { Title, Wrapper } from './App.styled';
+import { ContactForm } from './Form/Form';
+import { Filter } from './Filter/Filter';
+import { ContactsList } from './ContactList/ContactList';
 
 export const App = () => {
   return (
-    <div>
-      <Contacts />
-    </div>
+    <Wrapper>
+      <Title>Phonebook</Title>
+      <ContactForm />
+      <Title>Contacts</Title>
+      <Filter />
+      <ContactsList />
+    </Wrapper>
   );
 };

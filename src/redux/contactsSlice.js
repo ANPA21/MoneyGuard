@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkExistingContacts } from 'components/utils/checkExistingContact';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -11,11 +10,6 @@ const contactsSlice = createSlice({
   initialState,
   reducers: {
     add(state, action) {
-      const name = action.payload.name;
-      if (checkExistingContacts(state.contacts, name)) {
-        alert(`${name} is already in contacts!`);
-        return;
-      }
       state.contacts.push(action.payload);
     },
     remove(state, action) {

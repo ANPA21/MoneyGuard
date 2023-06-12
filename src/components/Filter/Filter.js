@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types';
 import { Wrapper } from './Filter.styled';
 import { useDispatch } from 'react-redux';
 import { addFilter } from 'redux/filterSlice';
 
-export const Filter = ({ filter }) => {
+export const Filter = () => {
   const dispatch = useDispatch();
   const onInputChange = event => {
     dispatch(addFilter(event.target.value));
@@ -11,11 +10,7 @@ export const Filter = ({ filter }) => {
   return (
     <Wrapper>
       Filter contacts by name
-      <input type="text" value={filter} onChange={onInputChange} />
+      <input type="text" onChange={onInputChange} />
     </Wrapper>
   );
-};
-
-Filter.propTypes = {
-  filter: PropTypes.string.isRequired,
 };

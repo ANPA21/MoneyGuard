@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const ContactItem = styled.li`
+export const ContactItemStyled = styled.li`
   display: flex;
   flex-direction: column;
   align-items: start;
