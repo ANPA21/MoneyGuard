@@ -6,12 +6,8 @@ export const selectFilter = state => state.filter.filter;
 export const selectCombinedContacts = createSelector(
   [selectContacts, selectFilter],
   (contacts, filter) => {
-    if (filter !== '') {
-      return contacts.filter(contact =>
-        contact.name.toLowerCase().includes(filter.toLowerCase())
-      );
-    } else {
-      return contacts;
-    }
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
   }
 );
