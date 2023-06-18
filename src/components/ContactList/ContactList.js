@@ -2,14 +2,10 @@ import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { List } from './ContactList.styled';
 import { Notification } from 'components/Notification/Notification';
-import { selectContacts, selectFilter } from 'redux/selectors';
+import { selectFilteredContacts } from 'redux/selectors';
 
 export const ContactsList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const filteredContacts = useSelector(selectFilteredContacts);
   return (
     <>
       {filteredContacts.length > 0 ? (

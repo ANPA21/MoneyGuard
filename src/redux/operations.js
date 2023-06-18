@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const Axios = axios.create({
-  baseURL: 'https://648ed99e75a96b6644445c67.mockapi.io',
+  baseURL: 'https://648ed99e75a96b6644445c67.mockapi.io/Phonebook',
   responseType: 'json',
 });
 

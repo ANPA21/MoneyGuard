@@ -6,7 +6,9 @@ const initialState = {
   isLoading: false,
   error: null,
 };
-const handlePending = state => (state.isLoading = true);
+const handlePending = state => {
+  state.isLoading = true;
+};
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
