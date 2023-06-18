@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from 'redux/contactsSlice';
 import { checkExistingContacts } from 'components/utils/checkExistingContact';
-import { contactsSelector } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -25,7 +25,7 @@ const SignupSchema = Yup.object().shape({
 });
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(contactsSelector);
+  const contacts = useSelector(selectContacts);
 
   return (
     <Formik
