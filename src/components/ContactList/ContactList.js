@@ -1,22 +1,15 @@
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { List } from './ContactList.styled';
-import { Notification } from 'components/Notification/Notification';
-import { selectFilteredContacts } from 'redux/selectors';
+import { selectCombinedContacts } from 'redux/selectors';
 
 export const ContactsList = () => {
-  const filteredContacts = useSelector(selectFilteredContacts);
+  const contacts = useSelector(selectCombinedContacts);
   return (
-    <>
-      {filteredContacts.length > 0 ? (
-        <List>
-          {filteredContacts.map(contact => (
-            <ContactItem key={contact.id} contact={contact} />
-          ))}
-        </List>
-      ) : (
-        <Notification />
-      )}
-    </>
+    <List>
+      {contacts.map(contact => (
+        <ContactItem key={contact.id} contact={contact} />
+      ))}
+    </List>
   );
 };
