@@ -9,9 +9,9 @@ import {
   StyledForm,
 } from './Form.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { add } from 'redux/contactsSlice';
 import { checkExistingContacts } from 'components/utils/checkExistingContact';
 import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -38,7 +38,7 @@ export const ContactForm = () => {
           alert(`${values.name} is already in contacts!`);
           return;
         }
-        dispatch(add({ id: nanoid(), ...values }));
+        dispatch(addContact({ id: nanoid(), ...values }));
         actions.resetForm();
       }}
       validationSchema={SignupSchema}
