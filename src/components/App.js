@@ -1,26 +1,19 @@
-import { Title, Wrapper } from './App.styled';
-import { ContactForm } from './Form/Form';
-import { Filter } from './Filter/Filter';
-import { ContactsList } from './ContactList/ContactList';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { selectCombinedContacts } from 'redux/selectors';
-import { Notification } from './Notification/Notification';
+import { Route, Routes } from 'react-router-dom';
+import { Contacts } from '../pages/Contacts';
+import { Layout } from './Layout';
+import { Home } from 'pages/Home';
+import { Login } from 'pages/Login';
+import { Register } from 'pages/Register';
 
 export const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-  const contacts = useSelector(selectCombinedContacts);
   return (
-    <Wrapper>
-      <Title>Phonebook</Title>
-      <ContactForm />
-      <Title>Contacts</Title>
-      <Filter />
-      {contacts.length > 0 ? <ContactsList /> : <Notification />}
-    </Wrapper>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
+    </Routes>
   );
 };
