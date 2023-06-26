@@ -1,7 +1,8 @@
 import * as Yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { EMAIL_REGX } from 'components/utils/global';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
     .min(2, 'Name too Short!')
@@ -16,7 +17,7 @@ const SignupSchema = Yup.object().shape({
     .required('Required'),
 });
 export const SignupForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   return (
     <Formik
@@ -26,6 +27,7 @@ export const SignupForm = () => {
         password: '',
       }}
       onSubmit={(values, actions) => {
+        dispatch(register(values));
         actions.resetForm();
       }}
       validationSchema={SignupSchema}

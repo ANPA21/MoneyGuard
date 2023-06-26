@@ -1,6 +1,6 @@
 import { Wrapper } from './Filter.styled';
 import { useDispatch } from 'react-redux';
-import { addFilter } from 'redux/filterSlice';
+import { addFilter } from 'redux/filter/filterSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();

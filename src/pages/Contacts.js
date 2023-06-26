@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { selectCombinedContacts } from 'redux/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
+import { selectCombinedContacts } from 'redux/contacts/selectors';
 import { Notification } from 'components/Notification/Notification';
 import { Filter } from 'components/Filter/Filter';
 import { Title, Wrapper } from '../components/utils/Contacts.styled';

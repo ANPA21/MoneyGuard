@@ -10,8 +10,8 @@ import {
 } from './Form.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkExistingContacts } from 'components/utils/checkExistingContact';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
