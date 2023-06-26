@@ -4,7 +4,7 @@ import { EMAIL_REGX } from 'components/utils/global';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 const SignupSchema = Yup.object().shape({
-  username: Yup.string()
+  name: Yup.string()
     .min(2, 'Name too Short!')
     .max(20, 'Name too Long!')
     .required('Required'),
@@ -13,7 +13,7 @@ const SignupSchema = Yup.object().shape({
     .required('Required'),
   password: Yup.string()
     .min(5, 'Password too short!')
-    .max(16, 'Password too long!')
+    .max(20, 'Password too long!')
     .required('Required'),
 });
 export const SignupForm = () => {
@@ -22,7 +22,7 @@ export const SignupForm = () => {
   return (
     <Formik
       initialValues={{
-        username: '',
+        name: '',
         email: '',
         password: '',
       }}
@@ -35,8 +35,8 @@ export const SignupForm = () => {
       <Form>
         <label>
           Username
-          <Field type="text" name="username" />
-          <ErrorMessage component="span" name="username" />
+          <Field type="text" name="name" />
+          <ErrorMessage component="span" name="name" />
         </label>
         <label>
           Email
