@@ -1,3 +1,4 @@
+import { SignupForm } from 'components/SignupForm/SignupForm';
 import { Helmet } from 'react-helmet';
 
 export const Register = () => {
@@ -8,7 +9,7 @@ export const Register = () => {
       </Helmet>
       <span>REGISTER HERE</span>
       <br />
-      <span>REGISTRATION FORM </span>
+      <SignupForm />
     </div>
   );
 };

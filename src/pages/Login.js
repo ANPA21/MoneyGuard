@@ -1,3 +1,4 @@
+import { LoginForm } from 'components/LoginForm/LoginForm';
 import { Helmet } from 'react-helmet';
 
 export const Login = () => {
@@ -8,7 +9,7 @@ export const Login = () => {
       </Helmet>
       <span>LOGIN PLEASE TO ACCES CONTATCS</span>
       <br />
-      <span>FORM HERE</span>
+      <LoginForm />
     </div>
   );
 };
