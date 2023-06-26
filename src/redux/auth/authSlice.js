@@ -1,5 +1,5 @@
 const { createSlice } = require('@reduxjs/toolkit');
-const { register, login } = require('./operations');
+const { register, logIn, logOut } = require('./operations');
 
 const initialState = {
   user: { name: null, email: null },
@@ -7,18 +7,32 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
 };
+const handleUserAuthFulfilled = (state, action) => {
+  state.user = action.payload.user;
+  state.token = action.payload.token;
+  state.isLoggedIn = true;
+};
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(register.pending, (state, action) => state)
-      .addCase(register.fulfilled, (state, action) => state)
-      .addCase(register.rejected, (state, action) => state)
+      .addCase(logIn.fulfilled, handleUserAuthFulfilled)
+      .addCase(register.fulfilled, handleUserAuthFulfilled)
+      .addCase(logOut.fulfilled, (state, action) => {
+        state.user = null;
+        state.token = null;
+        state.isLoggedIn = false;
+      })
 
-      .addCase(login.pending, (state, action) => {})
-      .addCase(login.fulfilled, (state, action) => {})
-      .addCase(login.rejected, (state, action) => {}),
+      .addCase(register.rejected, (state, action) => state)
+      .addCase(register.pending, (state, action) => state)
+
+      .addCase(logIn.pending, (state, action) => state)
+      .addCase(logIn.rejected, (state, action) => state)
+
+      .addCase(logOut.pending, (state, action) => state)
+      .addCase(logOut.rejected, (state, action) => state),
 });
 
 export const authReducer = authSlice.reducer;
