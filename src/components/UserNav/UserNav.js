@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
@@ -11,9 +12,9 @@ export const UserNav = () => {
   return (
     <div>
       <p>Welcome, {user.name}</p>
-      <button type="button" onClick={handleLogout}>
+      <Button variant="outlined" type="button" onClick={handleLogout}>
         Logout
-      </button>
+      </Button>
     </div>
   );
 };
