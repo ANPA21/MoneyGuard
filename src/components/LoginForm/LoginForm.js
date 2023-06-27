@@ -1,7 +1,8 @@
 import * as Yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { EMAIL_REGX } from 'components/utils/global';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/operations';
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .matches(EMAIL_REGX, 'Invalid email format')
@@ -12,7 +13,7 @@ const SignupSchema = Yup.object().shape({
     .required('Required'),
 });
 export const LoginForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   return (
     <Formik
@@ -21,6 +22,7 @@ export const LoginForm = () => {
         password: '',
       }}
       onSubmit={(values, actions) => {
+        dispatch(logIn(values));
         actions.resetForm();
       }}
       validationSchema={SignupSchema}
@@ -36,7 +38,7 @@ export const LoginForm = () => {
           <Field type="tel" name="password" />
           <ErrorMessage component="span" name="password" />
         </label>
-        <button type="submit">Register</button>
+        <button type="submit">Log In</button>
       </Form>
     </Formik>
   );

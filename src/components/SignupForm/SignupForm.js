@@ -12,7 +12,7 @@ const SignupSchema = Yup.object().shape({
     .matches(EMAIL_REGX, 'Invalid email format')
     .required('Required'),
   password: Yup.string()
-    .min(5, 'Password too short!')
+    .min(7, 'Password too short!')
     .max(20, 'Password too long!')
     .required('Required'),
 });
