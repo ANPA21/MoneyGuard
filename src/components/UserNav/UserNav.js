@@ -1,3 +1,4 @@
+import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 
@@ -6,9 +7,10 @@ export const UserNav = () => {
   const handleLogout = () => {
     dispatch(logOut());
   };
+  const { user } = useAuth();
   return (
     <div>
-      <p>Welcome, username</p>
+      <p>Welcome, {user.name}</p>
       <button type="button" onClick={handleLogout}>
         Logout
       </button>
