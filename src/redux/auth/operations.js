@@ -41,3 +41,19 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(e.message);
   }
 });
+
+export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const activeToken = state.auth.token;
+
+  if (activeToken === null) {
+    return thunkAPI.rejectWithValue('Unable to refresh user');
+  }
+  try {
+    setAuthHeader(activeToken);
+    const r = await axios.get('/users/current');
+    return r.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});
