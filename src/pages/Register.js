@@ -1,15 +1,18 @@
 import { SignupForm } from 'components/SignupForm/SignupForm';
+import {
+  RegisterPage,
+  RegisterPageText,
+} from 'components/utils/Register.styled';
 import { Helmet } from 'react-helmet';
 
 export const Register = () => {
   return (
-    <div>
+    <RegisterPage>
       <Helmet>
         <title>Register</title>
       </Helmet>
-      <span>REGISTER HERE</span>
-      <br />
+      <RegisterPageText>Register, and get your contacts!</RegisterPageText>
       <SignupForm />
-    </div>
+    </RegisterPage>
   );
 };

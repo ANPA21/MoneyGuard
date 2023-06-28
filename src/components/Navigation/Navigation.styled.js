@@ -8,6 +8,7 @@ export const NavStyled = styled('nav')`
   @media screen and (max-width: 479px) {
     max-width: 100%;
     flex-direction: column;
+    align-items: center;
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
     max-width: 100%;
@@ -21,6 +22,8 @@ export const NavStyled = styled('nav')`
 `;
 
 export const ButtonLink = styled(Button)`
+  width: 70vw;
+  max-width: 300px;
   ${({ theme }) => `
 background-color: ${theme.palette.buttons.bg}`}
 `;

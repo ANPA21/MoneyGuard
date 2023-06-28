@@ -1,15 +1,15 @@
 import { LoginForm } from 'components/LoginForm/LoginForm';
+import { LogInPage, LogInPageText } from 'components/utils/Login.styled';
 import { Helmet } from 'react-helmet';
 
 export const Login = () => {
   return (
-    <div>
+    <LogInPage>
       <Helmet>
         <title>Log in</title>
       </Helmet>
-      <span>LOGIN PLEASE TO ACCES CONTATCS</span>
-      <br />
+      <LogInPageText>Please login to access contacts</LogInPageText>
       <LoginForm />
-    </div>
+    </LogInPage>
   );
 };
