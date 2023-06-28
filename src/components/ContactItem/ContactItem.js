@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Button, ContactItemStyled } from './Contact.styled';
+import { ButtonStyled, ContactItemStyled } from './Contact.styled';
 import { useDispatch } from 'react-redux';
 import { removeContact } from 'redux/contacts/operations';
 
@@ -9,9 +9,14 @@ export const ContactItem = ({ contact: { name, number, id } }) => {
     <ContactItemStyled>
       <span>Name: {name}</span>
       <span>Number: {number}</span>
-      <Button type="submit" onClick={() => dispatch(removeContact(id))}>
+      <ButtonStyled
+        variant="outlined"
+        color="secondary"
+        type="submit"
+        onClick={() => dispatch(removeContact(id))}
+      >
         Remove contact
-      </Button>
+      </ButtonStyled>
     </ContactItemStyled>
   );
 };

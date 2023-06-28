@@ -1,13 +1,11 @@
-import { styled } from '@mui/material';
-import { Button } from '@mui/material';
+import styled from 'styled-components';
 
-export const NavStyled = styled(`nav`)`
-  display: flex;
-  gap: 10px;
+export const LayoutStyled = styled.div`
+  margin: 0 auto;
+  background-color: #dff4ee;
+
   @media screen and (max-width: 479px) {
-    margin-top: 10px;
     max-width: 100%;
-    flex-direction: column;
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
     max-width: 100%;
@@ -18,9 +16,4 @@ export const NavStyled = styled(`nav`)`
   @media screen and (min-width: 1024px) {
     max-width: 1400px;
   }
-`;
-
-export const ButtonLink = styled(Button)`
-  ${({ theme }) => `
-background-color: ${theme.palette.buttons.bg}`}
 `;

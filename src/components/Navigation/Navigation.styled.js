@@ -1,20 +1,13 @@
-// import styled from 'styled-components';
+import styled from '@emotion/styled';
+import { Button } from '@mui/material';
 
-import { styled } from '@mui/material';
-
-export const NavBarStyled = styled(`div`)`
+export const NavStyled = styled('nav')`
   display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 15px;
-  ${({ theme }) => `
-  background-color : ${theme.palette.primary.dark}
-  `};
+  gap: 10px;
 
   @media screen and (max-width: 479px) {
     max-width: 100%;
-    display: block;
+    flex-direction: column;
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
     max-width: 100%;
@@ -25,4 +18,9 @@ export const NavBarStyled = styled(`div`)`
   @media screen and (min-width: 1024px) {
     max-width: 1400px;
   }
+`;
+
+export const ButtonLink = styled(Button)`
+  ${({ theme }) => `
+background-color: ${theme.palette.buttons.bg}`}
 `;

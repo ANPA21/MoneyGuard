@@ -1,14 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { NavBar } from './NavBar/NavBar';
+import { LayoutStyled } from './Laoyout.styled';
 
 export const Layout = () => {
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 16px' }}>
+    <LayoutStyled>
       <NavBar />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-    </div>
+    </LayoutStyled>
   );
 };

@@ -7,7 +7,6 @@ export const StyledForm = styled(Form)`
   align-items: start;
   padding: 15px;
   gap: 10px;
-  background-color: ${p => p.theme.colors.accent};
 `;
 export const FormLabel = styled.label`
   font-size: 14px;
