@@ -8,7 +8,6 @@ export const LogInPage = styled(`div`)`
   align-items: center;
 `;
 export const LogInPageText = styled(`span`)`
-  text-transform: uppercase;
   margin-bottom: 15px;
   font-weight: 700;
 `;

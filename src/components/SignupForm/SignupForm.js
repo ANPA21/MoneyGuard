@@ -1,8 +1,15 @@
 import * as Yup from 'yup';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage, Formik } from 'formik';
 import { EMAIL_REGX } from 'components/utils/global';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
+import {
+  FieldStyled,
+  FormStyled,
+  LabelStyled,
+  SignUpBtn,
+} from './SignupForm.styled';
+
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Name too Short!')
@@ -12,8 +19,8 @@ const SignupSchema = Yup.object().shape({
     .matches(EMAIL_REGX, 'Invalid email format')
     .required('Required'),
   password: Yup.string()
-    .min(7, 'Password too short!')
-    .max(20, 'Password too long!')
+    .min(7, 'Min 7 characters')
+    .max(20, 'Max 20 characters')
     .required('Required'),
 });
 export const SignupForm = () => {
@@ -32,24 +39,23 @@ export const SignupForm = () => {
       }}
       validationSchema={SignupSchema}
     >
-      <Form>
-        <label>
-          Username
-          <Field type="text" name="name" />
+      <FormStyled>
+        <LabelStyled>
+          <FieldStyled type="text" name="name" placeholder="Username" />
           <ErrorMessage component="span" name="name" />
-        </label>
-        <label>
-          Email
-          <Field type="tel" name="email" />
+        </LabelStyled>
+        <LabelStyled>
+          <FieldStyled type="email" name="email" placeholder="Email" />
           <ErrorMessage component="span" name="email" />
-        </label>
-        <label>
-          Password
-          <Field type="tel" name="password" />
+        </LabelStyled>
+        <LabelStyled>
+          <FieldStyled type="text" name="password" placeholder="Password" />
           <ErrorMessage component="span" name="password" />
-        </label>
-        <button type="submit">Register</button>
-      </Form>
+        </LabelStyled>
+        <SignUpBtn color="buttons" type="submit">
+          Sign Up
+        </SignUpBtn>
+      </FormStyled>
     </Formik>
   );
 };

@@ -41,15 +41,20 @@ const theme = createTheme({
     primary: {
       main: teal[500],
       light: teal[300],
-      dark: teal[700],
+      dark: teal[800],
     },
     secondary: {
       main: cyan[500],
     },
     buttons: {
-      main: teal[100],
-      bg: teal[800],
+      main: teal[500],
+      bg: teal[900],
+      text: teal[100],
     },
+    icons: {
+      main: teal[100],
+    },
+    text: { main: teal[100] },
   },
 });
 

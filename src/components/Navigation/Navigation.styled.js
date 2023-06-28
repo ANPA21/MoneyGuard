@@ -25,5 +25,7 @@ export const ButtonLink = styled(Button)`
   width: 70vw;
   max-width: 300px;
   ${({ theme }) => `
-background-color: ${theme.palette.buttons.bg}`}
+background-color : ${theme.palette.buttons.bg};
+color: ${theme.palette.buttons.text};
+`}
 `;

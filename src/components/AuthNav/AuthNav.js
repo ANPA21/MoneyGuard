@@ -10,7 +10,7 @@ export const AuthNav = () => {
         component={NavLink}
         to="/register"
       >
-        Register
+        Sign up
       </ButtonLink>
       <ButtonLink
         color="buttons"

@@ -8,7 +8,7 @@ import {
   FormStyled,
   LabelStyled,
   LogInBtn,
-} from './LoginFor.styled';
+} from './LoginForm.styled';
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .matches(EMAIL_REGX, 'Invalid email format!')
@@ -36,7 +36,7 @@ export const LoginForm = () => {
       <FormStyled>
         <LabelStyled>
           <FieldStyled type="email" name="email" placeholder="Email adress" />
-          <ErrorMessage render={msg => <div>{msg}</div>} name="email" />
+          <ErrorMessage component="span" name="email" />
         </LabelStyled>
         <LabelStyled>
           <FieldStyled type="password" name="password" placeholder="Password" />

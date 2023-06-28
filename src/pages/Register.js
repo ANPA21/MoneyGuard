@@ -9,9 +9,9 @@ export const Register = () => {
   return (
     <RegisterPage>
       <Helmet>
-        <title>Register</title>
+        <title>Sign Up</title>
       </Helmet>
-      <RegisterPageText>Register, and get your contacts!</RegisterPageText>
+      <RegisterPageText>Sign up, and get your contacts!</RegisterPageText>
       <SignupForm />
     </RegisterPage>
   );

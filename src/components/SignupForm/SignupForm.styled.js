@@ -23,11 +23,12 @@ export const FieldStyled = styled(Field)`
   ::placeholder {
   }
 `;
-export const LogInBtn = styled(Button)`
+export const SignUpBtn = styled(Button)`
   margin-top: 5px;
   width: 70vw;
   max-width: 300px;
   ${({ theme }) => `
-background-color : ${theme.palette.buttons.bg}
+background-color : ${theme.palette.buttons.bg};
+color: ${theme.palette.buttons.text};
 `}
 `;
