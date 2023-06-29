@@ -6,8 +6,9 @@ export const UserNavStyled = styled('div')`
   gap: 10px;
   @media screen and (max-width: 479px) {
     margin-top: 10px;
+    max-width: 100%;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
     max-width: 100%;
@@ -21,18 +22,24 @@ export const UserNavStyled = styled('div')`
 `;
 
 export const LogoutBtn = styled(Button)`
+  width: 70vw;
+  max-width: 300px;
   ${({ theme }) => `
-background-color : ${theme.palette.buttons.bg}
+background-color : ${theme.palette.buttons.bg};
+color: ${theme.palette.buttons.text};
 `}
 `;
 
 export const UserTextWrapper = styled(`div`)`
   display: flex;
   height: 36.5px;
+  width: 70vw;
+  max-width: 300px;
   align-items: center;
   justify-content: center;
-  background-color: #00695c;
-  border: 1px solid rgba(178, 223, 219, 0.5);
+  ${({ theme }) => `
+background-color : ${theme.palette.buttons.bg}
+`};
   border-radius: 4px;
 `;
 export const UserText = styled(`span`)`

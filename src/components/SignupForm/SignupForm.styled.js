@@ -5,7 +5,16 @@ import { Button } from '@mui/material';
 export const FormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  @media screen and (max-width: 479px) {
+    margin-top: 25px;
+  }
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  }
+  @media screen and (min-width: 1024px) {
+  }
 `;
 
 export const LabelStyled = styled(`label`)`
@@ -20,8 +29,7 @@ export const FieldStyled = styled(Field)`
   background-color: #e0f2f1;
   border: 1px solid rgb(0, 105, 92);
   border-radius: 4px;
-  ::placeholder {
-  }
+  min-height: 35px;
 `;
 export const SignUpBtn = styled(Button)`
   margin-top: 5px;
