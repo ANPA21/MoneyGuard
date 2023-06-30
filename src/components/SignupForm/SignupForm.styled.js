@@ -6,8 +6,9 @@ export const FormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-top: 25px;
+
   @media screen and (max-width: 479px) {
-    margin-top: 25px;
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
   }

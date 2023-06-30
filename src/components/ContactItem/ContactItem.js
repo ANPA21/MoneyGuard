@@ -5,7 +5,7 @@ import {
   ContactMainText,
   ContactSecondaryText,
   ContactTextWrapper,
-} from './Contact.styled';
+} from './ContactItem.styled';
 import { useDispatch } from 'react-redux';
 import { removeContact } from 'redux/contacts/operations';
 

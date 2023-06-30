@@ -7,10 +7,20 @@ export const ContactItemStyled = styled(`li`)`
   align-items: start;
   padding: 10px;
   gap: 5px;
-  border-radius: 2px;
+  border-radius: 4px;
   ${({ theme }) => `
    border: 1px solid ${theme.palette.primary.dark}
-  `}
+  `};
+
+  @media screen and (max-width: 479px) {
+  }
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    min-width: calc(50vw - 30px);
+  }
+  @media screen and (min-width: 1024px) {
+  }
 `;
 
 export const ContactTextWrapper = styled(`div`)`

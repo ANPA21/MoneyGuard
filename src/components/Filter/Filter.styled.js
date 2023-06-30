@@ -5,9 +5,9 @@ export const Wrapper = styled(`div`)`
   justify-content: space-between;
   gap: 10px;
   margin-top: 15px;
+  flex-direction: column;
+  align-items: flex-start;
   @media screen and (max-width: 479px) {
-    flex-direction: column;
-    align-items: flex-start;
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
   }
