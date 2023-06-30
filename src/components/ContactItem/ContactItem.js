@@ -1,5 +1,11 @@
 import PropTypes from 'prop-types';
-import { ButtonStyled, ContactItemStyled } from './Contact.styled';
+import {
+  ButtonStyled,
+  ContactItemStyled,
+  ContactMainText,
+  ContactSecondaryText,
+  ContactTextWrapper,
+} from './Contact.styled';
 import { useDispatch } from 'react-redux';
 import { removeContact } from 'redux/contacts/operations';
 
@@ -7,11 +13,17 @@ export const ContactItem = ({ contact: { name, number, id } }) => {
   const dispatch = useDispatch();
   return (
     <ContactItemStyled>
-      <span>Name: {name}</span>
-      <span>Number: {number}</span>
+      <ContactTextWrapper>
+        <ContactMainText>
+          Name: <ContactSecondaryText>{name}</ContactSecondaryText>
+        </ContactMainText>
+        <ContactMainText>
+          Number: <ContactSecondaryText>{number}</ContactSecondaryText>
+        </ContactMainText>
+      </ContactTextWrapper>
       <ButtonStyled
         variant="outlined"
-        color="secondary"
+        color="error"
         type="submit"
         onClick={() => dispatch(removeContact(id))}
       >

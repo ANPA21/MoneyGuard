@@ -1,5 +1,6 @@
-import styled from 'styled-components';
-export const Wrapper = styled.div`
+import { styled } from '@mui/material';
+
+export const Wrapper = styled(`div`)`
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -31,7 +32,9 @@ export const FilerInput = styled(`input`)`
 
   padding: 5px;
 
-  background-color: #e0f2f1;
-  border: 1px solid rgb(0, 105, 92);
+  ${({ theme }) => `
+  background-color : ${theme.palette.primary.xtrlight};
+  border : 1px solid ${theme.palette.primary.dark};
+  `}
   border-radius: 4px;
 `;

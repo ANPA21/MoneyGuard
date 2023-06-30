@@ -42,6 +42,7 @@ const theme = createTheme({
       main: teal[500],
       light: teal[300],
       dark: teal[800],
+      xtrlight: teal[50],
     },
     secondary: {
       main: cyan[500],

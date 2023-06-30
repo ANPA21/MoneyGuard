@@ -21,8 +21,10 @@ export const FormLabel = styled(`label`)`
 `;
 export const FormField = styled(Field)`
   padding: 5px;
-  background-color: #e0f2f1;
-  border: 1px solid rgb(0, 105, 92);
+  ${({ theme }) => `
+  background-color : ${theme.palette.primary.xtrlight};
+  border : 1px solid ${theme.palette.primary.dark};
+  `}
   border-radius: 4px;
   min-height: 35px;
   min-width: 200px;
