@@ -8,6 +8,7 @@ import { Wrapper } from '../components/utils/Contacts.styled';
 import { ContactForm } from 'components/Form/Form';
 import { ContactsList } from 'components/ContactList/ContactList';
 import { Helmet } from 'react-helmet';
+import { selectFilter } from 'redux/filter/selectors';
 
 export const Contacts = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export const Contacts = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
   const contacts = useSelector(selectCombinedContacts);
+  const filter = useSelector(selectFilter);
   return (
     <Wrapper>
       <Helmet>
@@ -22,7 +24,8 @@ export const Contacts = () => {
       </Helmet>
       <ContactForm />
       <Filter />
-      {contacts.length > 0 ? <ContactsList /> : <Notification />}
+      {contacts.length > 0 && <ContactsList />}
+      {contacts.length === 0 && filter !== '' && <Notification />}
     </Wrapper>
   );
 };
