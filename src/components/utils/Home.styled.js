@@ -7,7 +7,7 @@ export const HomePageSection = styled(`section`)`
 
   @media screen and (max-width: 479px) {
     min-height: ${({ isLoggedIn }) =>
-      isLoggedIn ? 'calc(100vh - 287px)' : 'calc(100vh - 241px)'};
+      isLoggedIn ? 'calc(100vh - 302px)' : 'calc(100vh - 256px)'};
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
   }

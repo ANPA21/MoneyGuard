@@ -6,7 +6,7 @@ export const LogInPage = styled(`div`)`
   padding: 0 15px;
   align-items: center;
   @media screen and (max-width: 479px) {
-    min-height: calc(100vh - 266px);
+    min-height: calc(100vh - 281px);
     margin-top: 25px;
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
