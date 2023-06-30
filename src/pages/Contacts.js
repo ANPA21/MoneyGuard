@@ -4,7 +4,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { selectCombinedContacts } from 'redux/contacts/selectors';
 import { Notification } from 'components/Notification/Notification';
 import { Filter } from 'components/Filter/Filter';
-import { Title, Wrapper } from '../components/utils/Contacts.styled';
+import { Wrapper } from '../components/utils/Contacts.styled';
 import { ContactForm } from 'components/Form/Form';
 import { ContactsList } from 'components/ContactList/ContactList';
 import { Helmet } from 'react-helmet';
@@ -20,9 +20,7 @@ export const Contacts = () => {
       <Helmet>
         <title>My Contacts</title>
       </Helmet>
-      <Title>Phonebook</Title>
       <ContactForm />
-      <Title>Contacts</Title>
       <Filter />
       {contacts.length > 0 ? <ContactsList /> : <Notification />}
     </Wrapper>

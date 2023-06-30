@@ -6,7 +6,9 @@ import {
   FormBtn,
   FormField,
   FormLabel,
+  StyledContactForm,
   StyledForm,
+  Title,
 } from './Form.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkExistingContacts } from 'components/utils/checkExistingContact';
@@ -43,19 +45,20 @@ export const ContactForm = () => {
       }}
       validationSchema={SignupSchema}
     >
-      <StyledForm>
+      <StyledContactForm>
+        <Title>Phonebook</Title>
         <FormLabel>
-          Name
-          <FormField type="text" name="name" />
+          <FormField type="text" name="name" placeholder="Name" />
           <ErrorMsg component="span" name="name" />
         </FormLabel>
         <FormLabel>
-          Number
-          <FormField type="tel" name="number" />
+          <FormField type="tel" name="number" placeholder="Phone number" />
           <ErrorMsg component="span" name="number" />
         </FormLabel>
-        <FormBtn type="submit">Add Contact</FormBtn>
-      </StyledForm>
+        <FormBtn variant="outlined" color="buttons" type="submit">
+          Add Contact
+        </FormBtn>
+      </StyledContactForm>
     </Formik>
   );
 };

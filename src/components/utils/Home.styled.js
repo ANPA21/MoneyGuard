@@ -1,5 +1,4 @@
 import { styled } from '@mui/material';
-
 export const HomePageSection = styled(`section`)`
   display: flex;
   flex-direction: column;
@@ -7,7 +6,8 @@ export const HomePageSection = styled(`section`)`
   padding: 0 15px;
 
   @media screen and (max-width: 479px) {
-    min-height: calc(100vh - 241px);
+    min-height: ${({ isLoggedIn }) =>
+      isLoggedIn ? 'calc(100vh - 287px)' : 'calc(100vh - 241px)'};
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
   }
