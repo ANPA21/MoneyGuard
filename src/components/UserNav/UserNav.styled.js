@@ -22,6 +22,8 @@ export const UserNavStyled = styled('div')`
 `;
 
 export const LogoutBtn = styled(Button)`
+  width: 70vw;
+  max-width: 300px;
   @media screen and (max-width: 479px) {
     width: 70vw;
     max-width: 300px;
@@ -43,14 +45,16 @@ export const UserTextWrapper = styled(`div`)`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  height: 36.5px;
+  width: calc(70vw - 2px);
+  max-width: 300px;
 
+  border-radius: 4px;
+  border: 1px solid rgba(0, 150, 136, 0.5);
   @media screen and (max-width: 479px) {
-    height: 36.5px;
-    width: calc(70vw - 2px);
-    max-width: 300px;
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
+    width: calc(73vw + 1.4px);
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
   }

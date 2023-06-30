@@ -7,7 +7,7 @@ export const NavBarStyled = styled(`div`)`
 
   justify-content: space-between;
   align-items: center;
-  padding: 15px 15px;
+  padding: 15px;
   ${({ theme }) => `
   background-color : ${theme.palette.primary.dark}
   `};
@@ -18,6 +18,9 @@ export const NavBarStyled = styled(`div`)`
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
     max-width: 100%;
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     max-width: 100%;

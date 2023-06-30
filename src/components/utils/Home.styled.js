@@ -10,6 +10,8 @@ export const HomePageSection = styled(`section`)`
       isLoggedIn ? 'calc(100vh - 302px)' : 'calc(100vh - 256px)'};
   }
   @media screen and (min-width: 480px) and (max-width: 767px) {
+    min-height: ${({ isLoggedIn }) =>
+      isLoggedIn ? 'calc(100vh - 229px)' : 'calc(100vh - 286px)'};
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
   }
