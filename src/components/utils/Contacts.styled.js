@@ -13,8 +13,9 @@ export const Wrapper = styled(`section`)`
     min-height: calc(100vh - 244px);
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    min-height: calc(100vh - 228px);
+    min-height: calc(100vh - 234px);
   }
   @media screen and (min-width: 1024px) {
+    min-height: calc(100vh - 234px);
   }
 `;

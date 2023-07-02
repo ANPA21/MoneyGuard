@@ -14,9 +14,10 @@ export const LogInPage = styled(`div`)`
     min-height: calc(100vh - 311px);
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    min-height: calc(100vh - 238px);
+    min-height: calc(100vh - 244px);
   }
   @media screen and (min-width: 1024px) {
+    min-height: calc(100vh - 244px);
   }
 `;
 export const LogInPageText = styled(`span`)`

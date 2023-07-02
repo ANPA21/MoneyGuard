@@ -17,5 +17,7 @@ export const List = styled.ul`
     flex-wrap: wrap;
   }
   @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;

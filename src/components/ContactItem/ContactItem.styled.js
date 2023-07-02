@@ -20,6 +20,7 @@ export const ContactItemStyled = styled(`li`)`
     min-width: calc(50vw - 30px);
   }
   @media screen and (min-width: 1024px) {
+    min-width: calc(1400px * 0.3 + 20px);
   }
 `;
 
