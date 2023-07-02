@@ -19,7 +19,11 @@ export const Filter = () => {
       <Title>Contacts</Title>
       <FilterText> Filter contacts by name</FilterText>
       <InputWrapper>
-        <FilterInput type="text" onChange={onInputChange} />
+        <FilterInput
+          type="text"
+          onChange={onInputChange}
+          placeholder="Enter name"
+        />
         <SearchIconSt />
       </InputWrapper>
     </Wrapper>

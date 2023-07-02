@@ -36,7 +36,7 @@ export const SearchIconSt = styled(SearchIcon)`
   margin: auto 5.5px auto 0;
 `;
 
-export const InputWrapper = styled(`div`)`
+export const InputWrapper = styled(`label`)`
   position: relative;
 `;
 
