@@ -1,6 +1,8 @@
-import { styled } from '@mui/material';
+import styled from '@emotion/styled';
+import SearchIcon from '@mui/icons-material/Search';
 
 export const Wrapper = styled(`div`)`
+  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -26,11 +28,23 @@ export const FilterText = styled(`span`)`
   font-weight: 500;
 `;
 
-export const FilerInput = styled(`input`)`
+export const SearchIconSt = styled(SearchIcon)`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 5.5px auto 0;
+`;
+
+export const InputWrapper = styled(`div`)`
+  position: relative;
+`;
+
+export const FilterInput = styled(`input`)`
   min-height: 35px;
   min-width: 200px;
 
-  padding: 5px;
+  padding: 5px 30.5px 5px 5px;
 
   ${({ theme }) => `
   background-color : ${theme.palette.primary.xtrlight};

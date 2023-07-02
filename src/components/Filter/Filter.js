@@ -1,4 +1,11 @@
-import { FilerInput, FilterText, Title, Wrapper } from './Filter.styled';
+import {
+  FilterInput,
+  FilterText,
+  InputWrapper,
+  SearchIconSt,
+  Title,
+  Wrapper,
+} from './Filter.styled';
 import { useDispatch } from 'react-redux';
 import { addFilter } from 'redux/filter/filterSlice';
 
@@ -11,7 +18,10 @@ export const Filter = () => {
     <Wrapper>
       <Title>Contacts</Title>
       <FilterText> Filter contacts by name</FilterText>
-      <FilerInput type="text" onChange={onInputChange} />
+      <InputWrapper>
+        <FilterInput type="text" onChange={onInputChange} />
+        <SearchIconSt />
+      </InputWrapper>
     </Wrapper>
   );
 };
