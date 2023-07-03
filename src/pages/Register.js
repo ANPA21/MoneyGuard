@@ -5,7 +5,7 @@ import {
 } from 'components/utils/Register.styled';
 import { Helmet } from 'react-helmet';
 
-export const Register = () => {
+const Register = () => {
   return (
     <RegisterPage>
       <Helmet>
@@ -16,3 +16,4 @@ export const Register = () => {
     </RegisterPage>
   );
 };
+export default Register;

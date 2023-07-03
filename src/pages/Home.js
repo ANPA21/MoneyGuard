@@ -7,7 +7,7 @@ import {
 import { useAuth } from 'hooks/useAuth';
 import { Helmet } from 'react-helmet';
 
-export const Home = () => {
+const Home = () => {
   const { isLoggedIn } = useAuth();
 
   return (
@@ -22,3 +22,5 @@ export const Home = () => {
     </HomePageSection>
   );
 };
+
+export default Home;

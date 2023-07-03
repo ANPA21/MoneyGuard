@@ -1,15 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
-import { Contacts } from '../pages/Contacts';
 import { Layout } from './Layout';
-import { Home } from 'pages/Home';
-import { Login } from 'pages/Login';
-import { Register } from 'pages/Register';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { refresh } from 'redux/auth/operations';
+
+const Home = lazy(() => import('../pages/Home'));
+const Login = lazy(() => import('../pages/Login'));
+const Register = lazy(() => import('../pages/Register'));
+const Contacts = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();

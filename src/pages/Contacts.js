@@ -10,7 +10,7 @@ import { ContactsList } from 'components/ContactList/ContactList';
 import { Helmet } from 'react-helmet';
 import { selectFilter } from 'redux/filter/selectors';
 
-export const Contacts = () => {
+const Contacts = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchContacts());
@@ -29,3 +29,5 @@ export const Contacts = () => {
     </Wrapper>
   );
 };
+
+export default Contacts;
