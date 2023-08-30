@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/money-guard/static/css/main.9056814d.css",
-    "main.js": "/money-guard/static/js/main.d447c62c.js",
-    "static/media/Poppins-Regular.woff": "/money-guard/static/media/Poppins-Regular.9b9d9585fc27c8fff554.woff",
-    "static/media/Poppins-SemiBold.woff": "/money-guard/static/media/Poppins-SemiBold.5159bcc22685da086734.woff",
-    "static/media/Poppins-Regular.woff2": "/money-guard/static/media/Poppins-Regular.5a6c15af2151cfa27e76.woff2",
-    "static/media/Poppins-SemiBold.woff2": "/money-guard/static/media/Poppins-SemiBold.810728e0001e1f7c0a71.woff2",
-    "index.html": "/money-guard/index.html",
-    "main.9056814d.css.map": "/money-guard/static/css/main.9056814d.css.map",
-    "main.d447c62c.js.map": "/money-guard/static/js/main.d447c62c.js.map"
+    "main.css": "/MoneyGuard/static/css/main.7b8ac8e4.css",
+    "main.js": "/MoneyGuard/static/js/main.44af9e03.js",
+    "static/media/Poppins-Regular.woff": "/MoneyGuard/static/media/Poppins-Regular.9b9d9585fc27c8fff554.woff",
+    "static/media/Poppins-SemiBold.woff": "/MoneyGuard/static/media/Poppins-SemiBold.5159bcc22685da086734.woff",
+    "static/media/Poppins-Regular.woff2": "/MoneyGuard/static/media/Poppins-Regular.5a6c15af2151cfa27e76.woff2",
+    "static/media/Poppins-SemiBold.woff2": "/MoneyGuard/static/media/Poppins-SemiBold.810728e0001e1f7c0a71.woff2",
+    "index.html": "/MoneyGuard/index.html",
+    "main.7b8ac8e4.css.map": "/MoneyGuard/static/css/main.7b8ac8e4.css.map",
+    "main.44af9e03.js.map": "/MoneyGuard/static/js/main.44af9e03.js.map"
   },
   "entrypoints": [
-    "static/css/main.9056814d.css",
-    "static/js/main.d447c62c.js"
+    "static/css/main.7b8ac8e4.css",
+    "static/js/main.44af9e03.js"
   ]
 }
