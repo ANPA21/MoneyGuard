@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <Provider store={store}> */}
     {/* <PersistGate loading={null} persistor={peristor}> */}
-    <BrowserRouter basename="/money-guard">
+    <BrowserRouter basename="/MoneyGuard">
       <App />
     </BrowserRouter>
     {/* </PersistGate> */}
