@@ -1,50 +1,71 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
-import { RestrictedRoute } from './RestrictedRoute';
-import { PrivateRoute } from './PrivateRoute';
-import { useDispatch } from 'react-redux';
-import { useAuth } from 'hooks/useAuth';
-import { lazy, useEffect } from 'react';
-import { refresh } from 'redux/auth/operations';
+import { Dashboard } from '../pages/DashboardPage/Dashboard';
+// import { RestrictedRoute } from './RestrictedRoute';
+// import { PrivateRoute } from './PrivateRoute';
+import { Suspense } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { useAuth } from 'hooks/useAuth';
 
-const Home = lazy(() => import('../pages/Home'));
-const Login = lazy(() => import('../pages/Login'));
-const Register = lazy(() => import('../pages/Register'));
-const Contacts = lazy(() => import('../pages/Contacts'));
+// const Home = lazy(() => import('../pages/Home'));
+// const Login = lazy(() => import('../pages/Login'));
+// const Register = lazy(() => import('../pages/Register'));
 
 export const App = () => {
-  const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  return (
+    <Suspense fallback={<div>Спиннер тут</div>}>
+      <Routes>
+        <Route path="/" element={<div>Login page</div>} />
+        <Route path="login" element={<div>Login page</div>} />
+        <Route path="register" element={<div>Register page</div>} />
+        <Route element={<Dashboard />}>
+          <Route path="/home" element={<div>Home page</div>} />
+          <Route path="/statistics" element={<div>Statisctics page</div>} />
 
-  useEffect(() => {
-    dispatch(refresh());
-  }, [dispatch]);
+          <Route path="/currency" element={<div>Statistics page</div>} />
+        </Route>
 
-  return isRefreshing ? (
-    <div>Wait a second, refreshing...</div>
-  ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<Contacts />} />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
-          }
-        />
-      </Route>
-    </Routes>
+        <Route path="*" element={<div>Wrong Page</div>} />
+      </Routes>
+    </Suspense>
   );
 };
+
+//!готовые  роуты, когда будут готов store/selectors и настроена логика приватных / закрытых роутов, можно подключать
+//  <Routes>
+//         <Route element={<RestrictedRoute />}>
+//           <Route path="/" element={<div>Login page</div>} />
+//           <Route path="login" element={<div>Login page</div>} />
+//           <Route path="register" element={<div>Register page</div>} />
+//         </Route>
+//         <Route element={<Dashboard />}>
+//           <Route
+//             path="/home"
+//             element={
+//               <PrivateRoute>
+//                 <div>Home page</div>
+//               </PrivateRoute>
+//             }
+//           />
+//           <Route
+//             path="/statistics"
+//             element={
+//               <PrivateRoute>
+//                 <div>Statisctics page</div>
+//               </PrivateRoute>
+//             }
+//           />
+
+//           <Route
+//             path="/currency"
+//             element={
+//               <PrivateRoute>
+//                 <div>Statistics page</div>
+//               </PrivateRoute>
+//             }
+//           />
+//         </Route>
+
+//         <Route path="*" element={<div>Wrong Page</div>} />
+//       </Routes>
+//     </Suspense>
+//   );
