@@ -21,7 +21,7 @@ export const App = () => {
           <Route path="/home" element={<div>Home page</div>} />
           <Route path="/statistics" element={<div>Statisctics page</div>} />
 
-          <Route path="/currency" element={<div>Statistics page</div>} />
+          <Route path="/currency" element={<div>Currency page</div>} />
         </Route>
 
         <Route path="*" element={<div>Wrong Page</div>} />
