@@ -1,0 +1,23 @@
+:root {
+  --bg: #101010;
+  --bg-table: rgba(82, 59, 126, 0.6);
+
+  --white: #fbfbfb;
+  --purple: #734aef;
+  --yellow: #ffb627;
+
+  --gradient: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+
+  --transp-10: rgba(255, 255, 255, 0.1);
+  --transp-20: rgba(255, 255, 255, 0.2);
+  --transp-40: rgba(255, 255, 255, 0.4);
+  --transp-60: rgba(255, 255, 255, 0.6);
+
+  --dashboard-text: #ff868d;
+  --button-text: #623f8b;
+}
