@@ -16,10 +16,8 @@ export const fetchCurrency = createAsyncThunk(
           }
           return result;
         }, {});
-      console.log(fetchedCurrency);
       return fetchedCurrency;
     } catch (e) {
-      console.log(e.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
