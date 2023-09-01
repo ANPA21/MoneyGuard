@@ -3,6 +3,7 @@ import { Dashboard } from '../pages/DashboardPage/Dashboard';
 // import { RestrictedRoute } from './RestrictedRoute';
 // import { PrivateRoute } from './PrivateRoute';
 import { Suspense } from 'react';
+import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
 // import { useDispatch } from 'react-redux';
 // import { useAuth } from 'hooks/useAuth';
 
@@ -21,7 +22,7 @@ export const App = () => {
           <Route path="/home" element={<div>Home page</div>} />
           <Route path="/statistics" element={<div>Statisctics page</div>} />
 
-          <Route path="/currency" element={<div>Currency page</div>} />
+          <Route path="/currency" element={<CurrencyPage />} />
         </Route>
 
         <Route path="*" element={<div>Wrong Page</div>} />
