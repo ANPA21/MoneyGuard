@@ -4,6 +4,8 @@ import { Dashboard } from '../pages/DashboardPage/Dashboard';
 // import { PrivateRoute } from './PrivateRoute';
 import { Suspense } from 'react';
 import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
+import Login from 'pages/LoginPage/Login';
+import Register from 'pages/RegisterPage/Register';
 // import { useDispatch } from 'react-redux';
 // import { useAuth } from 'hooks/useAuth';
 
@@ -15,9 +17,9 @@ export const App = () => {
   return (
     <Suspense fallback={<div>Спиннер тут</div>}>
       <Routes>
-        <Route path="/" element={<div>Login page</div>} />
-        <Route path="login" element={<div>Login page</div>} />
-        <Route path="register" element={<div>Register page</div>} />
+        <Route path="/" element={<Login />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route element={<Dashboard />}>
           <Route path="/home" element={<div>Home page</div>} />
           <Route path="/statistics" element={<div>Statisctics page</div>} />
