@@ -1,4 +1,15 @@
 import { calculateTotal } from './DataTableFx';
+import {
+  ColorBox,
+  StyledTable,
+  StyledTdCat,
+  StyledTdSum,
+  StyledTdTotal,
+  StyledThCat,
+  StyledThSum,
+  StyledTr,
+} from './statisticsDataTable.styled';
+import { colors } from './statiscticsColors';
 
 export const DataTable = () => {
   const data = [
@@ -25,7 +36,7 @@ export const DataTable = () => {
     {
       _id: 'transaction_id_4',
       transactionType: 'expense',
-      category: 'Main Expenses',
+      category: 'Main expenses',
       value: 80,
       date: new Date(2022, 2, 3), // March 3, 2022
     },
@@ -118,31 +129,37 @@ export const DataTable = () => {
   }));
 
   return (
-    <table border="1">
+    <StyledTable>
       <thead>
         <tr>
-          <th>Category</th>
-          <th>Sum</th>
+          <StyledThCat>Category</StyledThCat>
+          <StyledThSum>Sum</StyledThSum>
         </tr>
       </thead>
       <tbody>
-        {categoryExpenses.map(category => (
-          <tr key={category.name}>
-            <td>{category.name}</td>
-            <td>{category.totalExpenses}</td>
-          </tr>
-        ))}
+        {categoryExpenses.map(category => {
+          const boxColor = colors.find(color => color.name === category.name);
+          return (
+            <StyledTr key={category.name}>
+              <StyledTdCat>
+                <ColorBox color={boxColor.color} />
+                <span>{category.name}</span>
+              </StyledTdCat>
+              <StyledTdSum>{category.totalExpenses}</StyledTdSum>
+            </StyledTr>
+          );
+        })}
       </tbody>
       <tfoot>
         <tr>
           <td>Expenses</td>
-          <td>{calculateTotal(expenses)}</td>
+          <StyledTdTotal>{calculateTotal(expenses)}</StyledTdTotal>
         </tr>
         <tr>
           <td>Income</td>
-          <td>{calculateTotal(income)}</td>
+          <StyledTdTotal>{calculateTotal(income)}</StyledTdTotal>
         </tr>
       </tfoot>
-    </table>
+    </StyledTable>
   );
 };

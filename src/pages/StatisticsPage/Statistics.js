@@ -1,7 +1,8 @@
 import { DataTable } from 'components/Statistics/StatisticsDataTable';
+import StatiscticsChart from 'components/Statistics/statisticsChart';
+import { Helmet } from 'react-helmet-async';
 
 const { Currency } = require('components/Currency/Currency');
-const { Helmet } = require('react-helmet');
 const {
   StatSection,
   LeftSideStatWrapper,
@@ -23,7 +24,9 @@ export const StatiscticsPage = () => {
       </LeftSideStatWrapper>
       <RightSideStatWrapper>
         <TitleStyled>Statistics</TitleStyled>
-        <div>Donut Chart</div>
+        <div>
+          <StatiscticsChart />
+        </div>
 
         <DataWrapper>
           <DatePickerWrapper>Datepicker here</DatePickerWrapper>
