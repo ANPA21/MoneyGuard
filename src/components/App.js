@@ -6,6 +6,8 @@ import { Suspense } from 'react';
 import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
 import Login from 'pages/LoginPage/Login';
 import Register from 'pages/RegisterPage/Register';
+import { StatiscticsPage } from 'pages/StatisticsPage/Statistics';
+
 // import { useDispatch } from 'react-redux';
 // import { useAuth } from 'hooks/useAuth';
 
@@ -22,7 +24,7 @@ export const App = () => {
         <Route path="register" element={<Register />} />
         <Route element={<Dashboard />}>
           <Route path="/home" element={<div>Home page</div>} />
-          <Route path="/statistics" element={<div>Statisctics page</div>} />
+          <Route path="/statistics" element={<StatiscticsPage />} />
 
           <Route path="/currency" element={<CurrencyPage />} />
         </Route>
