@@ -1,8 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { Dashboard } from '../pages/DashboardPage/Dashboard';
+import { Dashboard } from '../pages/dashboard_page/Dashboard';
 // import { RestrictedRoute } from './RestrictedRoute';
 // import { PrivateRoute } from './PrivateRoute';
 import { Suspense } from 'react';
+import { Home } from '../pages/home_page/Home';
+import { Statistics } from '../pages/statistics_page/Statistics';
 import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
 // import { useDispatch } from 'react-redux';
 // import { useAuth } from 'hooks/useAuth';
@@ -18,11 +20,11 @@ export const App = () => {
         <Route path="/" element={<div>Login page</div>} />
         <Route path="login" element={<div>Login page</div>} />
         <Route path="register" element={<div>Register page</div>} />
-        <Route element={<Dashboard />}>
-          <Route path="/home" element={<div>Home page</div>} />
-          <Route path="/statistics" element={<div>Statisctics page</div>} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route  path="home" index element={<Home />} />
+          <Route path="statistics" element={<Statistics />} />
 
-          <Route path="/currency" element={<CurrencyPage />} />
+          <Route path="currency" element={<CurrencyPage />} />
         </Route>
 
         <Route path="*" element={<div>Wrong Page</div>} />

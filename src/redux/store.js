@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -8,7 +9,16 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { PersistedCurrencyReducer } from './currencyReducer/currencySlice';
+import storage from 'redux-persist/lib/storage';
+import { currencyReducer } from './currencyRedux/currencySlice';
+import { transactionReducer } from './transactionsRedux/transactionsSlice';
+
+const persistConfig = {
+  key: 'currency',
+  storage,
+  whitelist: ['data', 'transactions'],
+}
+
 
 //! Для редюсеров два варианта, или вписать сюда настройки для persist, или экспортировать из самого редюсера уже с настройками.
 // const authPersistConfig = {
@@ -21,8 +31,8 @@ import { PersistedCurrencyReducer } from './currencyReducer/currencySlice';
 export const store = configureStore({
   reducer: {
     // auth: редюсер аутентификации, пример persistReducer(authPersistConfig, <сам редюсер>) или persistedAuthReducer если экспортировали уже с конфигом
-    // transactions: тут редюсер для транзакций
-    currency: PersistedCurrencyReducer,
+    transactions: persistReducer(persistConfig, transactionReducer),
+    currency: persistReducer(persistConfig, currencyReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
