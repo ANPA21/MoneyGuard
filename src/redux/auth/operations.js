@@ -1,88 +1,84 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
 
-// Utility to add JWT
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// Utility to remove JWT
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-/*
- * POST @ /users/signup
- * body: { name, email, password }
- */
+const notifyError = text => {
+  toast.error(text, {
+    position: 'bottom-center',
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined,
+    theme: 'colored',
+  });
+};
+
 export const register = createAsyncThunk(
   'auth/register',
-  async (credentials, thunkAPI) => {
+  async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/users/signup', credentials);
+      const response = await axios.post('/users/register', credentials);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      notifyError('This email address already exists');
+      return rejectWithValue(error.message);
     }
   }
 );
 
-/*
- * POST @ /users/login
- * body: { email, password }
- */
 export const logIn = createAsyncThunk(
   'auth/login',
-  async (credentials, thunkAPI) => {
+  async (credentials, {rejectWithValue}) => {
     try {
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      notifyError('Email does not exist or password is incorrect')
+      return rejectWithValue(error.message);
     }
   }
 );
 
-/*
- * POST @ /users/logout
- * headers: Authorization: Bearer token
- */
-export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('auth/logout', async (_, {rejectWithValue}) => {
   try {
     await axios.post('/users/logout');
-    // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return rejectWithValue(error.message);
   }
 });
 
-/*
- * GET @ /users/current
- * headers: Authorization: Bearer token
- */
+
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
-  async (_, thunkAPI) => {
-    // Reading the token from the state via getState()
-    const state = thunkAPI.getState();
+  async (_, {rejectWithValue, getState}) => {
+    const state = getState();
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      // If there is no token, exit without performing any request
-      return thunkAPI.rejectWithValue('Unable to fetch user');
+  
+      return rejectWithValue('Unable to fetch user');
     }
     try {
-       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
       const response = await axios.get('/users/current');
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
