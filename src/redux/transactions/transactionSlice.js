@@ -1,14 +1,12 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 // import { addTransaction } from './operations';
 
 const initialState = {
   transactions: [
     {
-      id: 'id-1',
       type: 'income',
       category: '',
-      sum: 123,
-      date: '07/02/23',
+      value: 123,
       comment: '',
     },
     // isLoading: false,
@@ -48,14 +46,12 @@ const transactionSlice = createSlice({
       reducer(state, action) {
         state.transactions.push(action.payload);
       },
-      prepare(type, category, sum, date, comment) {
+      prepare(type, category, value, date, comment) {
         return {
           payload: {
-            id: nanoid(),
             type,
             category,
-            sum,
-            date,
+            value,
             comment,
           },
         };

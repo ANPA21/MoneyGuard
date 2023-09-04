@@ -5,9 +5,9 @@
 
 // export const addTransaction = createAsyncThunk(
 //   'transactions/addTransaction',
-//   async ({ type, category, sum, date, comment }, thunkAPI) => {
+//   async ({ type, category, value, comment="" }, thunkAPI) => {
 //     try {
-//       const response = await axios.post('/transactions', { type, category, sum, date, comment });
+//       const response = await axios.post('/transactions', { type, category, value, date, comment });
 //       return response.data;
 //     } catch (error) {
 //       return thunkAPI.rejectWithValue(error.message);
