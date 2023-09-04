@@ -3,6 +3,11 @@ import { Dashboard } from '../pages/DashboardPage/Dashboard';
 // import { RestrictedRoute } from './RestrictedRoute';
 // import { PrivateRoute } from './PrivateRoute';
 import { Suspense } from 'react';
+import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
+import Login from 'pages/LoginPage/Login';
+import Register from 'pages/RegisterPage/Register';
+import { StatiscticsPage } from 'pages/StatisticsPage/Statistics';
+
 // import { useDispatch } from 'react-redux';
 // import { useAuth } from 'hooks/useAuth';
 
@@ -28,14 +33,14 @@ export const App = () => {
       {isModalOpen && <Modal children={AddTransaction()} />}
 
       <Routes>
-        <Route path="/" element={<div>Login page</div>} />
-        <Route path="login" element={<div>Login page</div>} />
-        <Route path="register" element={<div>Register page</div>} />
+        <Route path="/" element={<Login />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route element={<Dashboard />}>
           <Route path="/home" element={<div>Home page</div>} />
-          <Route path="/statistics" element={<div>Statisctics page</div>} />
+          <Route path="/statistics" element={<StatiscticsPage />} />
 
-          <Route path="/currency" element={<div>Currency page</div>} />
+          <Route path="/currency" element={<CurrencyPage />} />
         </Route>
 
         <Route path="*" element={<div>Wrong Page</div>} />
