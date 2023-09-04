@@ -10,9 +10,23 @@ import { Suspense } from 'react';
 // const Login = lazy(() => import('../pages/Login'));
 // const Register = lazy(() => import('../pages/Register'));
 
+import Modal from './Modal/Modal';
+import AddTransaction from './Add/Add';
+import { useDispatch, useSelector } from 'react-redux';
+import { getModalState } from 'redux/transactions/selectors';
+import { toggleModal } from 'redux/modal/ModalSlice';
+
 export const App = () => {
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector(getModalState);
+
   return (
     <Suspense fallback={<div>Спиннер тут</div>}>
+      <button type="button" onClick={() => dispatch(toggleModal())}>
+        Add transaction
+      </button>
+      {isModalOpen && <Modal children={AddTransaction()} />}
+
       <Routes>
         <Route path="/" element={<div>Login page</div>} />
         <Route path="login" element={<div>Login page</div>} />
