@@ -15,7 +15,7 @@ import {
   StyledDatePicker,
   Label,
 } from './Add.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTransaction } from 'redux/transactions/transactionSlice';
 // import { getCategoryState } from 'redux/transactions/selectors';
 
