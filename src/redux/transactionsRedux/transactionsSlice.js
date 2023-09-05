@@ -1,16 +1,24 @@
+import storage from 'redux-persist/lib/storage';
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchTransactions, deleteItem, addItem, editItem } from './transactionsOperations';
+import { persistReducer } from 'redux-persist';
+
+import {
+  fetchTransactions,
+  deleteItem,
+  addItem,
+  editItem,
+} from './transactionsOperations';
 
 export const transactionSlice = createSlice({
   name: 'transactions',
   initialState: {
     transactions: [],
     isLoading: false,
-    error: null
+    error: null,
   },
   extraReducers: builder =>
     builder
-      .addCase(fetchTransactions.pending, (state) => {
+      .addCase(fetchTransactions.pending, state => {
         state.isLoading = true;
       })
       .addCase(fetchTransactions.fulfilled, (state, action) => {
@@ -22,7 +30,7 @@ export const transactionSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(deleteItem.pending, (state) => {
+      .addCase(deleteItem.pending, state => {
         state.isLoading = true;
       })
       .addCase(deleteItem.fulfilled, (state, action) => {
@@ -37,7 +45,7 @@ export const transactionSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(addItem.pending, (state) => {
+      .addCase(addItem.pending, state => {
         state.isLoading = true;
       })
       .addCase(addItem.fulfilled, (state, action) => {
@@ -49,10 +57,10 @@ export const transactionSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(editItem.pending, (state) => {
+      .addCase(editItem.pending, state => {
         state.isLoading = true;
       })
-      .addCase(editItem.fulfilled, (state) => {
+      .addCase(editItem.fulfilled, state => {
         state.isLoading = false;
         state.error = null;
       })
@@ -60,6 +68,16 @@ export const transactionSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       }),
-})
+});
 
-export const transactionReducer = transactionSlice.reducer;
+const persistConfig = {
+  key: 'transactions',
+  storage,
+  whitelist: ['data', 'transactions'],
+};
+
+const transactionReducer = transactionSlice.reducer;
+export const PersistedTransactionReducer = persistReducer(
+  persistConfig,
+  transactionReducer
+);

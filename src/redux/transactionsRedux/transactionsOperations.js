@@ -1,18 +1,19 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = "https://64f608582b07270f705e08d0.mockapi.io/";
+axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
 
 export const fetchTransactions = createAsyncThunk(
-  "transactions/fetchAll",
+  'transactions/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/transactions");
+      const response = await axios.get('/transactions');
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  });
+  }
+);
 
 export const deleteItem = createAsyncThunk(
   'transactions/deleteItem',
@@ -30,7 +31,7 @@ export const addItem = createAsyncThunk(
   'transactions/addItem',
   async (item, thunkAPI) => {
     try {
-      const response = await axios.post("/transactions", item);
+      const response = await axios.post('/transactions', item);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

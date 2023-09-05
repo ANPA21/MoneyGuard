@@ -1,9 +1,7 @@
-import {
-  CustomButton,
-} from 'components/CustomElements/CustomButton';
+import { CustomButton } from 'components/CustomElements/CustomButton';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { logIn } from 'redux/auth/operations';
+import { logIn } from 'redux/authReducer/operations';
 import { ErrorMessage, Field, Formik } from 'formik';
 import Logotip from '../../images/logo.svg';
 import { FormStyled, LabelStyled, LogotipStyled } from './LoginForm.styled';
@@ -26,7 +24,7 @@ const LoginForm = () => {
     dispatch(logIn(values));
     resetForm();
     toast.success(`You have successfully logged in.`);
-    
+
     console.log('Успешный вход в систему');
   };
 
@@ -43,7 +41,7 @@ const LoginForm = () => {
         </LogotipStyled>
 
         <LabelStyled>
-        <MdEmail className="iconEmail" />
+          <MdEmail className="iconEmail" />
           <Field name="email" type="email" placeholder="E-mail" />
           <ErrorMessage component="span" name="email" />
         </LabelStyled>
@@ -56,10 +54,7 @@ const LoginForm = () => {
 
         <CustomButton type="submit">Log In</CustomButton>
 
-        <CustomNavLinkBtn to="/register">
-          Register
-        </CustomNavLinkBtn>
-
+        <CustomNavLinkBtn to="/register">Register</CustomNavLinkBtn>
       </FormStyled>
     </Formik>
   );
