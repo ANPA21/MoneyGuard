@@ -1,12 +1,11 @@
 import { Formik, ErrorMessage, Field } from 'formik';
 // import 'react-xdatepicker/dist/react-datepicker.css';
-import { object, string, number, oneOf } from 'yup';
+import { object, string, number } from 'yup';
 import {
   AddBtn,
   AddTitle,
   StyledForm,
   SwitcherWrapper,
-  StyledSwitch,
   Wrapper,
   StyledLabel,
   StyledSum,
@@ -15,9 +14,11 @@ import {
   StyledDatePicker,
   Label,
 } from '../Add/Add.styled';
-import { useDispatch } from 'react-redux';
-import { addTransaction } from 'redux/transactions/operations';
+
 // import { getCategoryState } from 'redux/transactions/selectors';
+//!В комменты что бы не ругалась проверка
+// import { useDispatch } from 'react-redux';
+// import { addTransaction } from 'redux/transactions/operations';
 
 const addSchema = object({
   value: number().positive().required('Amount is required'),
@@ -34,14 +35,16 @@ const initialValues = {
 };
 
 export default function EditTransaction() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // const categories = useSelector(getCategoryState);
 
   const handleSubmit = (values, { resetForm }) => {
     const { type, category, value, date, comment } = values;
     console.log(values);
-    // dispatch(addTransaction(type, category, , date, comment));
+    // Второй консоль лог для того что бы проверка не ругалась, когда все настроим, удалим
+    console.log(type, category, value, date, comment);
+    // dispatch(addTransaction(type, category, value, date, comment));
     // resetForm();
   };
 

@@ -21,7 +21,7 @@ export default function Modal({ children }) {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [dispatch]);
+  }, [dispatch, children]);
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
