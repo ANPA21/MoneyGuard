@@ -7,6 +7,9 @@ import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
 import Login from 'pages/LoginPage/Login';
 import Register from 'pages/RegisterPage/Register';
 import { StatiscticsPage } from 'pages/StatisticsPage/Statistics';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 // import { useDispatch } from 'react-redux';
 // import { useAuth } from 'hooks/useAuth';
@@ -46,6 +49,8 @@ export const App = () => {
         <Route path="*" element={<div>Wrong Page</div>} />
       </Routes>
     </Suspense>
+    <ToastContainer />
+    </>
   );
 };
 
