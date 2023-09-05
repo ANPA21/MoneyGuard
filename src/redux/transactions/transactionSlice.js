@@ -14,11 +14,11 @@ const initialState = {
   error: null,
 };
 
-const pendingReducer = state => {
+const handlePending = state => {
   state.isLoading = true;
 };
 
-const rejectedReducer = (state, action) => {
+const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
 };
@@ -28,13 +28,13 @@ const transactionSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(addTransaction.pending, pendingReducer)
+      .addCase(addTransaction.pending, handlePending)
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.transactions.push(action.payload);
       })
-      .addCase(addTransaction.rejected, rejectedReducer),
+      .addCase(addTransaction.rejected, handleRejected),
   // .addCase(fetchCategories.pending, pendingReducer)
   // .addCase(fetchCategories.fulfilled, (state, action) => {
   //   state.isLoading = false;
