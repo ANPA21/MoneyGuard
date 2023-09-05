@@ -1,6 +1,6 @@
 import { Formik, ErrorMessage, Field } from 'formik';
-import 'react-datepicker/dist/react-datepicker.css';
-import { object, string, number } from 'yup';
+// import 'react-xdatepicker/dist/react-datepicker.css';
+import { object, string, number, oneOf } from 'yup';
 import {
   AddBtn,
   AddTitle,
@@ -14,7 +14,7 @@ import {
   // StyledCategory,
   StyledDatePicker,
   Label,
-} from './Add.styled';
+} from '../Add/Add.styled';
 import { useDispatch } from 'react-redux';
 import { addTransaction } from 'redux/transactions/operations';
 // import { getCategoryState } from 'redux/transactions/selectors';
@@ -22,18 +22,18 @@ import { addTransaction } from 'redux/transactions/operations';
 const addSchema = object({
   value: number().positive().required('Amount is required'),
   comment: string().max(30, 'Maximum must be 30 characters'),
-  category: string().min(3),
+  category: string().min(3).oneOf(['fuel', 'leusure']),
 });
 
 const initialValues = {
-  type: 'expense',
+  type: '',
   category: '',
   value: '',
   date: new Date(),
   comment: '',
 };
 
-export default function AddTransaction() {
+export default function EditTransaction() {
   const dispatch = useDispatch();
 
   // const categories = useSelector(getCategoryState);
@@ -41,13 +41,13 @@ export default function AddTransaction() {
   const handleSubmit = (values, { resetForm }) => {
     const { type, category, value, date, comment } = values;
     console.log(values);
-    dispatch(addTransaction(type, category, value, date, comment));
-    resetForm();
+    // dispatch(addTransaction(type, category, , date, comment));
+    // resetForm();
   };
 
   return (
     <>
-      <AddTitle>Add transaction</AddTitle>
+      <AddTitle>Edit transaction</AddTitle>
 
       <Formik
         initialValues={initialValues}
@@ -57,36 +57,20 @@ export default function AddTransaction() {
         {({ values, setFieldValue, validate }) => (
           <StyledForm autoComplete="off">
             <SwitcherWrapper>
-              <span>Income</span>
-              <StyledSwitch
-                name="transaction"
-                value="expense"
-                checked={values.type === 'expense'}
-                onChange={(event, checked) => {
-                  setFieldValue('type', checked ? 'expense' : 'income');
-                }}
-              />
-              <span>Expense</span>
+              <label>
+                <Field type="radio" name="type" value="income" />
+                Income
+              </label>
+              <label>
+                <Field type="radio" name="type" value="expense" />
+                Expense
+              </label>
             </SwitcherWrapper>
-            {values.type === 'expense' ? (
+            {values.type === 'expense' && (
               <Wrapper>
-                <Field name="category" as="select">
-                  <option key="default" defaultValue hidden>
-                    Select a category
-                  </option>
-                  <option key="1" value="oil">
-                    oil
-                  </option>
-                  {/* {categories.map((category,index) => (
-                  <option key={index} value={category}>
-                    {category}
-                  </option>
-                ))} */}
-                </Field>
+                <Field name="category" type="text" />
                 <ErrorMessage name="category" component="div" />
               </Wrapper>
-            ) : (
-              (values.category = '')
             )}
             <Wrapper>
               <Label>
@@ -119,7 +103,7 @@ export default function AddTransaction() {
               <ErrorMessage name="comment" component="div" />
             </StyledLabel>
 
-            <AddBtn type="submit">Add</AddBtn>
+            <AddBtn type="submit">Save</AddBtn>
           </StyledForm>
         )}
       </Formik>

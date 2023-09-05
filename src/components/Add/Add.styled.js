@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Form, Field } from 'formik';
 import Switch from '@mui/material/Switch';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const AddTitle = styled.h2`
   margin-bottom: 40px;
