@@ -20,7 +20,7 @@ import { addTransaction } from 'redux/transactions/operations';
 // import { getCategoryState } from 'redux/transactions/selectors';
 
 const addSchema = object({
-  sum: number().positive().required('Amount is required'),
+  value: number().positive().required('Amount is required'),
   comment: string().max(30, 'Maximum must be 30 characters'),
   category: string().min(3),
 });
@@ -28,7 +28,7 @@ const addSchema = object({
 const initialValues = {
   type: 'expense',
   category: '',
-  sum: '',
+  value: '',
   date: new Date(),
   comment: '',
 };
@@ -39,9 +39,9 @@ export default function AddTransaction() {
   // const categories = useSelector(getCategoryState);
 
   const handleSubmit = (values, { resetForm }) => {
-    const { type, category, sum, date, comment } = values;
+    const { type, category, value, date, comment } = values;
     console.log(values);
-    dispatch(addTransaction(type, category, sum, date, comment));
+    dispatch(addTransaction(type, category, value, date, comment));
     resetForm();
   };
 
@@ -90,8 +90,8 @@ export default function AddTransaction() {
             )}
             <Wrapper>
               <Label>
-                <StyledSum type="number" name="sum" placeholder="0.00" />
-                <ErrorMessage name="sum" component="div" />
+                <StyledSum type="number" name="value" placeholder="0.00" />
+                <ErrorMessage name="value" component="div" />
               </Label>
               <Label>
                 <Field name="date" validate={validate}>
