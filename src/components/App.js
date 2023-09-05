@@ -20,7 +20,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
   return (
-    <>
     <Suspense fallback={<div>Спиннер тут</div>}>
       <Routes>
         <Route path="/" element={<Login />} />
