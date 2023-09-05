@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/operations';
+import { register } from 'redux/authReducer/operations';
 import { CustomButton } from 'components/CustomElements/CustomButton';
 import { ErrorMessage, Field, Formik } from 'formik';
 import * as Yup from 'yup';

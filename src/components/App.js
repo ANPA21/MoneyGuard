@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { Dashboard } from '../pages/DashboardPage/Dashboard';
+import { Dashboard } from '../pages/dashboard_page/Dashboard';
 // import { RestrictedRoute } from './RestrictedRoute';
 // import { PrivateRoute } from './PrivateRoute';
 import { Suspense } from 'react';
+import { Home } from '../pages/HomePage/Home';
 import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
 import Login from 'pages/LoginPage/Login';
 import Register from 'pages/RegisterPage/Register';
@@ -10,7 +11,6 @@ import { StatiscticsPage } from 'pages/StatisticsPage/Statistics';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// import { useDispatch } from 'react-redux';
 // import { useAuth } from 'hooks/useAuth';
 
 // const Home = lazy(() => import('../pages/Home'));
@@ -40,7 +40,8 @@ export const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route element={<Dashboard />}>
-            <Route path="/home" element={<div>Home page</div>} />
+            <Route path="home" index element={<Home />} />
+
             <Route path="/statistics" element={<StatiscticsPage />} />
             <Route path="/currency" element={<CurrencyPage />} />
           </Route>
