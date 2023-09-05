@@ -12,6 +12,7 @@ export default function Modal({ children }) {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
+        console.log({ children });
         dispatch(toggleModal());
       }
     };

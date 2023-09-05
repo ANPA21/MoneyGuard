@@ -19,21 +19,31 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Modal from './Modal/Modal';
 import AddTransaction from './Add/Add';
+import EditTransaction from './Edit/Edit';
 import { useDispatch, useSelector } from 'react-redux';
+import { getModalTypeState } from 'redux/modal/selectors';
+import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { getModalState } from 'redux/transactions/selectors';
-import { toggleModal } from 'redux/modal/ModalSlice';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const modalType = useSelector(getModalTypeState);
   const isModalOpen = useSelector(getModalState);
-
   return (
     <>
       <Suspense fallback={<div>Спиннер тут</div>}>
-        <button type="button" onClick={() => dispatch(toggleModal())}>
+        <button type="button" onClick={() => dispatch(toggleAddModal())}>
           Add transaction
         </button>
-        {isModalOpen && <Modal children={AddTransaction()} />}
+        <button type="button" onClick={() => dispatch(toggleEditModal())}>
+          Edit transaction
+        </button>
+        {modalType === 'modal/toggleAddModal' && isModalOpen && (
+          <Modal children={AddTransaction()} />
+        )}
+        {modalType === 'modal/toggleEditModal' && isModalOpen && (
+          <Modal children={EditTransaction()} />
+        )}
 
         <Routes>
           <Route path="/" element={<Login />} />
