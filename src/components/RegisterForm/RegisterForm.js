@@ -33,11 +33,15 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(register(values));
+    dispatch(
+      register({
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      })
+    );
     resetForm();
     toast.success(`Welcome to Money Guard, ${values.name}!`);
-    
-    console.log('Регистрация прошла успешно');
   };
 
   return (
@@ -100,7 +104,6 @@ const RegisterForm = () => {
         <CustomButton type="submit">Register</CustomButton>
 
         <CustomNavLinkBtn to="/login">Log In</CustomNavLinkBtn>
-        
       </FormStyled>
     </Formik>
   );
