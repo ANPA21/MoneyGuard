@@ -22,8 +22,13 @@ import AddTransaction from './Add/Add';
 import EditTransaction from './Edit/Edit';
 import { useDispatch, useSelector } from 'react-redux';
 import { getModalTypeState } from 'redux/modal/selectors';
-import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
+import {
+  toggleAddModal,
+  toggleEditModal,
+  toggleLogOutModal,
+} from 'redux/modal/ModalSlice';
 import { getModalState } from 'redux/transactions/selectors';
+import Logout from './Logout/Logout';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -38,11 +43,17 @@ export const App = () => {
         <button type="button" onClick={() => dispatch(toggleEditModal())}>
           Edit transaction
         </button>
+        <button type="button" onClick={() => dispatch(toggleLogOutModal())}>
+          Exit
+        </button>
         {modalType === 'modal/toggleAddModal' && isModalOpen && (
           <Modal children={AddTransaction()} />
         )}
         {modalType === 'modal/toggleEditModal' && isModalOpen && (
           <Modal children={EditTransaction()} />
+        )}
+        {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
+          <Modal children={Logout()} />
         )}
 
         <Routes>
