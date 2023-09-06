@@ -17,6 +17,10 @@ const modalSlice = createSlice({
       state.isModalOpen = !state.isModalOpen;
       state.modalType = action.type;
     },
+    toggleLogOutModal(state, action) {
+      state.isModalOpen = !state.isModalOpen;
+      state.modalType = action.type;
+    },
     toggleModal(state, action) {
       state.isModalOpen = !state.isModalOpen;
     },
@@ -24,5 +28,9 @@ const modalSlice = createSlice({
 });
 
 export const modalReducer = modalSlice.reducer;
-export const { toggleAddModal, toggleEditModal, toggleModal } =
-  modalSlice.actions;
+export const {
+  toggleAddModal,
+  toggleEditModal,
+  toggleLogOutModal,
+  toggleModal,
+} = modalSlice.actions;

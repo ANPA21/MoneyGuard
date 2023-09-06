@@ -1,4 +1,5 @@
 import { Formik, ErrorMessage, Field } from 'formik';
+import Switch from '@mui/material/Switch';
 import 'react-datepicker/dist/react-datepicker.css';
 import { object, string, number } from 'yup';
 import {
@@ -6,7 +7,7 @@ import {
   AddTitle,
   StyledForm,
   SwitcherWrapper,
-  StyledSwitch,
+  // StyledSwitch,
   Wrapper,
   StyledLabel,
   StyledSum,
@@ -58,13 +59,20 @@ export default function AddTransaction() {
           <StyledForm autoComplete="off">
             <SwitcherWrapper>
               <span>Income</span>
-              <StyledSwitch
+              <Switch
                 name="transaction"
                 value="expense"
                 checked={values.type === 'expense'}
                 onChange={(event, checked) => {
                   setFieldValue('type', checked ? 'expense' : 'income');
                 }}
+                width="80px"
+                height="40px"
+                handleDiameter={44}
+                onHandleColor="#FF6596"
+                offHandleColor="#24cca7"
+                onColor="#fff"
+                offColor="#fff"
               />
               <span>Expense</span>
             </SwitcherWrapper>

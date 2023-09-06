@@ -16,7 +16,7 @@ export const Overlay = styled.div`
 
 export const ModalWindow = styled.div`
   width: 540px;
-  min-height: 512px;
+  min-height: 447px;
   background-color: rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
@@ -24,6 +24,7 @@ export const ModalWindow = styled.div`
   border-radius: 8px;
   padding: 40px 72px;
   position: absolute;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -59,8 +60,6 @@ export const ButtonClose = styled.button`
 
 export const CancelBtn = styled.button`
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;

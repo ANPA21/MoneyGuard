@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form, Field } from 'formik';
-import Switch from '@mui/material/Switch';
+// import Switch from '@mui/material/Switch';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -176,53 +176,53 @@ export const StyledDatePicker = styled(DatePicker)`
   color: rgba(255, 255, 255, 1);
   padding: 0 8px;
 `;
-export const StyledSwitch = styled(Switch)` 
-    padding: 0;
+// export const StyledSwitch = styled(Switch)`
+//     padding: 0;
 
-& .MuiSwitch-root: {
-    width: 80px,
-    height: 40px,   
-}
+// & .MuiSwitch-root: {
+//     width: 80px,
+//     height: 40px,
+// }
 
-  & .MuiSwitch-switchBase: {
-    margin: 1,
-    padding: 0,
-    transform: 'translateX(6px)',
-    
-    &.Mui-checked: {
-      color: '#fff',    
-      transform: 'translateX(22px)',
-      
-      & .MuiSwitch-thumb:before: {
-    // backgroundImage: none ,
-      },
-      
-        & + .MuiSwitch-track: {
-        opacity: 1,
-        // backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-      },
-    },
-    },
-  
-  & .MuiSwitch-thumb: {
-    backgroundColor: #001e3c,
-    width: 44,
-    height: 44,
-    '&:before': {
-      content: "''",
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-      left: 0,
-      top: 0,
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-    //   backgroundImage: none,
-    },
-  },
-  
-    & .MuiSwitch-track: {
-    opacity: 1,
-    backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-    borderRadius: 20 / 2,
-  },`;
+//   & .MuiSwitch-switchBase: {
+//     margin: 1,
+//     padding: 0,
+//     transform: 'translateX(6px)',
+
+//     &.Mui-checked: {
+//       color: '#fff',
+//       transform: 'translateX(22px)',
+
+//       & .MuiSwitch-thumb:before: {
+//     // backgroundImage: none ,
+//       },
+
+//         & + .MuiSwitch-track: {
+//         opacity: 1,
+//         // backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+//       },
+//     },
+//     },
+
+//   & .MuiSwitch-thumb: {
+//     backgroundColor: #001e3c,
+//     width: 44,
+//     height: 44,
+//     '&:before': {
+//       content: "''",
+//       position: 'absolute',
+//       width: '100%',
+//       height: '100%',
+//       left: 0,
+//       top: 0,
+//       backgroundRepeat: 'no-repeat',
+//       backgroundPosition: 'center',
+//     //   backgroundImage: none,
+//     },
+//   },
+
+//     & .MuiSwitch-track: {
+//     opacity: 1,
+//     backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+//     borderRadius: 20 / 2,
+//   },`;
