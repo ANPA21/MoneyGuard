@@ -9,6 +9,7 @@ import Register from 'pages/RegisterPage/Register';
 import { StatiscticsPage } from 'pages/StatisticsPage/Statistics';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GlobalStyle from './GlobalStyles';
 
 
 // import { useDispatch } from 'react-redux';
@@ -37,6 +38,7 @@ export const App = () => {
       </Routes>
     </Suspense>
     <ToastContainer />
+    <GlobalStyle />
     </>
   );
 };
