@@ -10,6 +10,7 @@ import Register from 'pages/RegisterPage/Register';
 import { StatiscticsPage } from 'pages/StatisticsPage/Statistics';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SpinnerLoader } from '../components/Spinner/Spinner';
 
 // import { useAuth } from 'hooks/useAuth';
 
@@ -36,7 +37,7 @@ export const App = () => {
   const isModalOpen = useSelector(getModalState);
   return (
     <>
-      <Suspense fallback={<div>Спиннер тут</div>}>
+      <Suspense fallback={<SpinnerLoader />}>
         <button type="button" onClick={() => dispatch(toggleAddModal())}>
           Add transaction
         </button>
