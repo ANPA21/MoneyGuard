@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
+// axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
 
 export const fetchTransactions = createAsyncThunk(
   'transactions/fetchAll',

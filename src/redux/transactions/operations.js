@@ -5,16 +5,16 @@ axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
 
 export const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
-  async ({ type, category, value, date, comment = '' }, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      const response = await axios.post('/transactions', {
-        type,
-        category,
-        value,
-        date,
-        comment,
-      });
-      return response.data;
+      if (data.type === 'income') {
+        const { category, ...incomeData } = data;
+        const response = await axios.post('/transactions', incomeData);
+        return response.data;
+      } else {
+        const response = await axios.post('/transactions', data);
+        return response.data;
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
