@@ -1,19 +1,16 @@
 {
   "files": {
-    "main.css": "/MoneyGuard/static/css/main.50d9e104.css",
-    "main.js": "/MoneyGuard/static/js/main.eb5af284.js",
-    "static/media/Poppins-Regular.woff": "/MoneyGuard/static/media/Poppins-Regular.9b9d9585fc27c8fff554.woff",
-    "static/media/Poppins-SemiBold.woff": "/MoneyGuard/static/media/Poppins-SemiBold.5159bcc22685da086734.woff",
-    "static/media/Poppins-Regular.woff2": "/MoneyGuard/static/media/Poppins-Regular.5a6c15af2151cfa27e76.woff2",
-    "static/media/Poppins-SemiBold.woff2": "/MoneyGuard/static/media/Poppins-SemiBold.810728e0001e1f7c0a71.woff2",
-    "static/media/background.jpg": "/MoneyGuard/static/media/background.20b913d3ca3801ec00e3.jpg",
+    "main.css": "/MoneyGuard/static/css/main.a3fa904e.css",
+    "main.js": "/MoneyGuard/static/js/main.c67e0dc9.js",
+    "static/media/backRegister1x.jpg": "/MoneyGuard/static/media/backRegister1x.b893e3871fd9491adf2c.jpg",
+    "static/media/backLogIn1x.jpg": "/MoneyGuard/static/media/backLogIn1x.20b913d3ca3801ec00e3.jpg",
     "static/media/logo.svg": "/MoneyGuard/static/media/logo.dce3145872188e100148c46882b30412.svg",
     "index.html": "/MoneyGuard/index.html",
-    "main.50d9e104.css.map": "/MoneyGuard/static/css/main.50d9e104.css.map",
-    "main.eb5af284.js.map": "/MoneyGuard/static/js/main.eb5af284.js.map"
+    "main.a3fa904e.css.map": "/MoneyGuard/static/css/main.a3fa904e.css.map",
+    "main.c67e0dc9.js.map": "/MoneyGuard/static/js/main.c67e0dc9.js.map"
   },
   "entrypoints": [
-    "static/css/main.50d9e104.css",
-    "static/js/main.eb5af284.js"
+    "static/css/main.a3fa904e.css",
+    "static/js/main.c67e0dc9.js"
   ]
 }
