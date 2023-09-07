@@ -1,2 +1,2 @@
-export const selectorTransactions = state => state.transactions;
+export const selectorTransactions = state => state.transactions.transactions;
 

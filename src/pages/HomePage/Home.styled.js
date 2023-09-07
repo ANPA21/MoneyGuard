@@ -30,4 +30,9 @@ export const HomeStyled = styled.div`
     .transaction {
         margin-bottom: 20px;
     }
+
+    .editItem,
+    .deleteItem {
+        cursor: pointer
+    }
 `;
