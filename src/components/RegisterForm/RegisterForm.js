@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/operations';
+import { register } from 'redux/authReducer/operations';
 import { CustomButton } from 'components/CustomElements/CustomButton';
 import { ErrorMessage, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -36,11 +36,15 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(register(values));
+    dispatch(
+      register({
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      })
+    );
     resetForm();
     toast.success(`Welcome to Money Guard, ${values.name}!`);
-
-    console.log('Регистрация прошла успешно');
   };
 
   return (
@@ -118,8 +122,7 @@ const RegisterForm = () => {
           </ErrorContainer>
         </LabelStyled>
 
-        <CustomButton type="submit">Register</CustomButton>
-
+        <CustomButton type="submit">Register</CustomButton>=
         <CustomButton isNavLink to="/login">
           Log In
         </CustomButton>

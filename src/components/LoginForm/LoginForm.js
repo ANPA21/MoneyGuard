@@ -75,8 +75,8 @@ const LoginForm = () => {
           <ErrorMessage component="span" name="password" />
           </ErrorContainer>
         </LabelStyled>
-        <CustomButton type="submit">Log In</CustomButton>
 
+        <CustomButton type="submit">Log In</CustomButton>
         <CustomButton isNavLink to="/register">
           Register
         </CustomButton>

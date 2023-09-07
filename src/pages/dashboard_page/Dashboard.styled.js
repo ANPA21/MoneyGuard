@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const DashboardStyled = styled.div`
   margin: 0 auto;
-
+  display: flex;
+  flex-wrap: wrap;
   @media screen and (max-width: 479px) {
     max-width: 100%;
   }

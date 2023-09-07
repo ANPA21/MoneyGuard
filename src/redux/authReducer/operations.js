@@ -41,36 +41,38 @@ export const register = createAsyncThunk(
 
 export const logIn = createAsyncThunk(
   'auth/login',
-  async (credentials, {rejectWithValue}) => {
+  async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      notifyError('Email does not exist or password is incorrect')
+      notifyError('Email does not exist or password is incorrect');
       return rejectWithValue(error.message);
     }
   }
 );
 
-export const logOut = createAsyncThunk('auth/logout', async (_, {rejectWithValue}) => {
-  try {
-    await axios.post('/users/logout');
-    clearAuthHeader();
-  } catch (error) {
-    return rejectWithValue(error.message);
+export const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post('/users/logout');
+      clearAuthHeader();
+      toast.success(`You have successfully logged out.`);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
-});
-
+);
 
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
-  async (_, {rejectWithValue, getState}) => {
+  async (_, { rejectWithValue, getState }) => {
     const state = getState();
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-  
       return rejectWithValue('Unable to fetch user');
     }
     try {
