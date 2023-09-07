@@ -10,6 +10,7 @@ import Register from 'pages/RegisterPage/Register';
 import { StatiscticsPage } from 'pages/StatisticsPage/Statistics';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GlobalStyle from './GlobalStyles';
 
 // import { useAuth } from 'hooks/useAuth';
 
@@ -55,14 +56,12 @@ export const App = () => {
         {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
           <Modal children={Logout()} />
         )}
-
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route element={<Dashboard />}>
             <Route path="home" index element={<Home />} />
-
             <Route path="/statistics" element={<StatiscticsPage />} />
             <Route path="/currency" element={<CurrencyPage />} />
           </Route>
@@ -70,6 +69,7 @@ export const App = () => {
         </Routes>
       </Suspense>
       <ToastContainer />
+     <GlobalStyle />
     </>
   );
 };

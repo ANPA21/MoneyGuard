@@ -1,13 +1,21 @@
 import { CustomButton } from 'components/CustomElements/CustomButton';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { logIn } from 'redux/authReducer/operations';
-import { ErrorMessage, Field, Formik } from 'formik';
+import { logIn } from 'redux/auth/operations';
+import { ErrorMessage, Formik } from 'formik';
 import Logotip from '../../images/logo.svg';
-import { FormStyled, LabelStyled, LogotipStyled } from './LoginForm.styled';
-import { MdEmail, MdHttps } from 'react-icons/md';
+import {
+  EmailIcon,
+  ErrorContainer,
+  FormStyled,
+  IconContainer,
+  IconInInput,
+  InputStyled,
+  LabelStyled,
+  PasswordIcon,
+} from './LoginForm.styled';
 import { toast } from 'react-toastify';
-import { CustomNavLinkBtn } from 'components/CustomElements/CustomNavLink';
+import { LogotipStyled } from 'components/RegisterForm/RegisterForm.styled';
 
 const ValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -41,20 +49,37 @@ const LoginForm = () => {
         </LogotipStyled>
 
         <LabelStyled>
-          <MdEmail className="iconEmail" />
-          <Field name="email" type="email" placeholder="E-mail" />
+        <ErrorContainer>
+          <IconInInput>
+            <IconContainer>
+              <EmailIcon />
+            </IconContainer>
+            <InputStyled name="email" type="email" placeholder="E-mail" />
+          </IconInInput>
           <ErrorMessage component="span" name="email" />
+          </ErrorContainer>
         </LabelStyled>
 
         <LabelStyled>
-          <MdHttps className="iconPass" />
-          <Field name="password" type="password" placeholder="Password" />
+        <ErrorContainer>
+          <IconInInput>
+            <IconContainer>
+              <PasswordIcon />
+            </IconContainer>
+            <InputStyled
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+          </IconInInput>
           <ErrorMessage component="span" name="password" />
+          </ErrorContainer>
         </LabelStyled>
 
         <CustomButton type="submit">Log In</CustomButton>
-
-        <CustomNavLinkBtn to="/register">Register</CustomNavLinkBtn>
+        <CustomButton isNavLink to="/register">
+          Register
+        </CustomButton>
       </FormStyled>
     </Formik>
   );

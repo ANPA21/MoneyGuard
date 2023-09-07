@@ -1,19 +1,22 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/authReducer/operations';
 import { CustomButton } from 'components/CustomElements/CustomButton';
-import { ErrorMessage, Field, Formik } from 'formik';
+import { ErrorMessage, Formik } from 'formik';
 import * as Yup from 'yup';
 import Logotip from '../../images/logo.svg';
 import {
+  EmailIcon,
+  ErrorContainer,
   FormStyled,
+  IconContainer,
+  InputStyled,
   LabelStyled,
-  LogotipStyled,
+  PasswordIcon,
+  UserIcon,
 } from 'components/LoginForm/LoginForm.styled';
 import { toast } from 'react-toastify';
-import { MdEmail, MdHttps } from 'react-icons/md';
-import { FaUser } from 'react-icons/fa';
 import PasswordStrengthBar from 'react-password-strength-bar';
-import { CustomNavLinkBtn } from 'components/CustomElements/CustomNavLink';
+import { LogotipStyled } from './RegisterForm.styled';
 
 const ValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -62,48 +65,67 @@ const RegisterForm = () => {
           <h3>MoneyGuard</h3>
         </LogotipStyled>
         <LabelStyled>
-          <FaUser className="iconReg" />
-          <Field name="name" type="text" placeholder="Name" />
+          <ErrorContainer>
+          <IconContainer>
+            <UserIcon />
+          </IconContainer>
+          <InputStyled name="name" type="text" placeholder="Name" />
           <ErrorMessage component="span" name="name" />
+          </ErrorContainer>
         </LabelStyled>
 
         <LabelStyled>
-          <MdEmail className="iconEmail" />
-          <Field
-            name="email"
-            type="email"
-            placeholder="E-mail"
-            autoComplete="off"
-          />
-          <ErrorMessage component="span" name="email" />
+          <ErrorContainer>
+            <IconContainer>
+              <EmailIcon />
+            </IconContainer>
+            <InputStyled
+              name="email"
+              type="email"
+              placeholder="E-mail"
+              autoComplete="off"
+            />
+            <ErrorMessage component="span" name="email" />
+          </ErrorContainer>
         </LabelStyled>
 
         <LabelStyled>
-          <MdHttps className="iconPass" />
-          <Field
-            name="password"
-            type="password"
-            placeholder="Password"
-            autoComplete="off"
-          />
-          <ErrorMessage component="span" name="password" />
+          <ErrorContainer>
+            <IconContainer>
+              <PasswordIcon />
+            </IconContainer>
+            <InputStyled
+              name="password"
+              type="password"
+              placeholder="Password"
+              autoComplete="off"
+            />
+            <ErrorMessage component="span" name="password" />
+          </ErrorContainer>
         </LabelStyled>
 
         <LabelStyled>
-          <MdHttps className="iconPass" />
-          <Field
-            name="passwordConfirm"
-            type="password"
-            placeholder="Confirm password"
-            autoComplete="off"
-          />
-          <PasswordStrengthBar minLength={6} maxLength={12} />
-          <ErrorMessage component="span" name="password" />
+          <ErrorContainer>
+            <IconContainer>
+              <PasswordIcon />
+            </IconContainer>
+            <div>
+              <InputStyled
+                name="passwordConfirm"
+                type="password"
+                placeholder="Confirm password"
+                autoComplete="off"
+              />
+              <PasswordStrengthBar minLength={6} maxLength={12} />
+            </div>
+            <ErrorMessage component="span" name="passwordConfirm" />
+          </ErrorContainer>
         </LabelStyled>
 
-        <CustomButton type="submit">Register</CustomButton>
-
-        <CustomNavLinkBtn to="/login">Log In</CustomNavLinkBtn>
+        <CustomButton type="submit">Register</CustomButton>=
+        <CustomButton isNavLink to="/login">
+          Log In
+        </CustomButton>
       </FormStyled>
     </Formik>
   );

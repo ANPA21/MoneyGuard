@@ -1,9 +1,9 @@
 import RegisterForm from 'components/RegisterForm/RegisterForm';
-import { ContentContainer, MainContainer } from './Register.styled';
+import { ContentContainer, MainContainer } from '../../components/RegisterForm/RegisterForm.styled';
 
 const Register = () => {
   return (
-    <MainContainer>
+    <MainContainer isRegister={true}>
       <ContentContainer>
         <RegisterForm />
       </ContentContainer>

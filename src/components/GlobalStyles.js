@@ -26,6 +26,13 @@ const GlobalStyle = createGlobalStyle`
     url('styles/fonts/Poppins-SemiBold.woff') format('woff');
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill::first-line {
+    transition: background-color 5000s ease-in-out 0s; 
+  }
+
 body {
   margin: 0;
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Roboto',
