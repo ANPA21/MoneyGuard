@@ -40,9 +40,8 @@ export default function AddTransaction() {
   // const categories = useSelector(getCategoryState);
 
   const handleSubmit = (values, { resetForm }) => {
-    const { type, category, value, date, comment } = values;
     console.log(values);
-    dispatch(addTransaction(type, category, value, date, comment));
+    dispatch(addTransaction(values));
     resetForm();
   };
 
@@ -82,8 +81,8 @@ export default function AddTransaction() {
                   <option key="default" defaultValue hidden>
                     Select a category
                   </option>
-                  <option key="1" value="oil">
-                    oil
+                  <option key="1" value="Car">
+                    Car
                   </option>
                   {/* {categories.map((category,index) => (
                   <option key={index} value={category}>

@@ -10,35 +10,35 @@ const initialState = {
   isRefreshing: false,
 };
 
-const registerFulfilledReducer = (state, { payload }) => {
-  state.user = payload.user;
-  state.token = payload.token;
+const handleRegisterFulfilled = (state, action) => {
+  state.user = action.payload.user;
+  state.token = action.payload.token;
   state.isLoggedIn = true;
 };
 
-const logInFulfilledReducer = (state, { payload }) => {
-  state.user = payload.user;
-  state.token = payload.token;
+const handleLogInFulfilled = (state, action) => {
+  console.log(action.payload);
+  state.token = action.payload;
   state.isLoggedIn = true;
 };
 
-const logOutFulfilledReducer = state => {
+const handleLogOutFulfilled = state => {
   state.user = { name: null, email: null };
   state.token = null;
   state.isLoggedIn = false;
 };
 
-const refreshUserFulfilledReducer = (state, { payload }) => {
+const handleRefreshUserFulfilled = (state, { payload }) => {
   state.user = payload;
   state.isLoggedIn = true;
   state.isRefreshing = false;
 };
 
-const pendingRefreshUserReducer = state => {
+const handlePendingRefreshUser = state => {
   state.isRefreshing = true;
 };
 
-const rejectedRefreshUserReducer = (state, { payload }) => {
+const handleRejectedRefreshUser = (state, { payload }) => {
   state.isRefreshing = false;
 };
 
@@ -47,12 +47,12 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(register.fulfilled, registerFulfilledReducer)
-      .addCase(logIn.fulfilled, logInFulfilledReducer)
-      .addCase(logOut.fulfilled, logOutFulfilledReducer)
-      .addCase(refreshUser.pending, pendingRefreshUserReducer)
-      .addCase(refreshUser.fulfilled, refreshUserFulfilledReducer)
-      .addCase(refreshUser.rejected, rejectedRefreshUserReducer);
+      .addCase(register.fulfilled, handleRegisterFulfilled)
+      .addCase(logIn.fulfilled, handleLogInFulfilled)
+      .addCase(logOut.fulfilled, handleLogOutFulfilled)
+      .addCase(refreshUser.pending, handlePendingRefreshUser)
+      .addCase(refreshUser.fulfilled, handleRefreshUserFulfilled)
+      .addCase(refreshUser.rejected, handleRejectedRefreshUser);
   },
 });
 

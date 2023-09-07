@@ -12,7 +12,7 @@ const {
   TitleStyled,
 } = require('./Statistics.styled');
 
-export const StatiscticsPage = () => {
+const StatiscticsPage = () => {
   return (
     <StatSection>
       <Helmet>
@@ -36,3 +36,4 @@ export const StatiscticsPage = () => {
     </StatSection>
   );
 };
+export default StatiscticsPage;

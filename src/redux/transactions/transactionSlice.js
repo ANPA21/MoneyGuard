@@ -4,10 +4,10 @@ import { addTransaction } from './operations';
 const initialState = {
   transactions: [
     {
-      type: 'income',
-      category: '',
-      value: 123,
-      comment: '',
+      type: null,
+      category: null,
+      value: null,
+      comment: null,
     },
   ],
   isLoading: false,
