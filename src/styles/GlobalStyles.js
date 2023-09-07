@@ -1,30 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
-import 'modern-normalize';
+import moderNormalize from 'modern-normalize';
 
-const GlobalStyle = createGlobalStyle`
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  src: url('styles/fonts/Poppins-Regular.woff2') format('woff2'),
-    url('styles/fonts/Poppins-Regular.woff') format('woff');
-}
+const GlobalStyles = createGlobalStyle`
+${moderNormalize}
 
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  src: url('styles/fonts/Poppins-medium.woff2') format('woff2'),
-    url('styles/fonts/poppins-medium.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  src: url('styles/fonts/Poppins-SemiBold.woff2') format('woff2'),
-    url('styles/fonts/Poppins-SemiBold.woff') format('woff');
-}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -69,4 +48,4 @@ a {
 
 `;
 
-export default GlobalStyle;
+export default GlobalStyles;

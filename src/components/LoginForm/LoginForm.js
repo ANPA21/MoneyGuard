@@ -1,7 +1,7 @@
 import { CustomButton } from 'components/CustomElements/CustomButton';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { logIn } from 'redux/auth/operations';
+import { logIn } from 'redux/authReducer/operations';
 import { ErrorMessage, Formik } from 'formik';
 import Logotip from '../../images/logo.svg';
 import {
@@ -49,30 +49,30 @@ const LoginForm = () => {
         </LogotipStyled>
 
         <LabelStyled>
-        <ErrorContainer>
-          <IconInInput>
-            <IconContainer>
-              <EmailIcon />
-            </IconContainer>
-            <InputStyled name="email" type="email" placeholder="E-mail" />
-          </IconInInput>
-          <ErrorMessage component="span" name="email" />
+          <ErrorContainer>
+            <IconInInput>
+              <IconContainer>
+                <EmailIcon />
+              </IconContainer>
+              <InputStyled name="email" type="email" placeholder="E-mail" />
+            </IconInInput>
+            <ErrorMessage component="span" name="email" />
           </ErrorContainer>
         </LabelStyled>
 
         <LabelStyled>
-        <ErrorContainer>
-          <IconInInput>
-            <IconContainer>
-              <PasswordIcon />
-            </IconContainer>
-            <InputStyled
-              name="password"
-              type="password"
-              placeholder="Password"
-            />
-          </IconInInput>
-          <ErrorMessage component="span" name="password" />
+          <ErrorContainer>
+            <IconInInput>
+              <IconContainer>
+                <PasswordIcon />
+              </IconContainer>
+              <InputStyled
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
+            </IconInInput>
+            <ErrorMessage component="span" name="password" />
           </ErrorContainer>
         </LabelStyled>
 
