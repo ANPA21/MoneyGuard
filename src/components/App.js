@@ -1,66 +1,60 @@
 import { Route, Routes } from 'react-router-dom';
-import { Dashboard } from '../pages/dashboard_page/Dashboard';
-// import { RestrictedRoute } from './RestrictedRoute';
-// import { PrivateRoute } from './PrivateRoute';
-import { Suspense } from 'react';
-import { Home } from '../pages/HomePage/Home';
-import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
-import Login from 'pages/LoginPage/Login';
-import Register from 'pages/RegisterPage/Register';
-import { StatiscticsPage } from 'pages/StatisticsPage/Statistics';
+import { Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SpinnerLoader } from '../components/Spinner/Spinner';
 
-// import { useAuth } from 'hooks/useAuth';
+import { refreshUser } from 'redux/authReducer/operations';
+import { PrivateRoute, RestrictedRoute } from './Routes';
 
 // const Home = lazy(() => import('../pages/Home'));
 // const Login = lazy(() => import('../pages/Login'));
 // const Register = lazy(() => import('../pages/Register'));
-
-import Modal from './Modal/Modal';
-import AddTransaction from './Add/Add';
-import EditTransaction from './Edit/Edit';
-import { useDispatch, useSelector } from 'react-redux';
-import { getModalTypeState } from 'redux/modal/selectors';
-import {
-  toggleAddModal,
-  toggleEditModal,
-  toggleLogOutModal,
-} from 'redux/modal/ModalSlice';
-import { getModalState } from 'redux/transactions/selectors';
-import Logout from './Logout/Logout';
+import Register from 'pages/RegisterPage/Register';
+import Login from 'pages/LoginPage/Login';
+import { Dashboard } from '../pages/dashboard_page/Dashboard';
+import { Home } from '../pages/HomePage/Home';
+import StatiscticsPage from 'pages/StatisticsPage/Statistics';
+import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const modalType = useSelector(getModalTypeState);
-  const isModalOpen = useSelector(getModalState);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <>
       <Suspense fallback={<SpinnerLoader />}>
-        <button type="button" onClick={() => dispatch(toggleAddModal())}>
-          Add transaction
-        </button>
-        <button type="button" onClick={() => dispatch(toggleEditModal())}>
-          Edit transaction
-        </button>
-        <button type="button" onClick={() => dispatch(toggleLogOutModal())}>
-          Exit
-        </button>
-        {modalType === 'modal/toggleAddModal' && isModalOpen && (
-          <Modal children={AddTransaction()} />
-        )}
-        {modalType === 'modal/toggleEditModal' && isModalOpen && (
-          <Modal children={EditTransaction()} />
-        )}
-        {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
-          <Modal children={Logout()} />
-        )}
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route element={<Dashboard />}>
+          <Route
+            path="/"
+            element={
+              <RestrictedRoute redirectTo="/home" component={<Login />} />
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute redirectTo="/home" component={<Login />} />
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute
+                redirectTo="/register"
+                component={<Register />}
+              />
+            }
+          />
+          <Route
+            element={
+              <PrivateRoute redirectTo="/login" component={<Dashboard />} />
+            }
+          >
             <Route path="home" index element={<Home />} />
             <Route path="/statistics" element={<StatiscticsPage />} />
             <Route path="/currency" element={<CurrencyPage />} />
@@ -72,43 +66,3 @@ export const App = () => {
     </>
   );
 };
-
-//!готовые  роуты, когда будут готов store/selectors и настроена логика приватных / закрытых роутов, можно подключать
-//  <Routes>
-//         <Route element={<RestrictedRoute />}>
-//           <Route path="/" element={<div>Login page</div>} />
-//           <Route path="login" element={<div>Login page</div>} />
-//           <Route path="register" element={<div>Register page</div>} />
-//         </Route>
-//         <Route element={<Dashboard />}>
-//           <Route
-//             path="/home"
-//             element={
-//               <PrivateRoute>
-//                 <div>Home page</div>
-//               </PrivateRoute>
-//             }
-//           />
-//           <Route
-//             path="/statistics"
-//             element={
-//               <PrivateRoute>
-//                 <div>Statisctics page</div>
-//               </PrivateRoute>
-//             }
-//           />
-
-//           <Route
-//             path="/currency"
-//             element={
-//               <PrivateRoute>
-//                 <div>Statistics page</div>
-//               </PrivateRoute>
-//             }
-//           />
-//         </Route>
-
-//         <Route path="*" element={<div>Wrong Page</div>} />
-//       </Routes>
-//     </Suspense>
-//   );

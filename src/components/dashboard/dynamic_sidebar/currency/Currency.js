@@ -12,13 +12,13 @@ export const Currency = () => {
     const dataCurrencyStore = localStorage.getItem('persist:currency');
     if (dataCurrencyStore) {
       const parsedData = JSON.parse(JSON.parse(dataCurrencyStore).data);
-      const dateCurrencFetch = new Date(parsedData.time * 1000).toLocaleDateString();
+      const dateCurrencFetch = new Date(
+        parsedData.time * 1000
+      ).toLocaleDateString();
       if (dateCurrencFetch === new Date().toLocaleDateString()) {
-        console.log('true')
-        return
+        return;
       }
     }
-    console.log('jgjg')
     dispatch(fetchCurrency());
   }, [dispatch]);
   const currency = useSelector(selectCurrency);
