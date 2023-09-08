@@ -18,6 +18,7 @@ import { Dashboard } from '../pages/dashboard_page/Dashboard';
 import { Home } from '../pages/HomePage/Home';
 import StatiscticsPage from 'pages/StatisticsPage/Statistics';
 import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
+import WrongPage from './WrongPage/WrongPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ export const App = () => {
             <Route path="/statistics" element={<StatiscticsPage />} />
             <Route path="/currency" element={<CurrencyPage />} />
           </Route>
-          <Route path="*" element={<div>Wrong Page</div>} />
+          <Route path="*" element={<WrongPage />} />
         </Routes>
       </Suspense>
       <ToastContainer />
