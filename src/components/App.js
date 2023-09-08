@@ -15,17 +15,19 @@ import { PrivateRoute, RestrictedRoute } from './Routes';
 import Register from 'pages/RegisterPage/Register';
 import Login from 'pages/LoginPage/Login';
 import { Dashboard } from '../pages/dashboard_page/Dashboard';
-import { Home } from '../pages/HomePage/Home';
+import Home from '../pages/HomePage/Home';
 import StatiscticsPage from 'pages/StatisticsPage/Statistics';
 import WrongPage from '../pages/WrongPage/WrongPage';
 import GlobalStyles from 'styles/GlobalStyles';
+import { useAuth } from 'hooks';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const { isLoggedIn, token } = useAuth();
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    if (!isLoggedIn && token) dispatch(refreshUser());
+  }, [dispatch, isLoggedIn, token]);
 
   return (
     <>
@@ -52,20 +54,21 @@ export const App = () => {
 
           <Route element={<Dashboard />}>
             <Route
-              path="home"
+              path="/home"
               element={
-                <PrivateRoute redirectTo="/login" component={<Home />} />
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
               }
-            ></Route>
+            />
             <Route
-              path="statistics"
+              path="/statistics"
               element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<StatiscticsPage />}
-                />
+                <PrivateRoute>
+                  <StatiscticsPage />
+                </PrivateRoute>
               }
-            ></Route>
+            />
           </Route>
           <Route path="*" element={<WrongPage />} />
         </Routes>

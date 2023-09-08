@@ -5,20 +5,17 @@ import Modal from '../../components/Modal/Modal';
 import AddTransaction from '../../components/Add/Add';
 import EditTransaction from '../../components/Edit/Edit';
 import { getModalState } from 'redux/transactions/selectors';
-import {
-  toggleAddModal,
-  toggleEditModal,
-} from 'redux/modal/ModalSlice';
+import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { getModalTypeState } from 'redux/modal/selectors';
 
-export const Home = () => {
+const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
   const {
     fetchTransactions,
     deleteItem,
   } = require('redux/transactionsRedux/transactionsOperations');
   const dispatch = useDispatch();
-  
+
   const modalType = useSelector(getModalTypeState);
   const isModalOpen = useSelector(getModalState);
 
@@ -54,8 +51,17 @@ export const Home = () => {
                 <p>{category}</p>
                 <p>{comment}</p>
                 <p>{value}</p>
-                <p className='editItem' onClick={() => dispatch(toggleEditModal())}>edit</p>
-                <button onClick={() => {deleteTransactions(_id)}}>
+                <p
+                  className="editItem"
+                  onClick={() => dispatch(toggleEditModal())}
+                >
+                  edit
+                </p>
+                <button
+                  onClick={() => {
+                    deleteTransactions(_id);
+                  }}
+                >
                   Delete
                 </button>
               </li>
@@ -65,14 +71,21 @@ export const Home = () => {
       </ul>
 
       {/* <div>Кнопки пагинации Prev - Next</div> */}
-      <button className='deleteItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button>
-        {modalType === 'modal/toggleAddModal' && isModalOpen && (
-          <Modal children={AddTransaction()} />
-        )}
-        {modalType === 'modal/toggleEditModal' && isModalOpen && (
-          <Modal children={EditTransaction()} />
-        )}
+      <button
+        className="deleteItem"
+        type="button"
+        onClick={() => dispatch(toggleAddModal())}
+      >
+        +
+      </button>
+      {modalType === 'modal/toggleAddModal' && isModalOpen && (
+        <Modal children={AddTransaction()} />
+      )}
+      {modalType === 'modal/toggleEditModal' && isModalOpen && (
+        <Modal children={EditTransaction()} />
+      )}
     </HomeStyled>
   );
 };
 
+export default Home;
