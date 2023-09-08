@@ -17,7 +17,7 @@ import Login from 'pages/LoginPage/Login';
 import { Dashboard } from '../pages/dashboard_page/Dashboard';
 import { Home } from '../pages/HomePage/Home';
 import StatiscticsPage from 'pages/StatisticsPage/Statistics';
-import WrongPage from './WrongPage/WrongPage';
+import WrongPage from '../pages/WrongPage/WrongPage';
 import GlobalStyles from 'styles/GlobalStyles';
 
 export const App = () => {
