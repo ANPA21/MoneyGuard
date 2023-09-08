@@ -29,6 +29,7 @@ export const App = () => {
   return (
     <>
       <Suspense fallback={<SpinnerLoader />}>
+        <Routes>
           <Route
             path="/"
             element={
