@@ -17,7 +17,6 @@ import Login from 'pages/LoginPage/Login';
 import { Dashboard } from '../pages/dashboard_page/Dashboard';
 import { Home } from '../pages/HomePage/Home';
 import StatiscticsPage from 'pages/StatisticsPage/Statistics';
-import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -45,20 +44,26 @@ export const App = () => {
           <Route
             path="register"
             element={
-              <RestrictedRoute
-                redirectTo="/register"
-                component={<Register />}
-              />
+              <RestrictedRoute redirectTo="/home" component={<Register />} />
             }
           />
-          <Route
-            element={
-              <PrivateRoute redirectTo="/login" component={<Dashboard />} />
-            }
-          >
-            <Route path="home" index element={<Home />} />
-            <Route path="/statistics" element={<StatiscticsPage />} />
-            <Route path="/currency" element={<CurrencyPage />} />
+
+          <Route element={<Dashboard />}>
+            <Route
+              path="home"
+              element={
+                <PrivateRoute redirectTo="/login" component={<Home />} />
+              }
+            ></Route>
+            <Route
+              path="statistics"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<StatiscticsPage />}
+                />
+              }
+            ></Route>
           </Route>
           <Route path="*" element={<div>Wrong Page</div>} />
         </Routes>
