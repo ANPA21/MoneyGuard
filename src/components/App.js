@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SpinnerLoader } from '../components/Spinner/Spinner';
 
 import { refreshUser } from 'redux/authReducer/operations';
 import { PrivateRoute, RestrictedRoute } from './Routes';
@@ -27,8 +28,7 @@ export const App = () => {
 
   return (
     <>
-      <Suspense fallback={<div>Спиннер тут</div>}>
-        <Routes>
+      <Suspense fallback={<SpinnerLoader />}>
           <Route
             path="/"
             element={
