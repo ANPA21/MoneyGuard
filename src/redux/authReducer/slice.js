@@ -17,8 +17,8 @@ const handleRegisterFulfilled = (state, action) => {
 };
 
 const handleLogInFulfilled = (state, action) => {
-  console.log(action.payload);
-  state.token = action.payload;
+  state.user = action.payload.user;
+  state.token = action.payload.token;
   state.isLoggedIn = true;
 };
 
