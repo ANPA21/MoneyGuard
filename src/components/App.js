@@ -17,6 +17,7 @@ import Login from 'pages/LoginPage/Login';
 import { Dashboard } from '../pages/dashboard_page/Dashboard';
 import { Home } from '../pages/HomePage/Home';
 import StatiscticsPage from 'pages/StatisticsPage/Statistics';
+import GlobalStyles from 'styles/GlobalStyles';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -69,6 +70,7 @@ export const App = () => {
         </Routes>
       </Suspense>
       <ToastContainer />
+      <GlobalStyles />
     </>
   );
 };
