@@ -1,11 +1,10 @@
 import { DataTable } from 'components/Statistics/StatisticsDataTable';
+import DatePicker from 'components/Statistics/datePicker';
 import StatiscticsChart from 'components/Statistics/statisticsChart';
 import { Helmet } from 'react-helmet-async';
 
-const { Currency } = require('components/Currency/Currency');
 const {
   StatSection,
-  LeftSideStatWrapper,
   RightSideStatWrapper,
   DatePickerWrapper,
   DataWrapper,
@@ -18,10 +17,6 @@ const StatiscticsPage = () => {
       <Helmet>
         <title>Statisctics</title>
       </Helmet>
-      <LeftSideStatWrapper>
-        <div>Balance Comp</div>
-        <Currency />
-      </LeftSideStatWrapper>
       <RightSideStatWrapper>
         <TitleStyled>Statistics</TitleStyled>
         <div>
@@ -29,7 +24,9 @@ const StatiscticsPage = () => {
         </div>
 
         <DataWrapper>
-          <DatePickerWrapper>Datepicker here</DatePickerWrapper>
+          <DatePickerWrapper>
+            <DatePicker />
+          </DatePickerWrapper>
           <DataTable />
         </DataWrapper>
       </RightSideStatWrapper>
