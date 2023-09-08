@@ -50,6 +50,10 @@ export const StyledForm = styled(Form)`
   justify-content: center;
 `;
 
+export const SelectLabel = styled.label`
+  width: 100%;
+`;
+
 export const StyledSum = styled(Field)`
   display: block;
   background-color: transparent;
@@ -63,6 +67,7 @@ export const StyledSum = styled(Field)`
   font-weight: 600;
   color: rgba(255, 255, 255, 1);
   width: 181px;
+  // padding-bottom: 8px;
 
   &::placeholder {
     align: center;
@@ -78,37 +83,47 @@ export const StyledSum = styled(Field)`
     outline: 0;
   }
 `;
-export const StyledCategory = styled(Field)`
+export const StyledSelect = styled.select`
+  display: block;
+  width: 100%;
   background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 8px 8px;
+  font-family: Poppins;
+  line-height: 1.5;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  padding-bottom: 8px;
+
+  &::placeholder {
+    background-color: transparent;
+    align: center;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  &::focus {
+    outline: 0;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  option {
+    background: rgba(80, 48, 154, 0.7);
+    //     calc(linear-gradient(
+    //       to down,
+    //       rgba(83, 61, 186, 0.7),
+    //       rgba(80, 48, 154, 0.7),
+    //       rgba(106, 70, 165, 0.525),
+    //       rgba(133, 93, 175, 0.133),
+    //     ))
+    // );
+  }
 `;
-// export const StyledCategory = styled(Field)`
-//   display: block;
-//   width: 100%;
-//   background-color: transparent;
-//   border: none;
-//   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-//   padding: 0 8px;
-//   font-family: 'Poppins';
-//   line-height: 1.5;
-//   font-size: 18px;
-//   font-weight: 400;
-//   color: rgba(255, 255, 255, 1);
-
-//   &::placeholder {
-//     background-color: transparent;
-//     align: center;
-//     font-family: 'Poppins';
-//     font-weight: 400;
-//     font-size: 18px;
-//     line-height: 1.5;
-//     color: rgba(255, 255, 255, 0.6);
-//   }
-
-//   &:focus {
-//     outline: 0;
-//     background-color: transparent;
-//   }
-// `;
 
 export const StyledComment = styled(Field)`
   display: inherit;

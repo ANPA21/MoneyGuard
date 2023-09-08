@@ -1,4 +1,5 @@
-import { Formik, ErrorMessage, Field } from 'formik';
+import { Formik, ErrorMessage, Field, useField } from 'formik';
+// import { useEffect } from 'react';
 import Switch from '@mui/material/Switch';
 import 'react-datepicker/dist/react-datepicker.css';
 import { object, string, number } from 'yup';
@@ -12,19 +13,36 @@ import {
   StyledLabel,
   StyledSum,
   StyledComment,
-  // StyledCategory,
   StyledDatePicker,
   Label,
+  StyledSelect,
+  SelectLabel,
 } from './Add.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTransaction } from 'redux/transactions/operations';
 // import { getCategoryState } from 'redux/transactions/selectors';
+// import { fetchCategories } from 'redux/categories/operations';
+// import Select, { components } from 'react-select';
 
 const addSchema = object({
   value: number().positive().required('Amount is required'),
   comment: string().max(30, 'Maximum must be 30 characters'),
   category: string().min(3),
 });
+
+const CustomSelect = ({ ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <Wrapper>
+      <SelectLabel>
+        <StyledSelect {...field} {...props} />
+      </SelectLabel>
+      {meta.touched && meta.error ? (
+        <div className="error">{meta.error}</div>
+      ) : null}
+    </Wrapper>
+  );
+};
 
 const initialValues = {
   type: 'expense',
@@ -34,10 +52,23 @@ const initialValues = {
   comment: '',
 };
 
+const categories = ['car', 'products', 'education'];
+
 export default function AddTransaction() {
   const dispatch = useDispatch();
 
   // const categories = useSelector(getCategoryState);
+  // console.log(categories);
+
+  // useEffect(() => {
+  //   if (categories.length === 0) {
+  //   dispatch(fetchCategories());
+  //   }
+  // }, [ dispatch]);
+
+  // const handleSelectChange = category => {
+  //   setTransactionState(category);
+  // };
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
@@ -54,7 +85,7 @@ export default function AddTransaction() {
         validationSchema={addSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, setFieldValue, validate }) => (
+        {({ values, setFieldValue, validate, ...props }) => (
           <StyledForm autoComplete="off">
             <SwitcherWrapper>
               <span>Income</span>
@@ -65,33 +96,23 @@ export default function AddTransaction() {
                 onChange={(event, checked) => {
                   setFieldValue('type', checked ? 'expense' : 'income');
                 }}
-                width="80px"
-                height="40px"
-                handleDiameter={44}
-                onHandleColor="#FF6596"
-                offHandleColor="#24cca7"
-                onColor="#fff"
-                offColor="#fff"
               />
               <span>Expense</span>
             </SwitcherWrapper>
             {values.type === 'expense' ? (
-              <Wrapper>
-                <Field name="category" as="select">
+              <>
+                <CustomSelect name="category" placeholder="Select a category">
                   <option key="default" defaultValue hidden>
                     Select a category
                   </option>
-                  <option key="1" value="Car">
-                    Car
-                  </option>
-                  {/* {categories.map((category,index) => (
-                  <option key={index} value={category}>
-                    {category}
-                  </option>
-                ))} */}
-                </Field>
+                  {categories.map((category, index) => (
+                    <option key={index} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </CustomSelect>
                 <ErrorMessage name="category" component="div" />
-              </Wrapper>
+              </>
             ) : (
               (values.category = '')
             )}
