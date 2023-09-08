@@ -46,6 +46,14 @@ a {
   text-decoration: none;
 }
 
+  .custom-switch .MuiSwitch-switchBase.Mui-checked {
+    color: red !important; // Цвет переключателя в состоянии "checked"
+  }
+
+  .custom-switch .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+    background-color: white !important; // Цвет фона трека в состоянии "checked"
+  }
+
 `;
 
 export default GlobalStyles;

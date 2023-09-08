@@ -1,5 +1,4 @@
 import { Formik, ErrorMessage, Field } from 'formik';
-import Switch from '@mui/material/Switch';
 import 'react-datepicker/dist/react-datepicker.css';
 import { object, string, number } from 'yup';
 import {
@@ -18,6 +17,7 @@ import {
 } from './Add.styled';
 import { useDispatch } from 'react-redux';
 import { addTransaction } from 'redux/transactions/operations';
+import { CustomSwitch } from 'components/CustomElements/CustomSwitch';
 // import { getCategoryState } from 'redux/transactions/selectors';
 
 const addSchema = object({
@@ -56,8 +56,14 @@ export default function AddTransaction() {
       >
         {({ values, setFieldValue, validate }) => (
           <StyledForm autoComplete="off">
-            <SwitcherWrapper>
-              <span>Income</span>
+            <SwitcherWrapper className="custom-switch">
+              <CustomSwitch
+                checked={values.type === 'income'}
+                onChange={isChecked => {
+                  setFieldValue('type', isChecked ? 'income' : 'expense');
+                }}
+              />
+              {/* <span>Income</span>
               <Switch
                 name="transaction"
                 value="expense"
@@ -73,7 +79,7 @@ export default function AddTransaction() {
                 onColor="#fff"
                 offColor="#fff"
               />
-              <span>Expense</span>
+              <span>Expense</span> */}
             </SwitcherWrapper>
             {values.type === 'expense' ? (
               <Wrapper>
