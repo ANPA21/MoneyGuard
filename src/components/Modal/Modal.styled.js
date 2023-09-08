@@ -15,8 +15,8 @@ export const Overlay = styled.div`
 `;
 
 export const ModalWindow = styled.div`
-  width: 540px;
-  min-height: 447px;
+  width: 320px;
+  height: 600px;
   background-color: rgba(255, 255, 255, 0.1);
 
   box-sizing: border-box;
@@ -43,6 +43,10 @@ export const ModalWindow = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  @media (min-width: 540px) {
+    width: 540px;
+    height: 589px;
   }
 `;
 
@@ -72,7 +76,6 @@ export const CancelBtn = styled.button`
   border: none;
   line-height: 1.5;
   font-size: 18px;
-  font-family: Poppins;
   letter-spacing: 1.8px;
   color: rgba(98, 63, 139, 1);
   font-weight: 400;

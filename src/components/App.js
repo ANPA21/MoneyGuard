@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SpinnerLoader } from '../components/Spinner/Spinner';
 
 import { refreshUser } from 'redux/authReducer/operations';
 import { PrivateRoute, RestrictedRoute } from './Routes';
@@ -14,20 +15,23 @@ import { PrivateRoute, RestrictedRoute } from './Routes';
 import Register from 'pages/RegisterPage/Register';
 import Login from 'pages/LoginPage/Login';
 import { Dashboard } from '../pages/dashboard_page/Dashboard';
-import { Home } from '../pages/HomePage/Home';
+import Home from '../pages/HomePage/Home';
 import StatiscticsPage from 'pages/StatisticsPage/Statistics';
-import CurrencyPage from 'pages/CurrencyMobilePage/CurrencyMobile';
+import WrongPage from '../pages/WrongPage/WrongPage';
+import GlobalStyles from 'styles/GlobalStyles';
+import { useAuth } from 'hooks';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const { isLoggedIn, token } = useAuth();
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    if (!isLoggedIn && token) dispatch(refreshUser());
+  }, [dispatch, isLoggedIn, token]);
 
   return (
     <>
-      <Suspense fallback={<div>Спиннер тут</div>}>
+      <Suspense fallback={<SpinnerLoader />}>
         <Routes>
           <Route
             path="/"
@@ -44,25 +48,33 @@ export const App = () => {
           <Route
             path="register"
             element={
-              <RestrictedRoute
-                redirectTo="/register"
-                component={<Register />}
-              />
+              <RestrictedRoute redirectTo="/home" component={<Register />} />
             }
           />
-          <Route
-            element={
-              <PrivateRoute redirectTo="/login" component={<Dashboard />} />
-            }
-          >
-            <Route path="home" index element={<Home />} />
-            <Route path="/statistics" element={<StatiscticsPage />} />
-            <Route path="/currency" element={<CurrencyPage />} />
+
+          <Route element={<Dashboard />}>
+            <Route
+              path="/home"
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/statistics"
+              element={
+                <PrivateRoute>
+                  <StatiscticsPage />
+                </PrivateRoute>
+              }
+            />
           </Route>
-          <Route path="*" element={<div>Wrong Page</div>} />
+          <Route path="*" element={<WrongPage />} />
         </Routes>
       </Suspense>
       <ToastContainer />
+      <GlobalStyles />
     </>
   );
 };

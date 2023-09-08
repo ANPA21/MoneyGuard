@@ -1,6 +1,4 @@
 import { Formik, ErrorMessage, Field } from 'formik';
-// import { useEffect } from 'react';
-import Switch from '@mui/material/Switch';
 import 'react-datepicker/dist/react-datepicker.css';
 import { object, string, number } from 'yup';
 import {
@@ -20,6 +18,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { addTransaction } from 'redux/transactions/operations';
 import { toggleModal } from 'redux/modal/ModalSlice';
+import { CustomSwitch } from 'components/CustomElements/CustomSwitch';
 // import { getCategoryState } from 'redux/transactions/selectors';
 // import { fetchCategories } from 'redux/categories/operations';
 import { VscChevronDown, VscChevronUp } from 'react-icons/vsc';
@@ -130,8 +129,14 @@ export default function AddTransaction() {
       >
         {({ values, setFieldValue, validate, ...props }) => (
           <StyledForm autoComplete="off">
-            <SwitcherWrapper>
-              <span>Income</span>
+            <SwitcherWrapper className="custom-switch">
+              <CustomSwitch
+                checked={values.type === 'income'}
+                onChange={isChecked => {
+                  setFieldValue('type', isChecked ? 'income' : 'expense');
+                }}
+              />
+              {/* <span>Income</span>
               <Switch
                 name="transaction"
                 value="expense"
@@ -140,7 +145,7 @@ export default function AddTransaction() {
                   setFieldValue('type', checked ? 'expense' : 'income');
                 }}
               />
-              <span>Expense</span>
+              <span>Expense</span> */}
             </SwitcherWrapper>
             {values.type === 'expense' ? (
               <>
