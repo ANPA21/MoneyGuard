@@ -7,11 +7,14 @@ import 'react-datepicker/dist/react-datepicker.css';
 export const AddTitle = styled.h2`
   margin-bottom: 40px;
   text-align: center;
-  font-family: Poppins;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 24px;
   line-height: 1.5;
   color: #fbfbfb;
+
+  @media (min-width: 540px) {
+    font-size: 30px;
+  }
 `;
 
 export const AddBtn = styled.button`
@@ -32,7 +35,6 @@ export const AddBtn = styled.button`
   border-radius: 20px;
   line-height: 1.5;
   font-size: 18px;
-  font-family: Poppins;
   color: rgba(251, 251, 251, 1);
   text-transform: uppercase;
   letter-spacing: 1.8px;
@@ -57,7 +59,7 @@ export const StyledSum = styled(Field)`
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 
   text-align: center;
-  font-family: 'Poppins';
+
   line-height: 1.5;
   font-size: 18px;
   font-weight: 600;
@@ -65,8 +67,7 @@ export const StyledSum = styled(Field)`
   width: 181px;
 
   &::placeholder {
-    align: center;
-    font-family: 'Poppins';
+    text-align: center;
     font-weight: 600;
     font-size: 18px;
     line-height: 1.5;
@@ -116,7 +117,6 @@ export const StyledComment = styled(Field)`
   background-color: transparent;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  font-family: 'Poppins';
   line-height: 1.5;
   font-size: 18px;
   font-weight: 400;
@@ -125,8 +125,7 @@ export const StyledComment = styled(Field)`
   &::placeholder {
     padding: 0 8px;
     padding: 0 8px;
-    align: center;
-    font-family: 'Poppins';
+    text-align: center;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.5;
@@ -161,7 +160,15 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: baseline;
   width: 100%;
+
+  ${Field} {
+    @media (min-width: 540px) {
+      padding-left: 20px;
+      text-align: left;
+    }
+  }
 `;
+
 export const StyledDatePicker = styled(DatePicker)`
   box-sizing: border-box;
   display: inherit;
