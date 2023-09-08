@@ -142,7 +142,7 @@ export const SwitcherWrapper = styled.label`
   height: 44px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   font-weight: 600;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.6);
