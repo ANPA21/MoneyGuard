@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage, Field, useField } from 'formik';
+import { Formik, ErrorMessage, Field } from 'formik';
 // import { useEffect } from 'react';
 import Switch from '@mui/material/Switch';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -16,31 +16,65 @@ import {
   StyledDatePicker,
   Label,
   StyledSelect,
-  SelectLabel,
 } from './Add.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTransaction } from 'redux/transactions/operations';
+import { toggleModal } from 'redux/modal/ModalSlice';
 // import { getCategoryState } from 'redux/transactions/selectors';
 // import { fetchCategories } from 'redux/categories/operations';
-// import Select, { components } from 'react-select';
+import { VscChevronDown, VscChevronUp } from 'react-icons/vsc';
+import { components } from 'react-select';
 
 const addSchema = object({
   value: number().positive().required('Amount is required'),
   comment: string().max(30, 'Maximum must be 30 characters'),
-  category: string().min(3),
+  category: string()
+    .min(3)
+    .oneOf([
+      'Main expenses',
+      'Products',
+      'Car',
+      'Self care',
+      'Child care',
+      'Household products',
+      'Education',
+      'Leisure',
+      'Other expenses',
+      'Entertainment',
+    ]),
 });
 
-const CustomSelect = ({ ...props }) => {
-  const [field, meta] = useField(props);
+const DropdownIndicator = props => {
+  if (props.isFocused) {
+    return (
+      <components.DropdownIndicator {...props}>
+        <VscChevronUp />
+      </components.DropdownIndicator>
+    );
+  }
   return (
-    <Wrapper>
-      <SelectLabel>
-        <StyledSelect {...field} {...props} />
-      </SelectLabel>
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </Wrapper>
+    <components.DropdownIndicator {...props}>
+      <VscChevronDown />
+    </components.DropdownIndicator>
+  );
+};
+
+const CustomSelect = ({ onChange, options, value, className }) => {
+  const defaultValue = (options, value) => {
+    return options ? options.find(option => option.value === value) : '';
+  };
+
+  return (
+    <div className={className}>
+      <StyledSelect
+        value={defaultValue(options, value)}
+        placeholder="Select a category"
+        components={{ DropdownIndicator }}
+        onChange={value => onChange(value)}
+        options={options}
+        classNamePrefix="Select"
+      />
+    </div>
   );
 };
 
@@ -52,7 +86,18 @@ const initialValues = {
   comment: '',
 };
 
-const categories = ['car', 'products', 'education'];
+const categories = [
+  { value: 'Main expenses', label: 'Main expenses' },
+  { value: 'Products', label: 'Products' },
+  { value: 'Car', label: 'Car' },
+  { value: 'Self care', label: 'Self care' },
+  { value: 'Child care', label: 'Child care' },
+  { value: 'Household products', label: 'Household products' },
+  { value: 'Education', label: 'Education' },
+  { value: 'Leisure', label: 'Leisure' },
+  { value: 'Other expenses', label: 'Other expenses' },
+  { value: 'Entertainment', label: 'Entertainment' },
+];
 
 export default function AddTransaction() {
   const dispatch = useDispatch();
@@ -61,19 +106,17 @@ export default function AddTransaction() {
   // console.log(categories);
 
   // useEffect(() => {
+  //   console.log(categories);
   //   if (categories.length === 0) {
-  //   dispatch(fetchCategories());
+  //     dispatch(fetchCategories());
   //   }
-  // }, [ dispatch]);
-
-  // const handleSelectChange = category => {
-  //   setTransactionState(category);
-  // };
+  // }, [dispatch]);
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     dispatch(addTransaction(values));
     resetForm();
+    dispatch(toggleModal());
   };
 
   return (
@@ -101,16 +144,13 @@ export default function AddTransaction() {
             </SwitcherWrapper>
             {values.type === 'expense' ? (
               <>
-                <CustomSelect name="category" placeholder="Select a category">
-                  <option key="default" defaultValue hidden>
-                    Select a category
-                  </option>
-                  {categories.map((category, index) => (
-                    <option key={index} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </CustomSelect>
+                <CustomSelect
+                  options={categories}
+                  value={values.category}
+                  onChange={value => setFieldValue('category', value.value)}
+                  className="Select"
+                  // styles={selectStyles()}
+                />
                 <ErrorMessage name="category" component="div" />
               </>
             ) : (

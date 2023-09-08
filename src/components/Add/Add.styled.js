@@ -3,6 +3,7 @@ import { Form, Field } from 'formik';
 // import Switch from '@mui/material/Switch';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Select from 'react-select';
 
 export const AddTitle = styled.h2`
   margin-bottom: 40px;
@@ -48,10 +49,11 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
 
-export const SelectLabel = styled.label`
-  width: 100%;
+  .Select {
+    width: 100%;
+    margin-bottom: 42px;
+  }
 `;
 
 export const StyledSum = styled(Field)`
@@ -83,45 +85,83 @@ export const StyledSum = styled(Field)`
     outline: 0;
   }
 `;
-export const StyledSelect = styled.select`
-  display: block;
-  width: 100%;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 8px 8px;
-  font-family: Poppins;
-  line-height: 1.5;
+
+export const StyledSelect = styled(Select)`
   font-size: 18px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
-  padding-bottom: 8px;
+  width: 100%;
 
-  &::placeholder {
+  .Select__control {
     background-color: transparent;
-    align: center;
-    font-family: 'Poppins';
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.5;
+    height: 35px;
+    width: 100%;
+    border: 0;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    color: rgba(251, 251, 251, 1);
   }
 
-  &::focus {
-    outline: 0;
-    background-color: transparent;
-    color: rgba(255, 255, 255, 1);
+  .Select__placeholder {
+    color: rgba(255, 255, 255, 0.6);
   }
 
-  option {
-    background: rgba(80, 48, 154, 0.7);
-    //     calc(linear-gradient(
-    //       to down,
-    //       rgba(83, 61, 186, 0.7),
-    //       rgba(80, 48, 154, 0.7),
-    //       rgba(106, 70, 165, 0.525),
-    //       rgba(133, 93, 175, 0.133),
-    //     ))
-    // );
+  .Select__single-value {
+    color: rgba(251, 251, 251, 1);
+  }
+
+  .Select__control:hover {
+    border: 0;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .Select__control--is-focused {
+    border: 0;
+    box-shadow: none;
+    outline: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .Select__indicator-separator {
+    display: none;
+  }
+
+  .Select__indicator {
+    color: rgba(255, 255, 255, 0.1);
+    width: auto;
+  }
+
+  .Select__menu {
+    background: linear-gradient(
+      0deg,
+      rgba(83, 61, 186, 1) 0%,
+      rgba(80, 48, 154, 1) 43.14%,
+      rgba(106, 70, 165, 1) 73.27%,
+      rgba(133, 93, 175, 0.9) 120.03%
+    );
+    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+    color: rgba(251, 251, 251, 1);
+    font-size: 16px;
+    border-radius: 8px;
+    max-height: 352px;
+  }
+
+  .Select__menu-list {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .Select__option--is-focused {
+    color: rgba(255, 134, 141, 1);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .Select__dropdown-indicator {
+    color: rgba(251, 251, 251, 1);
+
+    &:hover {
+      color: rgba(251, 251, 251, 1);
+    }
   }
 `;
 
@@ -191,53 +231,3 @@ export const StyledDatePicker = styled(DatePicker)`
   color: rgba(255, 255, 255, 1);
   padding: 0 8px;
 `;
-// export const StyledSwitch = styled(Switch)`
-//     padding: 0;
-
-// & .MuiSwitch-root: {
-//     width: 80px,
-//     height: 40px,
-// }
-
-//   & .MuiSwitch-switchBase: {
-//     margin: 1,
-//     padding: 0,
-//     transform: 'translateX(6px)',
-
-//     &.Mui-checked: {
-//       color: '#fff',
-//       transform: 'translateX(22px)',
-
-//       & .MuiSwitch-thumb:before: {
-//     // backgroundImage: none ,
-//       },
-
-//         & + .MuiSwitch-track: {
-//         opacity: 1,
-//         // backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-//       },
-//     },
-//     },
-
-//   & .MuiSwitch-thumb: {
-//     backgroundColor: #001e3c,
-//     width: 44,
-//     height: 44,
-//     '&:before': {
-//       content: "''",
-//       position: 'absolute',
-//       width: '100%',
-//       height: '100%',
-//       left: 0,
-//       top: 0,
-//       backgroundRepeat: 'no-repeat',
-//       backgroundPosition: 'center',
-//     //   backgroundImage: none,
-//     },
-//   },
-
-//     & .MuiSwitch-track: {
-//     opacity: 1,
-//     backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-//     borderRadius: 20 / 2,
-//   },`;

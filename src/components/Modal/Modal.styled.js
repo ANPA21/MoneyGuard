@@ -18,6 +18,7 @@ export const ModalWindow = styled.div`
   width: 540px;
   min-height: 447px;
   background-color: rgba(255, 255, 255, 0.1);
+
   box-sizing: border-box;
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -28,7 +29,7 @@ export const ModalWindow = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(100px);
 
   &::after {
     content: '';
