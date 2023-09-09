@@ -15,8 +15,6 @@ export const ColorBox = styled.div`
 `;
 
 export const StyledTdCat = styled.td`
-  text-align: left;
-  position: relative;
   display: flex;
   align-items: center;
 `;
@@ -25,11 +23,19 @@ export const StyledTdSum = styled.td`
   text-align: end;
 `;
 
-export const StyledTr = styled.tr``;
+export const StyledTr = styled.tr`
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: teal;
+`;
 export const StyledThCat = styled.th`
   text-align: start;
 `;
-
+export const RowText = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 export const StyledThSum = styled.th`
   text-align: end;
 `;

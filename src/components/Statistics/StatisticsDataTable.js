@@ -1,5 +1,6 @@
 import {
   ColorBox,
+  RowText,
   StyledTable,
   StyledTdCat,
   StyledTdSum,
@@ -28,9 +29,11 @@ export const DataTable = ({ reduxData }) => {
               <StyledTr key={category.name}>
                 <StyledTdCat>
                   <ColorBox color={boxColor.color} />
-                  <span>{category.name}</span>
+                  <RowText>
+                    <span>{category.name}</span>
+                    <StyledTdSum>{category.total}</StyledTdSum>
+                  </RowText>
                 </StyledTdCat>
-                <StyledTdSum>{category.total}</StyledTdSum>
               </StyledTr>
             );
           })}
