@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ModalWindow, Overlay, ButtonClose, CancelBtn } from './Modal.styled';
+import { Overlay, ModalWindow, ButtonClose, CancelBtn } from './Modal.styled';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/ModalSlice';
 
