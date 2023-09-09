@@ -11,22 +11,25 @@ import {
   StyledLabel,
   StyledSum,
   StyledComment,
-  StyledDatePicker,
   Label,
-  StyledSelect,
 } from './Add.styled';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/ModalSlice';
 import { CustomSwitch } from 'components/CustomElements/CustomSwitch';
 // import { getCategoryState } from 'redux/transactions/selectors';
 // import { fetchCategories } from 'redux/categories/operations';
-import { VscChevronDown, VscChevronUp } from 'react-icons/vsc';
-import { components } from 'react-select';
 import { addTransaction } from 'redux/transactionsRedux/transactionsOperations';
+import { RiCalendar2Fill } from 'react-icons/ri';
+import { CustomSelect } from './SelectCategory/SelectCategory';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { forwardRef } from 'react';
 
 const addSchema = object({
   value: number().positive().required('Amount is required'),
-  comment: string().max(30, 'Maximum must be 30 characters'),
+  comment: string()
+    .max(30, 'Maximum must be 30 characters')
+    .required('Please fill in comment'),
   category: string()
     .min(3)
     .oneOf([
@@ -43,42 +46,8 @@ const addSchema = object({
     ]),
 });
 
-const DropdownIndicator = props => {
-  if (props.isFocused) {
-    return (
-      <components.DropdownIndicator {...props}>
-        <VscChevronUp />
-      </components.DropdownIndicator>
-    );
-  }
-  return (
-    <components.DropdownIndicator {...props}>
-      <VscChevronDown />
-    </components.DropdownIndicator>
-  );
-};
-
-const CustomSelect = ({ onChange, options, value, className }) => {
-  const defaultValue = (options, value) => {
-    return options ? options.find(option => option.value === value) : '';
-  };
-
-  return (
-    <div className={className}>
-      <StyledSelect
-        value={defaultValue(options, value)}
-        placeholder="Select a category"
-        components={{ DropdownIndicator }}
-        onChange={value => onChange(value)}
-        options={options}
-        classNamePrefix="Select"
-      />
-    </div>
-  );
-};
-
 const initialValues = {
-  type: 'expense',
+  type: '',
   category: '',
   value: '',
   date: new Date(),
@@ -97,6 +66,15 @@ const categories = [
   { value: 'Other expenses', label: 'Other expenses' },
   { value: 'Entertainment', label: 'Entertainment' },
 ];
+
+const CustomInput = forwardRef(({ value, onClick }, ref) => (
+  <>
+    <button type="button" className="custom-input" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+    <RiCalendar2Fill className="date-icon" onClick={onClick} />
+  </>
+));
 
 export default function AddTransaction() {
   const dispatch = useDispatch();
@@ -154,6 +132,7 @@ export default function AddTransaction() {
                   value={values.category}
                   onChange={value => setFieldValue('category', value.value)}
                   className="Select"
+                  name="category"
                   // styles={selectStyles()}
                 />
                 <ErrorMessage name="category" component="div" />
@@ -169,14 +148,14 @@ export default function AddTransaction() {
               <Label>
                 <Field name="date" validate={validate}>
                   {({ field, form, meta }) => (
-                    <StyledDatePicker
-                      showIcon
+                    <DatePicker
                       name="date"
                       dateFormat="dd.MM.yyyy"
                       minDate={new Date()}
                       selected={values.date || null}
                       onChange={date => setFieldValue('date', date)}
                       shouldCloseOnSelect={true}
+                      customInput={<CustomInput />}
                     />
                   )}
                 </Field>

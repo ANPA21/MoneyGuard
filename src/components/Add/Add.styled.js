@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { Form, Field } from 'formik';
-// import Switch from '@mui/material/Switch';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+
 import Select from 'react-select';
 
 export const AddTitle = styled.h2`
@@ -56,6 +54,36 @@ export const StyledForm = styled(Form)`
     width: 100%;
     margin-bottom: 42px;
   }
+
+  .custom-input {
+    box-sizing: border-box;
+    display: inherit;
+    width: 181px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins';
+    line-height: 1.5;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    padding-bottom: 8px;
+    padding-top: 5px;
+    padding-left: 21px;
+  }
+
+  .react-datepicker__input-container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+  }
+
+  .date-icon {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    fill: #734aef;
+  }
 `;
 
 export const StyledSum = styled(Field)`
@@ -63,15 +91,14 @@ export const StyledSum = styled(Field)`
   background-color: transparent;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-
   text-align: center;
-
   line-height: 1.5;
   font-size: 18px;
   font-weight: 600;
   color: rgba(255, 255, 255, 1);
   width: 181px;
-  // padding-bottom: 8px;
+  padding-bottom: 8px;
+  padding-top: 5px;
 
   &::placeholder {
     text-align: center;
@@ -79,7 +106,7 @@ export const StyledSum = styled(Field)`
     font-size: 18px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.6);
-    padding: 0 8px;
+    // padding: 0 8px;
   }
 
   &:focus {
@@ -176,11 +203,10 @@ export const StyledComment = styled(Field)`
   font-size: 18px;
   font-weight: 400;
   color: rgba(255, 255, 255, 1);
+  padding: 5px 5px 8px 10px;
 
   &::placeholder {
-    padding: 0 8px;
-    padding: 0 8px;
-    text-align: center;
+    text-align: left;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.5;
@@ -222,19 +248,4 @@ export const Wrapper = styled.div`
       text-align: left;
     }
   }
-`;
-
-export const StyledDatePicker = styled(DatePicker)`
-  box-sizing: border-box;
-  display: inherit;
-  width: 181px;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  font-family: 'Poppins';
-  line-height: 1.5;
-  font-size: 18px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 1);
-  padding: 0 8px;
 `;
