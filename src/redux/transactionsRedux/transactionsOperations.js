@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
 
@@ -40,6 +41,7 @@ export const addTransaction = createAsyncThunk(
         return response.data;
       }
     } catch (error) {
+      toast.error(error.response.data.message);
       return rejectWithValue(error.message);
     }
   }
