@@ -4,6 +4,7 @@ import { HomeStyled } from './Home.styled';
 import Modal from '../../components/Modal/Modal';
 import AddTransaction from '../../components/Add/Add';
 import EditTransaction from '../../components/Edit/Edit';
+import Logout from '../../components/Logout/Logout';
 import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 
@@ -83,6 +84,9 @@ const Home = () => {
       )}
       {modalType === 'modal/toggleEditModal' && isModalOpen && (
         <Modal children={<EditTransaction />} />
+      )}
+      {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
+        <Modal children={Logout()} showCloseIcon={false} />
       )}
     </HomeStyled>
   );

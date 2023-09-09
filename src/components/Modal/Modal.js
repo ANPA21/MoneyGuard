@@ -6,7 +6,7 @@ import { toggleModal } from 'redux/modal/ModalSlice';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default function Modal({ children }) {
+export default function Modal({ children, showCloseIcon = true }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,18 +37,20 @@ export default function Modal({ children }) {
   return createPortal(
     <Overlay onClick={handleBackdropClick}>
       <ModalWindow>
-        <ButtonClose type="button" name="closeSvg" onClick={closeClick}>
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M1 1L17 17" stroke="#FBFBFB" />
-            <path d="M1 17L17 0.999999" stroke="#FBFBFB" />
-          </svg>
-        </ButtonClose>
+        {showCloseIcon && (
+          <ButtonClose type="button" name="closeSvg" onClick={closeClick}>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1 1L17 17" stroke="#FBFBFB" />
+              <path d="M1 17L17 0.999999" stroke="#FBFBFB" />
+            </svg>
+          </ButtonClose>
+        )}
         {children}
         <CancelBtn type="button" name="cancel" onClick={closeClick}>
           Cancel
