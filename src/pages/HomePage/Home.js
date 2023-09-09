@@ -4,9 +4,8 @@ import { HomeStyled } from './Home.styled';
 import Modal from '../../components/Modal/Modal';
 import AddTransaction from '../../components/Add/Add';
 import EditTransaction from '../../components/Edit/Edit';
-import { getModalState } from 'redux/transactions/selectors';
 import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
-import { getModalTypeState } from 'redux/modal/selectors';
+import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -16,8 +15,8 @@ const Home = () => {
   } = require('redux/transactionsRedux/transactionsOperations');
   const dispatch = useDispatch();
 
-  const modalType = useSelector(getModalTypeState);
-  const isModalOpen = useSelector(getModalState);
+  const modalType = useSelector(selectModalTypeState);
+  const isModalOpen = useSelector(selectModalState);
 
   const deleteTransactions = id => {
     dispatch(deleteItem(id));
