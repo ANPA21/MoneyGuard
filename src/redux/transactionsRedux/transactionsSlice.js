@@ -37,9 +37,9 @@ export const transactionSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.transactions.findIndex(
-          item => item.id === action.payload.id
+          item => item._id === action.payload._id
         );
-        state.item.splice(index, 1);
+        state.transactions.splice(index, 1);
       })
       .addCase(deleteItem.rejected, (state, action) => {
         state.isLoading = false;
@@ -60,9 +60,14 @@ export const transactionSlice = createSlice({
       .addCase(editItem.pending, state => {
         state.isLoading = true;
       })
-      .addCase(editItem.fulfilled, state => {
+      .addCase(editItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        const updatedItem = action.payload;
+        const index = state.transactions.findIndex((item) => item._id === updatedItem._id);
+        if (index !== -1) {
+          state.transactions[index] = updatedItem;
+        }
       })
       .addCase(editItem.rejected, (state, action) => {
         state.isLoading = false;
@@ -81,3 +86,4 @@ export const PersistedTransactionReducer = persistReducer(
   persistConfig,
   transactionReducer
 );
+
