@@ -11,9 +11,11 @@ import {
   StyledSum,
   StyledComment,
   // StyledCategory,
-  StyledDatePicker,
+  // StyledDatePicker,
   Label,
 } from '../Add/Add.styled';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { toggleModal } from 'redux/modal/ModalSlice';
 
 // import { getCategoryState } from 'redux/transactions/selectors';
@@ -85,7 +87,7 @@ export default function EditTransaction() {
               <Label>
                 <Field name="date" validate={validate}>
                   {({ field, form, meta }) => (
-                    <StyledDatePicker
+                    <DatePicker
                       showIcon
                       name="date"
                       dateFormat="dd.MM.yyyy"
