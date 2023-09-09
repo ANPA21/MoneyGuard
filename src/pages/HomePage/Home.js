@@ -70,6 +70,7 @@ const Home = () => {
       </ul>
 
       {/* <div>Кнопки пагинации Prev - Next</div> */}
+      <button className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button>
       <button
         className="deleteItem"
         type="button"
@@ -83,7 +84,6 @@ const Home = () => {
       {modalType === 'modal/toggleEditModal' && isModalOpen && (
         <Modal children={EditTransaction()} />
       )}
-    </HomeStyled>
   );
 };
 
