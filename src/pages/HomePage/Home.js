@@ -72,7 +72,7 @@ const Home = () => {
       {/* <div>Кнопки пагинации Prev - Next</div> */}
       <button className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button>
       <button
-        className="addItem"
+        className="deleteItem"
         type="button"
         onClick={() => dispatch(toggleAddModal())}
       >
