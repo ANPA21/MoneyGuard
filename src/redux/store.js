@@ -8,8 +8,6 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-//import { PersistedTransactionReducer } from './transactionsRedux/transactionsSlice';
-import { transactionReducer } from './transactions/transactionSlice';
 import { modalReducer } from './modal/ModalSlice';
 import { PersistedCurrencyReducer } from './currencyReducer/currencySlice';
 import { PersistedAuthReducer } from './authReducer/slice';
