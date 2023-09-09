@@ -23,7 +23,7 @@ export const Overlay = styled.div`
 
 export const ModalWindow = styled.div`
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
