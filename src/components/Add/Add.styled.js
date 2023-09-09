@@ -11,7 +11,8 @@ export const AddTitle = styled.h2`
   line-height: 1.5;
   color: #fbfbfb;
 
-  @media (min-width: 540px) {
+  @media (min-width: 768px) {
+    margin-bottom: 41px;
     font-size: 30px;
   }
 `;
@@ -39,6 +40,7 @@ export const AddBtn = styled.button`
   letter-spacing: 1.8px;
   cursor: pointer;
 `;
+
 export const StyledLabel = styled.label`
   margin-bottom: 40px;
   width: 100%;
@@ -242,10 +244,7 @@ export const Wrapper = styled.div`
   align-items: baseline;
   width: 100%;
 
-  ${Field} {
-    @media (min-width: 540px) {
-      padding-left: 20px;
-      text-align: left;
-    }
+  @media (max-width: 767px) {
+    flex-direction: column;
   }
 `;
