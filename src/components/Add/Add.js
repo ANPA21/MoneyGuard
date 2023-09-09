@@ -6,7 +6,6 @@ import {
   AddTitle,
   StyledForm,
   SwitcherWrapper,
-  // StyledSwitch,
   Wrapper,
   StyledLabel,
   StyledSum,
@@ -16,14 +15,15 @@ import {
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/ModalSlice';
 import { CustomSwitch } from 'components/CustomElements/CustomSwitch';
-// import { getCategoryState } from 'redux/transactions/selectors';
-// import { fetchCategories } from 'redux/categories/operations';
 import { addTransaction } from 'redux/transactionsRedux/transactionsOperations';
 import { RiCalendar2Fill } from 'react-icons/ri';
 import { CustomSelect } from './SelectCategory/SelectCategory';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { forwardRef } from 'react';
+import { forwardRef, useState, useEffect } from 'react';
+import axios from 'axios';
+// import { useSelector } from 'react-redux';
+// import { selectError } from 'redux/transactionsRedux/transactionsSelectors';
 
 const addSchema = object({
   value: number().positive().required('Amount is required'),
@@ -54,19 +54,6 @@ const initialValues = {
   comment: '',
 };
 
-const categories = [
-  { value: 'Main expenses', label: 'Main expenses' },
-  { value: 'Products', label: 'Products' },
-  { value: 'Car', label: 'Car' },
-  { value: 'Self care', label: 'Self care' },
-  { value: 'Child care', label: 'Child care' },
-  { value: 'Household products', label: 'Household products' },
-  { value: 'Education', label: 'Education' },
-  { value: 'Leisure', label: 'Leisure' },
-  { value: 'Other expenses', label: 'Other expenses' },
-  { value: 'Entertainment', label: 'Entertainment' },
-];
-
 const CustomInput = forwardRef(({ value, onClick }, ref) => (
   <>
     <button type="button" className="custom-input" onClick={onClick} ref={ref}>
@@ -78,23 +65,50 @@ const CustomInput = forwardRef(({ value, onClick }, ref) => (
 
 export default function AddTransaction() {
   const dispatch = useDispatch();
+  // const error = useSelector(selectError);
 
-  // const categories = useSelector(getCategoryState);
-  // console.log(categories);
+  const [categories, setCategories] = useState(() => {
+    return JSON.parse(window.localStorage.getItem('categories')) ?? [];
+  });
 
-  // useEffect(() => {
-  //   console.log(categories);
-  //   if (categories.length === 0) {
-  //     dispatch(fetchCategories());
-  //   }
-  // }, [dispatch]);
+  const getCategories = async () => {
+    try {
+      const response = await axios.get(`/transactions/categories`);
+      setCategories(response.data);
+    } catch (error) {
+      return error.message;
+    }
+  };
+
+  useEffect(() => {
+    if (categories.length === 0) {
+      getCategories();
+    }
+
+    localStorage.setItem('categories', JSON.stringify(categories));
+  }, [categories]);
+
+  const optionCategories = categories.map(category => {
+    return {
+      value: category,
+      label: category,
+    };
+  });
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     dispatch(addTransaction(values));
     resetForm();
     dispatch(toggleModal());
   };
+  // const handleSubmit = async (values, { resetForm }) => {
+  //   try {
+  //     await dispatch(addTransaction(values));
+  //     resetForm();
+  //     dispatch(toggleModal());
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <>
@@ -128,12 +142,11 @@ export default function AddTransaction() {
             {values.type === 'expense' ? (
               <>
                 <CustomSelect
-                  options={categories}
+                  options={optionCategories}
                   value={values.category}
                   onChange={value => setFieldValue('category', value.value)}
                   className="Select"
                   name="category"
-                  // styles={selectStyles()}
                 />
                 <ErrorMessage name="category" component="div" />
               </>

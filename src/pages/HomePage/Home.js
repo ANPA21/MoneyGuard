@@ -79,10 +79,10 @@ const Home = () => {
       </button>
 
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
-        <Modal children={AddTransaction()} />
+        <Modal children={<AddTransaction />} />
       )}
       {modalType === 'modal/toggleEditModal' && isModalOpen && (
-        <Modal children={EditTransaction()} />
+        <Modal children={<EditTransaction />} />
       )}
     </HomeStyled>
   );

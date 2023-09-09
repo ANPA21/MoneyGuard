@@ -12,7 +12,6 @@ export default function Modal({ children }) {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
-        console.log({ children });
         dispatch(toggleModal());
       }
     };
@@ -21,7 +20,7 @@ export default function Modal({ children }) {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [dispatch, children]);
+  }, [dispatch]);
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
@@ -49,9 +48,6 @@ export default function Modal({ children }) {
             <path d="M1 1L17 17" stroke="#FBFBFB" />
             <path d="M1 17L17 0.999999" stroke="#FBFBFB" />
           </svg>
-          {/* <svg width="16px" height="16px">
-            <use href="../icons/close.svg" />
-          </svg> */}
         </ButtonClose>
         {children}
         <CancelBtn type="button" name="cancel" onClick={closeClick}>
