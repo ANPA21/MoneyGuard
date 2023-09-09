@@ -70,20 +70,21 @@ const Home = () => {
       </ul>
 
       {/* <div>Кнопки пагинации Prev - Next</div> */}
-      <button className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button>
       <button
-        className="deleteItem"
+        className="addItem"
         type="button"
         onClick={() => dispatch(toggleAddModal())}
       >
         +
       </button>
+
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
         <Modal children={AddTransaction()} />
       )}
       {modalType === 'modal/toggleEditModal' && isModalOpen && (
         <Modal children={EditTransaction()} />
       )}
+    </HomeStyled>
   );
 };
 
