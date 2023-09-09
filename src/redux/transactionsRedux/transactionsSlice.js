@@ -5,8 +5,8 @@ import { persistReducer } from 'redux-persist';
 import {
   fetchTransactions,
   deleteItem,
-  addItem,
   editItem,
+  addTransaction,
 } from './transactionsOperations';
 
 export const transactionSlice = createSlice({
@@ -45,15 +45,15 @@ export const transactionSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(addItem.pending, state => {
+      .addCase(addTransaction.pending, state => {
         state.isLoading = true;
       })
-      .addCase(addItem.fulfilled, (state, action) => {
+      .addCase(addTransaction.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.transactions.push(action.payload);
       })
-      .addCase(addItem.rejected, (state, action) => {
+      .addCase(addTransaction.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })

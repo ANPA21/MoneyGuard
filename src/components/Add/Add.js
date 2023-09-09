@@ -16,13 +16,13 @@ import {
   StyledSelect,
 } from './Add.styled';
 import { useDispatch } from 'react-redux';
-import { addTransaction } from 'redux/transactions/operations';
 import { toggleModal } from 'redux/modal/ModalSlice';
 import { CustomSwitch } from 'components/CustomElements/CustomSwitch';
 // import { getCategoryState } from 'redux/transactions/selectors';
 // import { fetchCategories } from 'redux/categories/operations';
 import { VscChevronDown, VscChevronUp } from 'react-icons/vsc';
 import { components } from 'react-select';
+import { addTransaction } from 'redux/transactionsRedux/transactionsOperations';
 
 const addSchema = object({
   value: number().positive().required('Amount is required'),

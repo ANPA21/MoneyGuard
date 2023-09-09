@@ -12,7 +12,7 @@ import {
 import { modalReducer } from './modal/ModalSlice';
 import { PersistedCurrencyReducer } from './currencyReducer/currencySlice';
 import { PersistedAuthReducer } from './authReducer/slice';
-import { transactionReducer } from './transactions/transactionSlice';
+import { PersistedTransactionReducer } from './transactionsRedux/transactionsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -20,7 +20,7 @@ export const store = configureStore({
     // transactions: PersistedTransactionReducer,
     modal: modalReducer,
     currency: PersistedCurrencyReducer,
-    transactions: transactionReducer,
+    transactions: PersistedTransactionReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
