@@ -1,5 +1,4 @@
 import { Formik, ErrorMessage, Field } from 'formik';
-// import 'react-xdatepicker/dist/react-datepicker.css';
 import { object, string, number } from 'yup';
 import {
   AddBtn,
@@ -10,14 +9,16 @@ import {
   StyledLabel,
   StyledSum,
   StyledComment,
-  // StyledCategory,
-  // StyledDatePicker,
   Label,
-} from '../Add/Add.styled';
+} from '../Edit/Edit.styled.js';
+import { forwardRef, useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios';
 import { toggleModal } from 'redux/modal/ModalSlice';
-
+import { CustomSelect } from 'components/Add/SelectCategory/SelectCategory.js';
+import { CustomSwitch } from 'components/CustomElements/CustomSwitch/CustomSwitch.js';
+import { RiCalendar2Fill } from 'react-icons/ri';
 // import { getCategoryState } from 'redux/transactions/selectors';
 //!В комменты что бы не ругалась проверка
 import { useDispatch } from 'react-redux';
@@ -37,10 +38,45 @@ const initialValues = {
   comment: '',
 };
 
+const CustomInput = forwardRef(({ value, onClick }, ref) => (
+  <>
+    <button type="button" className="custom-input" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+    <RiCalendar2Fill className="date-icon" onClick={onClick} />
+  </>
+));
+
 export default function EditTransaction() {
   const dispatch = useDispatch();
 
-  // const categories = useSelector(getCategoryState);
+  const [categories, setCategories] = useState(() => {
+    return JSON.parse(window.localStorage.getItem('categories')) ?? [];
+  });
+
+  const getCategories = async () => {
+    try {
+      const response = await axios.get(`/transactions/categories`);
+      setCategories(response.data);
+    } catch (error) {
+      return error.message;
+    }
+  };
+
+  useEffect(() => {
+    if (categories.length === 0) {
+      getCategories();
+    }
+
+    localStorage.setItem('categories', JSON.stringify(categories));
+  }, [categories]);
+
+  const optionCategories = categories.map(category => {
+    return {
+      value: category,
+      label: category,
+    };
+  });
 
   const handleSubmit = (values, { resetForm }) => {
     const { type, category, value, date, comment } = values;
@@ -55,7 +91,6 @@ export default function EditTransaction() {
   return (
     <>
       <AddTitle>Edit transaction</AddTitle>
-
       <Formik
         initialValues={initialValues}
         validationSchema={addSchema}
@@ -64,20 +99,26 @@ export default function EditTransaction() {
         {({ values, setFieldValue, validate }) => (
           <StyledForm autoComplete="off">
             <SwitcherWrapper>
-              <label>
-                <Field type="radio" name="type" value="income" />
-                Income
-              </label>
-              <label>
-                <Field type="radio" name="type" value="expense" />
-                Expense
-              </label>
+              <CustomSwitch
+                checked={values.type === 'expense'}
+                onChange={isChecked => {
+                  setFieldValue('type', isChecked ? 'expense' : 'income');
+                }}
+              />
             </SwitcherWrapper>
-            {values.type === 'expense' && (
-              <Wrapper>
-                <Field name="category" type="text" />
+            {values.type === 'expense' ? (
+              <>
+                <CustomSelect
+                  options={optionCategories}
+                  value={values.category}
+                  onChange={value => setFieldValue('category', value.value)}
+                  className="Select"
+                  name="category"
+                />
                 <ErrorMessage name="category" component="div" />
-              </Wrapper>
+              </>
+            ) : (
+              (values.category = '')
             )}
             <Wrapper>
               <Label>
@@ -88,13 +129,13 @@ export default function EditTransaction() {
                 <Field name="date" validate={validate}>
                   {({ field, form, meta }) => (
                     <DatePicker
-                      showIcon
                       name="date"
                       dateFormat="dd.MM.yyyy"
                       minDate={new Date()}
                       selected={values.date || null}
                       onChange={date => setFieldValue('date', date)}
                       shouldCloseOnSelect={true}
+                      customInput={<CustomInput />}
                     />
                   )}
                 </Field>

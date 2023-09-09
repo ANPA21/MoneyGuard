@@ -24,7 +24,7 @@ export const Overlay = styled.div`
 export const ModalWindow = styled.div`
   width: 100%;
   height: 100%;
-  background: radial-gradient(#3f2e96, #5f478c);
+  background: radial-gradient(circle at center, #734aef, #623f8b);
   position: relative;
   display: flex;
   flex-direction: column;
