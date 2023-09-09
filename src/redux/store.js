@@ -13,6 +13,7 @@ import { PersistedCurrencyReducer } from './currencyReducer/currencySlice';
 import { PersistedAuthReducer } from './authReducer/slice';
 import balanceReducer from './balance/balance.Slice';
 import { PersistedTransactionReducer } from './transactionsRedux/transactionsSlice';
+import { PersistedStatisticsReducer } from './statistics/statisticsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
     currency: PersistedCurrencyReducer,
     balance: balanceReducer,
     transactions: PersistedTransactionReducer,
+    statistics: PersistedStatisticsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
