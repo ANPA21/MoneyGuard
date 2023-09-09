@@ -15,7 +15,7 @@ import {
 } from './Add.styled';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/ModalSlice';
-import { CustomSwitch } from 'components/CustomElements/CustomSwitch';
+import { CustomSwitch } from 'components/CustomElements/CustomSwitch/CustomSwitch';
 // import { getCategoryState } from 'redux/transactions/selectors';
 // import { fetchCategories } from 'redux/categories/operations';
 import { addTransaction } from 'redux/transactionsRedux/transactionsOperations';
@@ -24,7 +24,6 @@ import { CustomSelect } from './SelectCategory/SelectCategory';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { forwardRef } from 'react';
-
 const addSchema = object({
   value: number().positive().required('Amount is required'),
   comment: string()
@@ -45,15 +44,13 @@ const addSchema = object({
       'Entertainment',
     ]),
 });
-
 const initialValues = {
-  type: '',
+  type: 'expense',
   category: '',
   value: '',
   date: new Date(),
   comment: '',
 };
-
 const categories = [
   { value: 'Main expenses', label: 'Main expenses' },
   { value: 'Products', label: 'Products' },
@@ -66,7 +63,6 @@ const categories = [
   { value: 'Other expenses', label: 'Other expenses' },
   { value: 'Entertainment', label: 'Entertainment' },
 ];
-
 const CustomInput = forwardRef(({ value, onClick }, ref) => (
   <>
     <button type="button" className="custom-input" onClick={onClick} ref={ref}>
@@ -75,31 +71,25 @@ const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <RiCalendar2Fill className="date-icon" onClick={onClick} />
   </>
 ));
-
 export default function AddTransaction() {
   const dispatch = useDispatch();
-
   // const categories = useSelector(getCategoryState);
   // console.log(categories);
-
   // useEffect(() => {
   //   console.log(categories);
   //   if (categories.length === 0) {
   //     dispatch(fetchCategories());
   //   }
   // }, [dispatch]);
-
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     dispatch(addTransaction(values));
     resetForm();
     dispatch(toggleModal());
   };
-
   return (
     <>
       <AddTitle>Add transaction</AddTitle>
-
       <Formik
         initialValues={initialValues}
         validationSchema={addSchema}
@@ -107,23 +97,13 @@ export default function AddTransaction() {
       >
         {({ values, setFieldValue, validate, ...props }) => (
           <StyledForm autoComplete="off">
-            <SwitcherWrapper className="custom-switch">
+            <SwitcherWrapper>
               <CustomSwitch
-                checked={values.type === 'income'}
-                onChange={isChecked => {
-                  setFieldValue('type', isChecked ? 'income' : 'expense');
-                }}
-              />
-              {/* <span>Income</span>
-              <Switch
-                name="transaction"
-                value="expense"
                 checked={values.type === 'expense'}
-                onChange={(event, checked) => {
-                  setFieldValue('type', checked ? 'expense' : 'income');
+                onChange={isChecked => {
+                  setFieldValue('type', isChecked ? 'expense' : 'income');
                 }}
               />
-              <span>Expense</span> */}
             </SwitcherWrapper>
             {values.type === 'expense' ? (
               <>
@@ -161,7 +141,6 @@ export default function AddTransaction() {
                 </Field>
               </Label>
             </Wrapper>
-
             <StyledLabel>
               <StyledComment
                 type="textarea"
@@ -170,7 +149,6 @@ export default function AddTransaction() {
               />
               <ErrorMessage name="comment" component="div" />
             </StyledLabel>
-
             <AddBtn type="submit">Add</AddBtn>
           </StyledForm>
         )}
