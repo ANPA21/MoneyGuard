@@ -4,7 +4,6 @@ import moderNormalize from 'modern-normalize';
 const GlobalStyles = createGlobalStyle`
 ${moderNormalize}
 
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
