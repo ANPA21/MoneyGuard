@@ -14,10 +14,11 @@ import {
   StyledDatePicker,
   Label,
 } from '../Add/Add.styled';
+import { toggleModal } from 'redux/modal/ModalSlice';
 
 // import { getCategoryState } from 'redux/transactions/selectors';
 //!В комменты что бы не ругалась проверка
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { addTransaction } from 'redux/transactions/operations';
 
 const addSchema = object({
@@ -35,7 +36,7 @@ const initialValues = {
 };
 
 export default function EditTransaction() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // const categories = useSelector(getCategoryState);
 
@@ -45,6 +46,7 @@ export default function EditTransaction() {
     // Второй консоль лог для того что бы проверка не ругалась, когда все настроим, удалим
     console.log(type, category, value, date, comment);
     // dispatch(addTransaction(type, category, value, date, comment));
+    dispatch(toggleModal());
     // resetForm();
   };
 

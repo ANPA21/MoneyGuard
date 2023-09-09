@@ -11,20 +11,71 @@ import {
   StyledLabel,
   StyledSum,
   StyledComment,
-  // StyledCategory,
   StyledDatePicker,
   Label,
+  StyledSelect,
 } from './Add.styled';
 import { useDispatch } from 'react-redux';
-import { addTransaction } from 'redux/transactions/operations';
+import { toggleModal } from 'redux/modal/ModalSlice';
 import { CustomSwitch } from 'components/CustomElements/CustomSwitch';
 // import { getCategoryState } from 'redux/transactions/selectors';
+// import { fetchCategories } from 'redux/categories/operations';
+import { VscChevronDown, VscChevronUp } from 'react-icons/vsc';
+import { components } from 'react-select';
+import { addTransaction } from 'redux/transactionsRedux/transactionsOperations';
 
 const addSchema = object({
   value: number().positive().required('Amount is required'),
   comment: string().max(30, 'Maximum must be 30 characters'),
-  category: string().min(3),
+  category: string()
+    .min(3)
+    .oneOf([
+      'Main expenses',
+      'Products',
+      'Car',
+      'Self care',
+      'Child care',
+      'Household products',
+      'Education',
+      'Leisure',
+      'Other expenses',
+      'Entertainment',
+    ]),
 });
+
+const DropdownIndicator = props => {
+  if (props.isFocused) {
+    return (
+      <components.DropdownIndicator {...props}>
+        <VscChevronUp />
+      </components.DropdownIndicator>
+    );
+  }
+  return (
+    <components.DropdownIndicator {...props}>
+      <VscChevronDown />
+    </components.DropdownIndicator>
+  );
+};
+
+const CustomSelect = ({ onChange, options, value, className }) => {
+  const defaultValue = (options, value) => {
+    return options ? options.find(option => option.value === value) : '';
+  };
+
+  return (
+    <div className={className}>
+      <StyledSelect
+        value={defaultValue(options, value)}
+        placeholder="Select a category"
+        components={{ DropdownIndicator }}
+        onChange={value => onChange(value)}
+        options={options}
+        classNamePrefix="Select"
+      />
+    </div>
+  );
+};
 
 const initialValues = {
   type: 'expense',
@@ -34,15 +85,37 @@ const initialValues = {
   comment: '',
 };
 
+const categories = [
+  { value: 'Main expenses', label: 'Main expenses' },
+  { value: 'Products', label: 'Products' },
+  { value: 'Car', label: 'Car' },
+  { value: 'Self care', label: 'Self care' },
+  { value: 'Child care', label: 'Child care' },
+  { value: 'Household products', label: 'Household products' },
+  { value: 'Education', label: 'Education' },
+  { value: 'Leisure', label: 'Leisure' },
+  { value: 'Other expenses', label: 'Other expenses' },
+  { value: 'Entertainment', label: 'Entertainment' },
+];
+
 export default function AddTransaction() {
   const dispatch = useDispatch();
 
   // const categories = useSelector(getCategoryState);
+  // console.log(categories);
+
+  // useEffect(() => {
+  //   console.log(categories);
+  //   if (categories.length === 0) {
+  //     dispatch(fetchCategories());
+  //   }
+  // }, [dispatch]);
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     dispatch(addTransaction(values));
     resetForm();
+    dispatch(toggleModal());
   };
 
   return (
@@ -54,7 +127,7 @@ export default function AddTransaction() {
         validationSchema={addSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, setFieldValue, validate }) => (
+        {({ values, setFieldValue, validate, ...props }) => (
           <StyledForm autoComplete="off">
             <SwitcherWrapper className="custom-switch">
               <CustomSwitch
@@ -71,33 +144,20 @@ export default function AddTransaction() {
                 onChange={(event, checked) => {
                   setFieldValue('type', checked ? 'expense' : 'income');
                 }}
-                width="80px"
-                height="40px"
-                handleDiameter={44}
-                onHandleColor="#FF6596"
-                offHandleColor="#24cca7"
-                onColor="#fff"
-                offColor="#fff"
               />
               <span>Expense</span> */}
             </SwitcherWrapper>
             {values.type === 'expense' ? (
-              <Wrapper>
-                <Field name="category" as="select">
-                  <option key="default" defaultValue hidden>
-                    Select a category
-                  </option>
-                  <option key="1" value="Car">
-                    Car
-                  </option>
-                  {/* {categories.map((category,index) => (
-                  <option key={index} value={category}>
-                    {category}
-                  </option>
-                ))} */}
-                </Field>
+              <>
+                <CustomSelect
+                  options={categories}
+                  value={values.category}
+                  onChange={value => setFieldValue('category', value.value)}
+                  className="Select"
+                  // styles={selectStyles()}
+                />
                 <ErrorMessage name="category" component="div" />
-              </Wrapper>
+              </>
             ) : (
               (values.category = '')
             )}

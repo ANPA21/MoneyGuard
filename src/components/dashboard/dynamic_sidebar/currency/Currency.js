@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
-import { selectCurrency } from 'redux/currencyRedux/currencySelectors';
 import { CurrencyStyled } from './Currency.styled';
-
+import { selectCurrency } from 'redux/currencyReducer/currencySelectors';
+import { fetchCurrency } from 'redux/currencyReducer/currencyOperations';
 const { useDispatch, useSelector } = require('react-redux');
-const { fetchCurrency } = require('redux/currencyRedux/currencyOperations');
-
 export const Currency = () => {
   const dispatch = useDispatch();
 
