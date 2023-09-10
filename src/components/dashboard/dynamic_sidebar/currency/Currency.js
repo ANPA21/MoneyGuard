@@ -14,7 +14,7 @@ export const Currency = () => {
   const currency = useSelector(selectCurrency);
   return (
     <div>
-      {currency === null ? (
+      {!currency ? (
         <SpinnerLoader />
       ) : (
         <div>
