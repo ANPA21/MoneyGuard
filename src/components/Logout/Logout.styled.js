@@ -18,7 +18,6 @@ export const LogoutBtn = styled.button`
   border-radius: 20px;
   line-height: 1.5;
   font-size: 18px;
-  font-family: Poppins;
   color: rgba(251, 251, 251, 1);
   text-transform: uppercase;
   letter-spacing: 1.8px;
@@ -27,15 +26,13 @@ export const LogoutBtn = styled.button`
 
 export const LogoTitle = styled.h3`
   margin-bottom: 52px;
-  color: #fbfbfb;
+  color: var(--white);
   font-size: 27px;
   font-weight: 400;
   line-height: 1.5;
-  font: Poppins;
 `;
 
 export const Text = styled.p`
-  font: Poppins;
   font-size: 18px;
   line-height: 1.5;
   color: #ffffff;

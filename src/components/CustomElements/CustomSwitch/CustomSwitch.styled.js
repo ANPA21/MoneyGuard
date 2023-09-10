@@ -4,7 +4,7 @@ export const SwitchContainer = styled.div`
   position: relative;
   width: 80px;
   height: 40px;
-  background-color: white;
+  background-color: var(--white);
   border-radius: 30px;
   cursor: pointer;
 `;
@@ -13,12 +13,14 @@ export const Text = styled.span`
   position: absolute;
   right: 100px;
   font-weight: 600;
-  color: ${({ checked }) => (checked ? 'rgba(255, 255, 255, 0.60)' : '#FFB627')};
+  color: ${({ checked }) =>
+    checked ? 'rgba(255, 255, 255, 0.60)' : 'var(--yellow)'};
 `;
 
 export const TextExpense = styled(Text)`
   left: 100px;
-  color: ${({ checked }) => (checked ? '#FF868D' : 'rgba(255, 255, 255, 0.60)')};
+  color: ${({ checked }) =>
+    checked ? '#FF868D' : 'rgba(255, 255, 255, 0.60)'};
 `;
 
 export const Slider = styled.div`
@@ -28,7 +30,7 @@ export const Slider = styled.div`
     `translateY(-50%) translateX(${checked ? '40px' : '0'})`};
   width: 44px;
   height: 44px;
-  background-color: ${({ checked }) => (checked ? '#FF868D' : '#FFB627')};
+  background-color: ${({ checked }) => (checked ? '#FF868D' : 'var(--yellow)')};
   box-shadow: ${({ checked }) =>
     checked
       ? '0px 6px 15px 0px rgba(255, 134, 141, 0.50)'
@@ -43,7 +45,7 @@ export const Plus = styled.div`
   position: absolute;
   width: 20px;
   height: 2px;
-  background-color: white;
+  background-color: var(--white);
   top: 50%;
   left: 50%;
   transform: ${({ checked }) =>
@@ -56,7 +58,7 @@ export const Minus = styled.div`
   position: absolute;
   width: 20px;
   height: 2px;
-  background-color: white;
+  background-color: var(--white);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(0deg);

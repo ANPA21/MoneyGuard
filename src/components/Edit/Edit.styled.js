@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Form, Field } from 'formik';
-
 import Select from 'react-select';
 
 export const AddTitle = styled.h2`
@@ -9,9 +8,9 @@ export const AddTitle = styled.h2`
   font-weight: 400;
   font-size: 24px;
   line-height: 1.5;
-  color: #fbfbfb;
+  color: var(--white);
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     margin-bottom: 41px;
     font-size: 30px;
   }
@@ -63,7 +62,6 @@ export const StyledForm = styled(Form)`
     width: 181px;
     background-color: transparent;
     border: none;
-    font-family: 'Poppins';
     line-height: 1.5;
     font-size: 18px;
     font-weight: 400;
@@ -84,7 +82,7 @@ export const StyledForm = styled(Form)`
     right: 12px;
     width: 24px;
     height: 24px;
-    fill: #734aef;
+    fill: var(--purple);
   }
 `;
 
@@ -108,7 +106,6 @@ export const StyledSum = styled(Field)`
     font-size: 18px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.6);
-    // padding: 0 8px;
   }
 
   &:focus {
@@ -231,6 +228,7 @@ export const SwitcherWrapper = styled.label`
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 42px;
 `;
+
 export const Label = styled.label`
   width: 181px;
   &:not(:last-child) {
@@ -244,7 +242,7 @@ export const Wrapper = styled.div`
   align-items: baseline;
   width: 100%;
 
-  @media (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     flex-direction: column;
   }
 `;
