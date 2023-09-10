@@ -46,6 +46,7 @@ export const logIn = createAsyncThunk(
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.token);
       return response.data;
+
     } catch (error) {
       notifyError('Email does not exist or password is incorrect');
       return rejectWithValue(error.message);
