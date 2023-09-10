@@ -6,7 +6,7 @@ import { handlePending, handleRejected } from './currencyHandlers';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: [],
+  data: null,
   isLoading: false,
   error: null,
 };
