@@ -3,9 +3,9 @@ import { Table, Row, Cell } from './Currency.styled';
 import { selectCurrency } from 'redux/currencyReducer/currencySelectors';
 import { fetchCurrency } from 'redux/currencyReducer/currencyOperations';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuth } from 'hooks';
 import { selectIsLoading } from 'redux/authReducer/selectors';
 import { SpinnerLoader } from 'components/Spinner/Spinner';
+
 import chart from '../../../../images/chart/chart-tablet.png';
 export const Currency = () => {
   const dispatch = useDispatch();
@@ -37,15 +37,15 @@ export const Currency = () => {
             </Row>
             <Row>
               <Cell>USD</Cell>
-              <Cell>{currency.USD.buy}</Cell>
-              <Cell>{currency.USD.sale}</Cell>
+              <Cell>{currency.USD.buy.toFixed(2)}</Cell>
+              <Cell>{currency.USD.sale.toFixed(2)}</Cell>
               <Cell></Cell>
               <Cell></Cell>
             </Row>
             <Row>
               <Cell>EUR</Cell>
-              <Cell>{currency.EUR.buy}</Cell>
-              <Cell>{currency.EUR.sale}</Cell>
+              <Cell>{currency.EUR.buy.toFixed(2)}</Cell>
+              <Cell>{currency.EUR.sale.toFixed(2)}</Cell>
               <Cell></Cell>
               <Cell></Cell>
             </Row>
