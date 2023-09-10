@@ -56,7 +56,6 @@ const initialValues = {
   comment: '',
 };
 
-
 const CustomInput = forwardRef(({ value, onClick }, ref) => (
   <>
     <button type="button" className="custom-input" onClick={onClick} ref={ref}>
@@ -65,6 +64,7 @@ const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <RiCalendar2Fill className="date-icon" onClick={onClick} />
   </>
 ));
+
 export default function AddTransaction() {
   const dispatch = useDispatch();
   // const error = useSelector(selectError);
@@ -96,7 +96,7 @@ export default function AddTransaction() {
       label: category,
     };
   });
-  
+
   const handleSubmit = (values, { resetForm }) => {
     dispatch(addTransaction(values));
     resetForm();
@@ -112,7 +112,6 @@ export default function AddTransaction() {
   //     console.error(error);
   //   }
   // };
-
 
   return (
     <>
