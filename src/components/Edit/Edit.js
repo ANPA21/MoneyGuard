@@ -142,7 +142,7 @@ export default function EditTransaction({ id }) {
                     <DatePicker
                       name="date"
                       dateFormat="dd.MM.yyyy"
-                      minDate={new Date()}
+                      maxDate={new Date()}
                       selected={values.date || null}
                       onChange={date => setFieldValue('date', date)}
                       shouldCloseOnSelect={true}
