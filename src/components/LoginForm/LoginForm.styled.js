@@ -46,6 +46,12 @@ export const IconStyled = styled.div`
   fill: rgba(255, 255, 255, 0.6);
 `;
 
+export const ErrorMessageStyled = styled.span`
+  color: #cb1a1a; 
+  font-size: 14px;
+  margin-top: 2px; 
+`;
+
 export const InputStyled = styled(Field)`
   width: 100%;
   background-color: transparent !important;

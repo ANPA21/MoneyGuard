@@ -28,12 +28,24 @@ const ValidationSchema = Yup.object().shape({
 const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    dispatch(logIn(values));
-    resetForm();
-    toast.success(`You have successfully logged in.`);
+  const handleSubmit = async (values, { resetForm }) => {
+    const name = values.email.split('@')[0];
+    const formData = {
+      email: values.email.trim(),
+      password: values.password.trim(),
+    };
 
-    console.log('Успешный вход в систему');
+    const result = await dispatch(logIn(formData));
+    if (result.error) {
+      toast.error('Login failed. Please check your credentials.', {
+        autoClose: 1200,
+      });
+    } else {
+      toast.success(`You have successfully logged in ${name}.`, {
+        autoClose: 1200,
+      });
+      resetForm();
+    }
   };
 
   return (
