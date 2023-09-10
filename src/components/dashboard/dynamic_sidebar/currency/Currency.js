@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Table, Row, Cell } from './Currency.styled';
 import { selectCurrency } from 'redux/currencyReducer/currencySelectors';
 import { fetchCurrency } from 'redux/currencyReducer/currencyOperations';
-const { useDispatch, useSelector } = require('react-redux');
+import { useDispatch, useSelector } from 'react-redux';
+
 export const Currency = () => {
   const dispatch = useDispatch();
 
@@ -19,7 +20,9 @@ export const Currency = () => {
     }
     dispatch(fetchCurrency());
   }, [dispatch]);
+
   const currency = useSelector(selectCurrency);
+
   return (
     <div>
       <Table>
@@ -30,13 +33,13 @@ export const Currency = () => {
         </Row>
         <Row>
           <Cell>USD</Cell>
-          <Cell>{currency.USD}</Cell>
-          <Cell>{currency.USD}</Cell>
+          <Cell>{currency.USD?.buy.toFixed(2)}</Cell>
+          <Cell>{currency.USD?.sale.toFixed(2)}</Cell>
         </Row>
         <Row>
           <Cell>EUR</Cell>
-          <Cell>{currency.EUR}</Cell>
-          <Cell>{currency.EUR}</Cell>
+          <Cell>{currency.EUR?.buy.toFixed(2)}</Cell>
+          <Cell>{currency.EUR?.sale.toFixed(2)}</Cell>
         </Row>
         {/* Add more rows if needed */}
       </Table>
