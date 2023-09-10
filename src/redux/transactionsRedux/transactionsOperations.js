@@ -50,7 +50,6 @@ export const addTransaction = createAsyncThunk(
 export const editItem = createAsyncThunk(
   'transactions/editItem',
   async ({ id, values }, thunkAPI) => {
-    console.log(id, values);
     try {
       if (values.type === 'income') {
         const { category, ...changedData } = values;
