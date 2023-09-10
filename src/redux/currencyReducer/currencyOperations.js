@@ -10,9 +10,15 @@ export const fetchCurrency = createAsyncThunk(
         .slice(0, 2)
         .reduce((result, currency) => {
           if (currency.currencyCodeA === 840) {
-            result.USD = currency.rateBuy;
-          } else {
-            result.EUR = currency.rateBuy;
+            result.USD = {
+              buy: currency.rateBuy,
+              sale: currency.rateSell,
+            };
+          } else if (currency.currencyCodeA === 978) {
+            result.EUR = {
+              buy: currency.rateBuy,
+              sale: currency.rateSell,
+            };
           }
           return result;
         }, {});
