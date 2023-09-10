@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { toggleLogOutModal } from 'redux/modal/ModalSlice';
 import Modal from '../../Modal/Modal';
@@ -8,7 +9,7 @@ import {
   HeaderDiv,
   Box,
   ExitButton,
-  ExitIcon,
+  ExitOutline,
   ExitText,
   HeaderContainer,
   Logo,
@@ -17,12 +18,13 @@ import {
   Name,
   Stick,
 } from './Header.styled';
-import exitLogo from '../../../icons/exit-logo.svg';
+
 import mainLogo from '../../../icons/logo.svg';
 import { selectUser } from '../../../redux/authReducer/selectors';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 
 export const Header = () => {
+  const navigate = useNavigate();
   const { useDispatch, useSelector } = require('react-redux');
   const dispatch = useDispatch();
 
@@ -33,18 +35,16 @@ export const Header = () => {
   const user = useSelector(selectUser);
   const username = user.email ? user.email.split('@')[0] : '';
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+  const goToHome = () => {
+    navigate('/home');
   };
+
 
   return (
     <Div>
       <HeaderContainer>
         <HeaderDiv>
-          <LogoBox onClick={scrollToTop} ref={buttonRef}>
+          <LogoBox onClick={goToHome} ref={buttonRef}>
             <Logo src={mainLogo} alt="logo" />
             <LogoName>Money Guard</LogoName>
           </LogoBox>
@@ -56,7 +56,8 @@ export const Header = () => {
               type="button"
               onClick={() => dispatch(toggleLogOutModal())}
             >
-              <ExitIcon src={exitLogo} alt="exitLogo" />
+
+              <ExitOutline />
               <ExitText>Exit</ExitText>
             </ExitButton>
           </Box>
