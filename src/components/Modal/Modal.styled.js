@@ -16,7 +16,7 @@ export const Overlay = styled.div`
   opacity: 1;
   visibility: visible;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 60px 0px;
   }
 `;
@@ -28,12 +28,12 @@ export const ModalWindow = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, #734aef, #623f8b);
+  background: radial-gradient(circle at center, var(--purple), #623f8b);
   border-radius: 8px;
   position: relative;
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
 
-  @media (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     width: 100%;
     height: 100%;
     border-radius: 0px;
@@ -55,7 +55,7 @@ export const ButtonClose = styled.button`
   cursor: pointer;
   display: none;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     display: block;
   }
 `;
