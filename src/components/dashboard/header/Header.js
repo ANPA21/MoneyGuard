@@ -1,33 +1,37 @@
-
 import React, { useRef } from 'react';
-import { getModalState } from 'redux/transactions/selectors';
 
 import { toggleLogOutModal } from 'redux/modal/ModalSlice';
-import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import Modal from '../../Modal/Modal';
 import Logout from '../../Logout/Logout';
 import {
-  Div, HeaderDiv, Box, ExitButton, ExitIcon, ExitText, HeaderContainer, Logo, LogoBox, LogoName,
+  Div,
+  HeaderDiv,
+  Box,
+  ExitButton,
+  ExitIcon,
+  ExitText,
+  HeaderContainer,
+  Logo,
+  LogoBox,
+  LogoName,
   Name,
-  Stick
+  Stick,
 } from './Header.styled';
-import exitLogo from "../../../icons/exit-logo.svg"
-import mainLogo from "../../../icons/logo.svg"
+import exitLogo from '../../../icons/exit-logo.svg';
+import mainLogo from '../../../icons/logo.svg';
 import { selectUser } from '../../../redux/authReducer/selectors';
+import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 
 export const Header = () => {
-  const {
-    useDispatch,
-    useSelector } = require('react-redux');
+  const { useDispatch, useSelector } = require('react-redux');
   const dispatch = useDispatch();
 
-  const modalType = useSelector(getModalTypeState);
-  const isModalOpen = useSelector(getModalState);
+  const modalType = useSelector(selectModalTypeState);
+  const isModalOpen = useSelector(selectModalState);
   const buttonRef = useRef(null);
 
   const user = useSelector(selectUser);
   const username = user.email ? user.email.split('@')[0] : '';
-
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -35,7 +39,6 @@ export const Header = () => {
       behavior: 'smooth',
     });
   };
-
 
   return (
     <Div>
@@ -48,14 +51,17 @@ export const Header = () => {
           <Box>
             <Name>{username}</Name>
             <Stick />
-            <ExitButton id="exit" type="button" onClick={() => dispatch(toggleLogOutModal())}>
+            <ExitButton
+              id="exit"
+              type="button"
+              onClick={() => dispatch(toggleLogOutModal())}
+            >
               <ExitIcon src={exitLogo} alt="exitLogo" />
               <ExitText>Exit</ExitText>
             </ExitButton>
           </Box>
         </HeaderDiv>
       </HeaderContainer>
-
 
       {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
         <Modal children={<Logout />} />

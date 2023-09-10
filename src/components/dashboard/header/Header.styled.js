@@ -1,12 +1,12 @@
-
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-background: linear-gradient(270deg, #2E1746 3.2%, #2E225F 99.98%);
-box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25), 0px -3px 2px 0px rgba(0, 0, 0, 0.10) inset;
-
+  background: linear-gradient(270deg, #2e1746 3.2%, #2e225f 99.98%);
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25),
+    0px -3px 2px 0px rgba(0, 0, 0, 0.1) inset;
 `;
 export const Div = styled.div`
+  width: 100%;
 `;
 
 export const HeaderDiv = styled(Div)`
@@ -15,34 +15,32 @@ export const HeaderDiv = styled(Div)`
   justify-content: space-between;
   height: 80px;
 
-    @media (max-width: 767px) {
-      width: calc(100% - 40px);
-      padding: 0 20px;
-      margin: 0 auto;
-      height: 60px;
-
-    }
-    @media screen and (min-width: 320px){
+  @media (max-width: 767px) {
+    width: calc(100% - 40px);
+    padding: 0 20px;
+    margin: 0 auto;
+    height: 60px;
+  }
+  @media screen and (min-width: 320px) {
     width: 320px;
   }
 
-
-   @media screen and (min-width: 768px) and (max-width: 1279.5px) {
+  @media screen and (min-width: 768px) and (max-width: 1279.5px) {
     padding: 0 32px;
     width: 704px;
     margin: 0 auto;
     justify-content: space-between;
-   }
+  }
 
-    @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     padding: 0 16px;
     width: 1244px;
-    margin: 0 auto
-    }
+    margin: 0 auto;
+  }
 `;
 
 export const LogoBox = styled.button`
-  padding:16px 16px 16px 0;
+  padding: 16px 16px 16px 0;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -61,38 +59,37 @@ export const Logo = styled.img`
 `;
 
 export const LogoName = styled.span`
-    color: #FBFBFB;
-    font-size: 12px;
+  color: #fbfbfb;
+  font-size: 12px;
 `;
 
 export const Box = styled.div`
-
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   @media screen and (max-width: 767px) {
     margin-left: auto;
   }
 `;
 
 export const Name = styled.p`
-  color: rgba(255, 255, 255, 0.60);
-    text-align: right;
-    font-size: 16px;
-    margin: 0;
-    margin-right: 12px;
-        @media (max-width: 767px) {
-      margin-right: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+  font-size: 16px;
+  margin: 0;
+  margin-right: 12px;
+  @media (max-width: 767px) {
+    margin-right: 8px;
   }
 `;
 
 export const Stick = styled.div`
   height: 30px;
   width: 1px;
-  background-color: rgba(255, 255, 255, 0.60);
+  background-color: rgba(255, 255, 255, 0.6);
   margin-right: 12px;
- @media (max-width: 767px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;
@@ -112,15 +109,15 @@ export const ExitButton = styled.button`
     transform: scale(1.1);
   }
 
-   @media screen and (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     padding: 28px 0;
     width: 18px;
     height: 18px;
   }
 
   @media screen and (min-width: 768px) {
-     width: 50px;}
-  
+    width: 50px;
+  }
 `;
 
 export const ExitIcon = styled.img`
@@ -128,16 +125,14 @@ export const ExitIcon = styled.img`
   height: 18px;
 
   @media screen and (min-width: 768px) {
-
-  margin-right: 8px;
+    margin-right: 8px;
   }
 `;
 
 export const ExitText = styled.p`
-    color:rgba(255, 255, 255, 0.60);
-    text-align: right;
-    @media (max-width: 767px) {
-    display:none;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+  @media (max-width: 767px) {
+    display: none;
   }
 `;
-
