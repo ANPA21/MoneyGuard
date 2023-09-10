@@ -28,7 +28,6 @@ const Home = () => {
   }, [dispatch, fetchTransactions]);
 
   const transactions = useSelector(selectorTransactions);
-  console.log(transactions);
 
   return (
     <HomeStyled>
@@ -86,7 +85,7 @@ const Home = () => {
         <Modal children={<EditTransaction />} />
       )}
       {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
-        <Modal children={Logout()} showCloseIcon={false} />
+        <Modal children={<Logout />} showCloseIcon={false} />
       )}
     </HomeStyled>
   );
