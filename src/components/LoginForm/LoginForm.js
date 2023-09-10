@@ -18,10 +18,7 @@ import { LogotipStyled } from 'components/RegisterForm/RegisterForm.styled';
 
 const ValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
-  password: Yup.string()
-    .min(6, 'Must be at least 6 characters')
-    .max(12, 'Must be 12 characters or less')
-    .required('Required'),
+  password: Yup.string().required('Required'),
 });
 
 const LoginForm = () => {
