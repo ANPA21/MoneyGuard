@@ -16,8 +16,6 @@ import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/ModalSlice';
 
 import { CustomSwitch } from 'components/CustomElements/CustomSwitch/CustomSwitch';
-// import { getCategoryState } from 'redux/transactions/selectors';
-// import { fetchCategories } from 'redux/categories/operations';
 import { addTransaction } from 'redux/transactionsRedux/transactionsOperations';
 import { RiCalendar2Fill } from 'react-icons/ri';
 import { CustomSelect } from './SelectCategory/SelectCategory';
@@ -156,7 +154,7 @@ export default function AddTransaction() {
                     <DatePicker
                       name="date"
                       dateFormat="dd.MM.yyyy"
-                      minDate={new Date()}
+                      maxDate={new Date()}
                       selected={values.date || null}
                       onChange={date => setFieldValue('date', date)}
                       shouldCloseOnSelect={true}

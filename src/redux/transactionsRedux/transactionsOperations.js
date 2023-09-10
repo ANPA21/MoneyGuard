@@ -54,6 +54,7 @@ export const editItem = createAsyncThunk(
       const response = await axios.put(`/transactions/${id}`, updatedData);
       return response.data;
     } catch (e) {
+      toast.error(e.response.data.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }

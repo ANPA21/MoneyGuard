@@ -7,6 +7,7 @@ import EditTransaction from '../../components/Edit/Edit';
 import Logout from '../../components/Logout/Logout';
 import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
+import { useState } from 'react';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -15,12 +16,17 @@ const Home = () => {
     deleteItem,
   } = require('redux/transactionsRedux/transactionsOperations');
   const dispatch = useDispatch();
-
+  const [id, setId] = useState(null);
   const modalType = useSelector(selectModalTypeState);
   const isModalOpen = useSelector(selectModalState);
 
   const deleteTransactions = id => {
     dispatch(deleteItem(id));
+  };
+
+  const handleEditClick = id => {
+    setId(id);
+    dispatch(toggleEditModal());
   };
 
   useEffect(() => {
@@ -50,10 +56,7 @@ const Home = () => {
                 <p>{category}</p>
                 <p>{comment}</p>
                 <p>{value}</p>
-                <p
-                  className="editItem"
-                  onClick={() => dispatch(toggleEditModal())}
-                >
+                <p className="editItem" onClick={() => handleEditClick(_id)}>
                   edit
                 </p>
                 <button
@@ -82,7 +85,7 @@ const Home = () => {
         <Modal children={<AddTransaction />} />
       )}
       {modalType === 'modal/toggleEditModal' && isModalOpen && (
-        <Modal children={<EditTransaction />} />
+        <Modal children={<EditTransaction id={id} />} />
       )}
       {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
         <Modal children={<Logout />} showCloseIcon={false} />
