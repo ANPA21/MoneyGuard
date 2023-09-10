@@ -16,7 +16,6 @@ export const MainContainer = styled.main`
 
 export const ContentContainer = styled.div`
   width: 400px;
-  padding: 20px;
   flex-shrink: 0;
   border-radius: 8px;
   background: var(--Form-color, rgba(255, 255, 255, 0.1));

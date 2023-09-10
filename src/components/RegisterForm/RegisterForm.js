@@ -16,6 +16,8 @@ import {
 } from 'components/LoginForm/LoginForm.styled';
 import { toast } from 'react-toastify';
 import { LogotipStyled } from './RegisterForm.styled';
+import {ProgressBar} from './ProgressBar';
+import { useState } from 'react';
 
 const ValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -30,6 +32,8 @@ const ValidationSchema = Yup.object().shape({
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
+  const [password, setPassword] = useState('');
+
 
   const handleSubmit = (values, { resetForm }) => {
     const name = values.email.split('@')[0];
@@ -57,6 +61,7 @@ const RegisterForm = () => {
       onSubmit={handleSubmit}
       autoComplete="off"
     >
+      {({ values, handleChange }) => (
       <FormStyled>
         <LogotipStyled>
           <img src={Logotip} alt="Logo MoneyGuard" width="36px" height="36px" />
@@ -90,6 +95,11 @@ const RegisterForm = () => {
               type="password"
               placeholder="Password"
               autoComplete="off"
+              value={values.password}
+              onChange={(e) => {
+                handleChange(e);
+                setPassword(e.target.value);
+              }}
             />
             <ErrorMessageStyled>
             <ErrorMessage component="span" name="password" />
@@ -109,6 +119,7 @@ const RegisterForm = () => {
                 placeholder="Confirm password"
                 autoComplete="off"
               />
+              <ProgressBar password={password} />
             </div>
             <ErrorMessageStyled>
             <ErrorMessage component="span" name="passwordConfirm" />
@@ -121,6 +132,7 @@ const RegisterForm = () => {
           Log In
         </CustomButton>
       </FormStyled>
+      )}
     </Formik>
   );
 };
