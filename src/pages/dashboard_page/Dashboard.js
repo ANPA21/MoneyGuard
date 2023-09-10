@@ -8,11 +8,10 @@ export const Dashboard = () => {
   return (
     <DashboardStyled>
       <Header />
-      <DynamicSidebar/>
+      {/* <DynamicSidebar/> */}
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
     </DashboardStyled>
   );
 };
-

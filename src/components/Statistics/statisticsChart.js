@@ -1,10 +1,18 @@
 import { Doughnut } from 'react-chartjs-2';
 import { ArcElement, Tooltip, Legend, Chart } from 'chart.js';
 import { colors } from './statiscticsColors';
+import { useSelector } from 'react-redux';
+import { selectorBalance } from 'redux/balance/balance.Selectors';
+import {
+  Balance,
+  DonutContainer,
+  DoughnutSt,
+} from './statisticsDataTable.styled';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
 const StatiscticsChart = ({ reduxData, categories }) => {
+  const balance = useSelector(selectorBalance);
   const chartData = {
     labels: categories,
     datasets: [
@@ -21,7 +29,7 @@ const StatiscticsChart = ({ reduxData, categories }) => {
   };
   const options = {
     borderRadius: 2,
-    hoverBorderWidth: 0,
+    hoverBorderWidth: 1,
     plugins: {
       legend: {
         display: false,
@@ -32,9 +40,19 @@ const StatiscticsChart = ({ reduxData, categories }) => {
     },
   };
   return (
-    <div style={{ width: '300px', height: '300px' }}>
-      <Doughnut data={chartData} options={options} />
-    </div>
+    <DonutContainer>
+      <Balance
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
+      >
+        ${reduxData.totalExpenses.toFixed(2)}
+      </Balance>
+      <DoughnutSt data={chartData} options={options} />
+    </DonutContainer>
   );
 };
 
