@@ -8,20 +8,20 @@ export const MainContainer = styled.main`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: url(${props => props.isRegister ? backRegister : backLogIn});
+  background: url(${props => (props.isRegister ? backRegister : backLogIn)});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 `;
 
 export const ContentContainer = styled.div`
-width: 400px;
-padding: 20px;
-flex-shrink: 0;
-border-radius: 8px;
-background: var(--Form-color, rgba(255, 255, 255, 0.10));
-box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-backdrop-filter: blur(50px);
+  width: 400px;
+  padding: 20px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--Form-color, rgba(255, 255, 255, 0.1));
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
 `;
 
 export const LogotipStyled = styled.div`
@@ -31,7 +31,7 @@ export const LogotipStyled = styled.div`
 
   h3 {
     margin: 0 auto 52px;
-    color: var(--white, #fbfbfb);
+    color: var(--white);
     font-size: 19px;
     font-style: normal;
     font-weight: 400;
