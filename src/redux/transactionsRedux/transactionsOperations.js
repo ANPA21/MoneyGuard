@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
-// axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
+axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
 
 export const fetchTransactions = createAsyncThunk(
   'transactions/fetchAll',
@@ -27,14 +28,21 @@ export const deleteItem = createAsyncThunk(
   }
 );
 
-export const addItem = createAsyncThunk(
-  'transactions/addItem',
-  async (item, thunkAPI) => {
+export const addTransaction = createAsyncThunk(
+  'transactions/addTransaction',
+  async (data, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/transactions', item);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      if (data.type === 'income') {
+        const { category, ...incomeData } = data;
+        const response = await axios.post('/transactions', incomeData);
+        return response.data;
+      } else {
+        const response = await axios.post('/transactions', data);
+        return response.data;
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+      return rejectWithValue(error.message);
     }
   }
 );

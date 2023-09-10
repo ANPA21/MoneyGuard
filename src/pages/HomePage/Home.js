@@ -4,9 +4,9 @@ import { HomeStyled } from './Home.styled';
 import Modal from '../../components/Modal/Modal';
 import AddTransaction from '../../components/Add/Add';
 import EditTransaction from '../../components/Edit/Edit';
-import { getModalState } from 'redux/transactions/selectors';
+import Logout from '../../components/Logout/Logout';
 import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
-import { getModalTypeState } from 'redux/modal/selectors';
+import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -16,8 +16,8 @@ const Home = () => {
   } = require('redux/transactionsRedux/transactionsOperations');
   const dispatch = useDispatch();
 
-  const modalType = useSelector(getModalTypeState);
-  const isModalOpen = useSelector(getModalState);
+  const modalType = useSelector(selectModalTypeState);
+  const isModalOpen = useSelector(selectModalState);
 
   const deleteTransactions = id => {
     dispatch(deleteItem(id));
@@ -28,7 +28,6 @@ const Home = () => {
   }, [dispatch, fetchTransactions]);
 
   const transactions = useSelector(selectorTransactions);
-  console.log(transactions);
 
   return (
     <HomeStyled>
@@ -72,17 +71,21 @@ const Home = () => {
 
       {/* <div>Кнопки пагинации Prev - Next</div> */}
       <button
-        className="deleteItem"
+        className="addItem"
         type="button"
         onClick={() => dispatch(toggleAddModal())}
       >
         +
       </button>
+
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
-        <Modal children={AddTransaction()} />
+        <Modal children={<AddTransaction />} />
       )}
       {modalType === 'modal/toggleEditModal' && isModalOpen && (
-        <Modal children={EditTransaction()} />
+        <Modal children={<EditTransaction />} />
+      )}
+      {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
+        <Modal children={<Logout />} showCloseIcon={false} />
       )}
     </HomeStyled>
   );

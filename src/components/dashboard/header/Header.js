@@ -1,7 +1,9 @@
+
 import React, { useRef } from 'react';
 import { getModalState } from 'redux/transactions/selectors';
+
 import { toggleLogOutModal } from 'redux/modal/ModalSlice';
-import { getModalTypeState } from 'redux/modal/selectors';
+import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import Modal from '../../Modal/Modal';
 import Logout from '../../Logout/Logout';
 import {
@@ -18,6 +20,7 @@ export const Header = () => {
     useDispatch,
     useSelector } = require('react-redux');
   const dispatch = useDispatch();
+
   const modalType = useSelector(getModalTypeState);
   const isModalOpen = useSelector(getModalState);
   const buttonRef = useRef(null);
@@ -53,9 +56,10 @@ export const Header = () => {
         </HeaderDiv>
       </HeaderContainer>
 
+
       {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
-        <Modal children={Logout()} />
+        <Modal children={<Logout />} />
       )}
     </Div>
   );
-}
+};

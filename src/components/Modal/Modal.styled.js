@@ -4,49 +4,39 @@ export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1200;
   background: rgba(34, 13, 91, 0.23);
   backdrop-filter: blur(3.5px);
+  transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out;
+  opacity: 1;
+  visibility: visible;
+
+  @media (min-width: 768px) {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 60px 0px;
+  }
 `;
 
 export const ModalWindow = styled.div`
-  width: 320px;
-  height: 600px;
-  background-color: rgba(255, 255, 255, 0.1);
-
-  box-sizing: border-box;
-  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 40px 72px;
-  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #734aef, #623f8b);
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(100px);
 
-  &::after {
-    content: '';
-    width: 454px;
-    height: 454px;
-    border-radius: 50%;
-    background-color: rgba(47, 21, 176, 0.73);
-    filter: blur(100px);
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  @media (min-width: 540px) {
+  @media (min-width: 768px) {
     width: 540px;
-    height: 589px;
+    height: 511px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -61,6 +51,11 @@ export const ButtonClose = styled.button`
   line-height: 0;
   border: none;
   cursor: pointer;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 `;
 
 export const CancelBtn = styled.button`

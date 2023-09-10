@@ -6,27 +6,33 @@ import {
   AddTitle,
   StyledForm,
   SwitcherWrapper,
-  // StyledSwitch,
   Wrapper,
   StyledLabel,
   StyledSum,
   StyledComment,
-  StyledDatePicker,
   Label,
-  StyledSelect,
 } from './Add.styled';
 import { useDispatch } from 'react-redux';
-import { addTransaction } from 'redux/transactions/operations';
 import { toggleModal } from 'redux/modal/ModalSlice';
-import { CustomSwitch } from 'components/CustomElements/CustomSwitch';
+
+import { CustomSwitch } from 'components/CustomElements/CustomSwitch/CustomSwitch';
 // import { getCategoryState } from 'redux/transactions/selectors';
 // import { fetchCategories } from 'redux/categories/operations';
-import { VscChevronDown, VscChevronUp } from 'react-icons/vsc';
-import { components } from 'react-select';
+import { addTransaction } from 'redux/transactionsRedux/transactionsOperations';
+import { RiCalendar2Fill } from 'react-icons/ri';
+import { CustomSelect } from './SelectCategory/SelectCategory';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
+import { forwardRef, useState, useEffect } from 'react';
+import axios from 'axios';
+// import { useSelector } from 'react-redux';
+// import { selectError } from 'redux/transactionsRedux/transactionsSelectors';
 const addSchema = object({
   value: number().positive().required('Amount is required'),
-  comment: string().max(30, 'Maximum must be 30 characters'),
+  comment: string()
+    .max(30, 'Maximum must be 30 characters')
+    .required('Please fill in comment'),
   category: string()
     .min(3)
     .oneOf([
@@ -42,41 +48,6 @@ const addSchema = object({
       'Entertainment',
     ]),
 });
-
-const DropdownIndicator = props => {
-  if (props.isFocused) {
-    return (
-      <components.DropdownIndicator {...props}>
-        <VscChevronUp />
-      </components.DropdownIndicator>
-    );
-  }
-  return (
-    <components.DropdownIndicator {...props}>
-      <VscChevronDown />
-    </components.DropdownIndicator>
-  );
-};
-
-const CustomSelect = ({ onChange, options, value, className }) => {
-  const defaultValue = (options, value) => {
-    return options ? options.find(option => option.value === value) : '';
-  };
-
-  return (
-    <div className={className}>
-      <StyledSelect
-        value={defaultValue(options, value)}
-        placeholder="Select a category"
-        components={{ DropdownIndicator }}
-        onChange={value => onChange(value)}
-        options={options}
-        classNamePrefix="Select"
-      />
-    </div>
-  );
-};
-
 const initialValues = {
   type: 'expense',
   category: '',
@@ -85,43 +56,66 @@ const initialValues = {
   comment: '',
 };
 
-const categories = [
-  { value: 'Main expenses', label: 'Main expenses' },
-  { value: 'Products', label: 'Products' },
-  { value: 'Car', label: 'Car' },
-  { value: 'Self care', label: 'Self care' },
-  { value: 'Child care', label: 'Child care' },
-  { value: 'Household products', label: 'Household products' },
-  { value: 'Education', label: 'Education' },
-  { value: 'Leisure', label: 'Leisure' },
-  { value: 'Other expenses', label: 'Other expenses' },
-  { value: 'Entertainment', label: 'Entertainment' },
-];
+const CustomInput = forwardRef(({ value, onClick }, ref) => (
+  <>
+    <button type="button" className="custom-input" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+    <RiCalendar2Fill className="date-icon" onClick={onClick} />
+  </>
+));
 
 export default function AddTransaction() {
   const dispatch = useDispatch();
+  // const error = useSelector(selectError);
 
-  // const categories = useSelector(getCategoryState);
-  // console.log(categories);
+  const [categories, setCategories] = useState(() => {
+    return JSON.parse(window.localStorage.getItem('categories')) ?? [];
+  });
 
-  // useEffect(() => {
-  //   console.log(categories);
-  //   if (categories.length === 0) {
-  //     dispatch(fetchCategories());
-  //   }
-  // }, [dispatch]);
+  const getCategories = async () => {
+    try {
+      const response = await axios.get(`/transactions/categories`);
+      setCategories(response.data);
+    } catch (error) {
+      return error.message;
+    }
+  };
+
+  useEffect(() => {
+    if (categories.length === 0) {
+      getCategories();
+    }
+
+    localStorage.setItem('categories', JSON.stringify(categories));
+  }, [categories]);
+
+  const optionCategories = categories.map(category => {
+    return {
+      value: category,
+      label: category,
+    };
+  });
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     dispatch(addTransaction(values));
     resetForm();
     dispatch(toggleModal());
   };
 
+  // const handleSubmit = async (values, { resetForm }) => {
+  //   try {
+  //     await dispatch(addTransaction(values));
+  //     resetForm();
+  //     dispatch(toggleModal());
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   return (
     <>
       <AddTitle>Add transaction</AddTitle>
-
       <Formik
         initialValues={initialValues}
         validationSchema={addSchema}
@@ -129,32 +123,22 @@ export default function AddTransaction() {
       >
         {({ values, setFieldValue, validate, ...props }) => (
           <StyledForm autoComplete="off">
-            <SwitcherWrapper className="custom-switch">
+            <SwitcherWrapper>
               <CustomSwitch
-                checked={values.type === 'income'}
-                onChange={isChecked => {
-                  setFieldValue('type', isChecked ? 'income' : 'expense');
-                }}
-              />
-              {/* <span>Income</span>
-              <Switch
-                name="transaction"
-                value="expense"
                 checked={values.type === 'expense'}
-                onChange={(event, checked) => {
-                  setFieldValue('type', checked ? 'expense' : 'income');
+                onChange={isChecked => {
+                  setFieldValue('type', isChecked ? 'expense' : 'income');
                 }}
               />
-              <span>Expense</span> */}
             </SwitcherWrapper>
             {values.type === 'expense' ? (
               <>
                 <CustomSelect
-                  options={categories}
+                  options={optionCategories}
                   value={values.category}
                   onChange={value => setFieldValue('category', value.value)}
                   className="Select"
-                  // styles={selectStyles()}
+                  name="category"
                 />
                 <ErrorMessage name="category" component="div" />
               </>
@@ -169,20 +153,19 @@ export default function AddTransaction() {
               <Label>
                 <Field name="date" validate={validate}>
                   {({ field, form, meta }) => (
-                    <StyledDatePicker
-                      showIcon
+                    <DatePicker
                       name="date"
                       dateFormat="dd.MM.yyyy"
                       minDate={new Date()}
                       selected={values.date || null}
                       onChange={date => setFieldValue('date', date)}
                       shouldCloseOnSelect={true}
+                      customInput={<CustomInput />}
                     />
                   )}
                 </Field>
               </Label>
             </Wrapper>
-
             <StyledLabel>
               <StyledComment
                 type="textarea"
@@ -191,7 +174,6 @@ export default function AddTransaction() {
               />
               <ErrorMessage name="comment" component="div" />
             </StyledLabel>
-
             <AddBtn type="submit">Add</AddBtn>
           </StyledForm>
         )}
