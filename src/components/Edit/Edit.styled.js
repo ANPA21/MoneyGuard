@@ -181,8 +181,14 @@ export const StyledSelect = styled(Select)`
   .Select__option--is-focused {
     color: rgba(255, 134, 141, 1);
     background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
   }
 
+    .Select__option--is-selected {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 134, 141, 1);
+    }
+    
   .Select__dropdown-indicator {
     color: rgba(251, 251, 251, 1);
 
