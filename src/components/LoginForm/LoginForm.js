@@ -2,11 +2,10 @@ import { CustomButton } from 'components/CustomElements/CustomButton';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { logIn } from 'redux/authReducer/operations';
-import { ErrorMessage, Formik } from 'formik';
+import { Formik } from 'formik';
 import Logotip from '../../images/logo.svg';
 import {
   EmailIcon,
-  ErrorContainer,
   FormStyled,
   IconContainer,
   IconInInput,
@@ -61,19 +60,15 @@ const LoginForm = () => {
         </LogotipStyled>
 
         <LabelStyled>
-          <ErrorContainer>
             <IconInInput>
               <IconContainer>
                 <EmailIcon />
               </IconContainer>
               <InputStyled name="email" type="email" placeholder="E-mail" />
             </IconInInput>
-            <ErrorMessage component="span" name="email" />
-          </ErrorContainer>
         </LabelStyled>
 
         <LabelStyled>
-          <ErrorContainer>
             <IconInInput>
               <IconContainer>
                 <PasswordIcon />
@@ -84,8 +79,6 @@ const LoginForm = () => {
                 placeholder="Password"
               />
             </IconInInput>
-            <ErrorMessage component="span" name="password" />
-          </ErrorContainer>
         </LabelStyled>
 
         <CustomButton type="submit">Log In</CustomButton>
