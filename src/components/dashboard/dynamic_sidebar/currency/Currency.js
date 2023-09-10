@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { CurrencyStyled } from './Currency.styled';
+import { Table, Row, Cell } from './Currency.styled';
 import { selectCurrency } from 'redux/currencyReducer/currencySelectors';
 import { fetchCurrency } from 'redux/currencyReducer/currencyOperations';
 const { useDispatch, useSelector } = require('react-redux');
@@ -21,9 +21,26 @@ export const Currency = () => {
   }, [dispatch]);
   const currency = useSelector(selectCurrency);
   return (
-    <CurrencyStyled>
-      <span>USD {currency.USD}</span>
-      <span>EUR {currency.EUR}</span>
-    </CurrencyStyled>
+    <div>
+      <Table>
+        <Row>
+          <Cell>Currency</Cell>
+          <Cell>Purchase</Cell>
+          <Cell>Sale</Cell>
+        </Row>
+        <Row>
+          <Cell>USD</Cell>
+          <Cell>{currency.USD}</Cell>
+          <Cell>{currency.USD}</Cell>
+        </Row>
+        <Row>
+          <Cell>EUR</Cell>
+          <Cell>{currency.EUR}</Cell>
+          <Cell>{currency.EUR}</Cell>
+        </Row>
+        {/* Add more rows if needed */}
+      </Table>
+      <img src="../../../../images/chart/chart-tablet@2x.png" alt="Currency" />
+    </div>
   );
 };
