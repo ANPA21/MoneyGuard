@@ -7,6 +7,7 @@ import Logotip from '../../images/logo.svg';
 import {
   EmailIcon,
   ErrorContainer,
+  ErrorMessageStyled,
   FormStyled,
   IconContainer,
   InputStyled,
@@ -40,7 +41,9 @@ const RegisterForm = () => {
 
     dispatch(register(formData));
     resetForm();
-    toast.success(`Welcome to Money Guard, ${name}!`);
+    toast.success(`Welcome to Money Guard, ${name}!`, {
+      autoClose: 1200,
+    });
   };
 
   return (
@@ -71,7 +74,9 @@ const RegisterForm = () => {
               placeholder="E-mail"
               autoComplete="off"
             />
+            <ErrorMessageStyled>
             <ErrorMessage component="span" name="email" />
+            </ErrorMessageStyled>
           </ErrorContainer>
         </LabelStyled>
 
@@ -86,7 +91,9 @@ const RegisterForm = () => {
               placeholder="Password"
               autoComplete="off"
             />
+            <ErrorMessageStyled>
             <ErrorMessage component="span" name="password" />
+            </ErrorMessageStyled>
           </ErrorContainer>
         </LabelStyled>
 
@@ -103,7 +110,9 @@ const RegisterForm = () => {
                 autoComplete="off"
               />
             </div>
+            <ErrorMessageStyled>
             <ErrorMessage component="span" name="passwordConfirm" />
+            </ErrorMessageStyled>
           </ErrorContainer>
         </LabelStyled>
 
