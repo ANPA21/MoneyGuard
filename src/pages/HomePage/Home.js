@@ -3,7 +3,7 @@ import {
   selectIsLoading,
   selectorTransactions,
 } from 'redux/transactionsRedux/transactionsSelectors';
-import { HomeStyled, LoaderWrapper } from './Home.styled';
+import { HomeStyled, LoaderWrapper, Button } from './Home.styled';
 import Modal from '../../components/Modal/Modal';
 import AddTransaction from '../../components/Add/Add';
 import EditTransaction from '../../components/Edit/Edit';
@@ -105,13 +105,13 @@ const Home = () => {
         </tbody>
       </table>
 
-      <CustomButton
+      <Button
         className="addItem"
         type="button"
         onClick={() => dispatch(toggleAddModal())}
       >
         +
-      </CustomButton>
+      </Button>
       {/* <button className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button> */}
 
       {modalType === 'modal/toggleAddModal' && isModalOpen && (

@@ -213,3 +213,20 @@ export const LoaderWrapper = styled.td`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
+export const Button = styled.div`
+  display: flex;
+  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 44px;
+  background: linear-gradient(
+    97deg,
+    #ffc727 -16.42%,
+    #9e40ba 97.04%,
+    #7000ff 150.71%
+  );
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 9px 15px 0px;
+`;
