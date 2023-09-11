@@ -3,11 +3,18 @@ import Select from 'react-select';
 
 export const StyledDateSelector = styled(Select)`
   font-size: 18px;
-  width: 160px;
+  width: 280px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    //max-width: 100%;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 160px;
+    //max-width: 1400px;
+  }
 
   .Select__control {
     background-color: transparent;
-    height: 35px;
+    height: 50px;
     width: 100%;
     border: 0;
     box-shadow: none;

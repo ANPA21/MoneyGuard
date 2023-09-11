@@ -1,10 +1,6 @@
 import { ArcElement, Tooltip, Legend, Chart } from 'chart.js';
 import { colors } from './statiscticsColors';
-import {
-  Balance,
-  DonutContainer,
-  DoughnutSt,
-} from './statisticsDataTable.styled';
+import { Balance, DonutContainer, DoughnutSt } from './statisticsChart.styled';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
