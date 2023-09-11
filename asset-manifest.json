@@ -1,24 +1,25 @@
 {
   "files": {
     "main.css": "/MoneyGuard/static/css/main.d871ea55.css",
-    "main.js": "/MoneyGuard/static/js/main.005170b5.js",
+    "main.js": "/MoneyGuard/static/js/main.ca7cc29e.js",
     "static/media/Poppins-Regular.woff": "/MoneyGuard/static/media/Poppins-Regular.9b9d9585fc27c8fff554.woff",
     "static/media/Poppins-Medium.woff": "/MoneyGuard/static/media/Poppins-Medium.26c20b0f1f2b2d0d7f4e.woff",
     "static/media/Poppins-SemiBold.woff": "/MoneyGuard/static/media/Poppins-SemiBold.5159bcc22685da086734.woff",
+    "static/media/wrong-page-image.webp": "/MoneyGuard/static/media/wrong-page-image.0cca17c270c1d308fbf0.webp",
     "static/media/Poppins-Regular.woff2": "/MoneyGuard/static/media/Poppins-Regular.5a6c15af2151cfa27e76.woff2",
     "static/media/Poppins-Medium.woff2": "/MoneyGuard/static/media/Poppins-Medium.a19883c1cd77faacd63d.woff2",
     "static/media/Poppins-SemiBold.woff2": "/MoneyGuard/static/media/Poppins-SemiBold.810728e0001e1f7c0a71.woff2",
-    "static/media/wrong-page-image.jpg": "/MoneyGuard/static/media/wrong-page-image.e41b72ce0d80f11a5627.jpg",
-    "static/media/backRegister1x.jpg": "/MoneyGuard/static/media/backRegister1x.b893e3871fd9491adf2c.jpg",
-    "static/media/backLogIn1x.jpg": "/MoneyGuard/static/media/backLogIn1x.20b913d3ca3801ec00e3.jpg",
+    "static/media/bg-register-desktop.jpg": "/MoneyGuard/static/media/bg-register-desktop.5d1aec93106f96a70e08.jpg",
+    "static/media/wrong-page-image.jpg": "/MoneyGuard/static/media/wrong-page-image.5f6067de46136d479631.jpg",
+    "static/media/bg-login-web.jpg": "/MoneyGuard/static/media/bg-login-web.20b913d3ca3801ec00e3.jpg",
     "static/media/chart-tablet.png": "/MoneyGuard/static/media/chart-tablet.6fa2624dedd57a709426.png",
     "static/media/logo.svg": "/MoneyGuard/static/media/logo.ffeeeefcbe61417cbb56220cd92da552.svg",
     "index.html": "/MoneyGuard/index.html",
     "main.d871ea55.css.map": "/MoneyGuard/static/css/main.d871ea55.css.map",
-    "main.005170b5.js.map": "/MoneyGuard/static/js/main.005170b5.js.map"
+    "main.ca7cc29e.js.map": "/MoneyGuard/static/js/main.ca7cc29e.js.map"
   },
   "entrypoints": [
     "static/css/main.d871ea55.css",
-    "static/js/main.005170b5.js"
+    "static/js/main.ca7cc29e.js"
   ]
 }
