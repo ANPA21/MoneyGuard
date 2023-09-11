@@ -29,9 +29,14 @@ export const Row = styled.div`
     }
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
     width: 336px;
     height: 48px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 480px;
+    height: 56px;
   }
 `;
 
@@ -41,3 +46,5 @@ export const Cell = styled.div`
   text-align: center;
   color: var(--white);
 `;
+
+export const Graph = styled.div``;
