@@ -49,11 +49,18 @@ export const addTransaction = createAsyncThunk(
 
 export const editItem = createAsyncThunk(
   'transactions/editItem',
-  async ({ id, updatedData }, thunkAPI) => {
+  async ({ id, values }, thunkAPI) => {
     try {
-      const response = await axios.put(`/transactions/${id}`, updatedData);
-      return response.data;
+      if (values.type === 'income') {
+        const { category, ...changedData } = values;
+        const response = await axios.put(`/transactions/${id}`, changedData);
+        return response.data;
+      } else {
+        const response = await axios.put(`/transactions/${id}`, values);
+        return response.data;
+      }
     } catch (e) {
+      toast.error(e.response.data.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }

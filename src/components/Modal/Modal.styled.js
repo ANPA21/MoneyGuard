@@ -16,27 +16,29 @@ export const Overlay = styled.div`
   opacity: 1;
   visibility: visible;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 60px 0px;
   }
 `;
 
 export const ModalWindow = styled.div`
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, #734aef, #623f8b);
-  position: relative;
+  width: 511px;
+  padding: 41px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, var(--purple), #623f8b);
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
 
-  @media (min-width: 768px) {
-    width: 540px;
-    height: 511px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    padding: calc(20 * (100vw / 480));
+    min-width: 300px;
   }
 `;
 
@@ -53,7 +55,7 @@ export const ButtonClose = styled.button`
   cursor: pointer;
   display: none;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     display: block;
   }
 `;

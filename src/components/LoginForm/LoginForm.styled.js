@@ -8,7 +8,7 @@ export const FormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 42px 0;
+  padding: 60px;
 `;
 
 export const LabelStyled = styled(`label`)`
@@ -20,15 +20,15 @@ export const LabelStyled = styled(`label`)`
 `;
 
 export const EmailIcon = styled(MdEmail)`
-  color: var(--your-color, rgba(255, 255, 255, 0.6));
+  color: rgba(255, 255, 255, 0.6);
 `;
 
 export const PasswordIcon = styled(MdHttps)`
-  color: var(--your-color, rgba(255, 255, 255, 0.6));
+  color: rgba(255, 255, 255, 0.6);
 `;
 
 export const UserIcon = styled(FaUser)`
-  color: var(--your-color, rgba(255, 255, 255, 0.6));
+  color: rgba(255, 255, 255, 0.6);
 `;
 
 export const IconInInput = styled.div`
@@ -43,23 +43,29 @@ export const IconContainer = styled.div`
 export const IconStyled = styled.div`
   position: absolute;
   left: 5px;
-  fill: rgba(255, 255, 255, 0.6);
+  fill: rgba(255, 255, 255, 0.9);
+`;
+
+export const ErrorMessageStyled = styled.span`
+  color: #FF868D; 
+  font-size: 14px;
+  margin-top: 2px; 
 `;
 
 export const InputStyled = styled(Field)`
   width: 100%;
-  background-color: transparent !important;
+  background-color: transparent;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   line-height: 1.5;
   font-size: 18px;
   font-weight: 400;
   color: rgba(255, 255, 255, 1);
-  padding-left: 25px; 
+  padding: 0 35px; 
+  margin: 0;
   position: relative;
 
   &::placeholder {
-    padding: 0 8px;
     font-size: 18px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.6);

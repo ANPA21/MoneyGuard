@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage, Field } from 'formik';
+import { Formik, Field } from 'formik';
 import { object, string, number } from 'yup';
 import {
   AddBtn,
@@ -10,6 +10,7 @@ import {
   StyledSum,
   StyledComment,
   Label,
+  ErrorMessageStyled,
 } from '../Edit/Edit.styled.js';
 import { forwardRef, useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
@@ -19,24 +20,30 @@ import { toggleModal } from 'redux/modal/ModalSlice';
 import { CustomSelect } from 'components/Add/SelectCategory/SelectCategory.js';
 import { CustomSwitch } from 'components/CustomElements/CustomSwitch/CustomSwitch.js';
 import { RiCalendar2Fill } from 'react-icons/ri';
-// import { getCategoryState } from 'redux/transactions/selectors';
-//!В комменты что бы не ругалась проверка
-import { useDispatch } from 'react-redux';
-// import { addTransaction } from 'redux/transactions/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { editItem } from 'redux/transactionsRedux/transactionsOperations.js';
+import { selectorTransactions } from 'redux/transactionsRedux/transactionsSelectors.js';
 
 const addSchema = object({
   value: number().positive().required('Amount is required'),
-  comment: string().max(30, 'Maximum must be 30 characters'),
-  category: string().min(3).oneOf(['fuel', 'leusure']),
+  comment: string()
+    .max(30, 'Maximum must be 30 characters')
+    .required('Please fill in comment'),
+  category: string()
+    .min(3)
+    .oneOf([
+      'Main expenses',
+      'Products',
+      'Car',
+      'Self care',
+      'Child care',
+      'Household products',
+      'Education',
+      'Leisure',
+      'Other expenses',
+      'Entertainment',
+    ]),
 });
-
-const initialValues = {
-  type: '',
-  category: '',
-  value: '',
-  date: new Date(),
-  comment: '',
-};
 
 const CustomInput = forwardRef(({ value, onClick }, ref) => (
   <>
@@ -47,12 +54,22 @@ const CustomInput = forwardRef(({ value, onClick }, ref) => (
   </>
 ));
 
-export default function EditTransaction() {
+export default function EditTransaction({ id }) {
   const dispatch = useDispatch();
-
+  const transactions = useSelector(selectorTransactions);
   const [categories, setCategories] = useState(() => {
     return JSON.parse(window.localStorage.getItem('categories')) ?? [];
   });
+
+  const transaction = transactions.find(transaction => transaction._id === id);
+
+  const initialValues = {
+    type: transaction.type,
+    category: transaction.category ? transaction.category : '',
+    value: transaction.value,
+    date: new Date(transaction.date),
+    comment: transaction.comment,
+  };
 
   const getCategories = async () => {
     try {
@@ -67,9 +84,8 @@ export default function EditTransaction() {
     if (categories.length === 0) {
       getCategories();
     }
-
     localStorage.setItem('categories', JSON.stringify(categories));
-  }, [categories]);
+  }, [categories, transactions]);
 
   const optionCategories = categories.map(category => {
     return {
@@ -78,14 +94,10 @@ export default function EditTransaction() {
     };
   });
 
-  const handleSubmit = (values, { resetForm }) => {
-    const { type, category, value, date, comment } = values;
+  const handleSubmit = values => {
     console.log(values);
-    // Второй консоль лог для того что бы проверка не ругалась, когда все настроим, удалим
-    console.log(type, category, value, date, comment);
-    // dispatch(addTransaction(type, category, value, date, comment));
+    dispatch(editItem({ id, values }));
     dispatch(toggleModal());
-    // resetForm();
   };
 
   return (
@@ -115,15 +127,15 @@ export default function EditTransaction() {
                   className="Select"
                   name="category"
                 />
-                <ErrorMessage name="category" component="div" />
+                <ErrorMessageStyled name="category" component="div" />
               </>
             ) : (
               (values.category = '')
             )}
             <Wrapper>
               <Label>
-                <StyledSum type="number" name="value" placeholder="0.00" />
-                <ErrorMessage name="value" component="div" />
+                <StyledSum type="number" name="value" />
+                <ErrorMessageStyled name="value" component="div" />
               </Label>
               <Label>
                 <Field name="date" validate={validate}>
@@ -131,7 +143,7 @@ export default function EditTransaction() {
                     <DatePicker
                       name="date"
                       dateFormat="dd.MM.yyyy"
-                      minDate={new Date()}
+                      maxDate={new Date()}
                       selected={values.date || null}
                       onChange={date => setFieldValue('date', date)}
                       shouldCloseOnSelect={true}
@@ -143,12 +155,8 @@ export default function EditTransaction() {
             </Wrapper>
 
             <StyledLabel>
-              <StyledComment
-                type="textarea"
-                name="comment"
-                placeholder="Comment"
-              />
-              <ErrorMessage name="comment" component="div" />
+              <StyledComment type="textarea" name="comment" />
+              <ErrorMessageStyled name="comment" component="div" />
             </StyledLabel>
 
             <AddBtn type="submit">Save</AddBtn>

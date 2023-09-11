@@ -2,11 +2,10 @@ import { CustomButton } from 'components/CustomElements/CustomButton';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { logIn } from 'redux/authReducer/operations';
-import { ErrorMessage, Formik } from 'formik';
+import { Formik } from 'formik';
 import Logotip from '../../images/logo.svg';
 import {
   EmailIcon,
-  ErrorContainer,
   FormStyled,
   IconContainer,
   IconInInput,
@@ -19,21 +18,30 @@ import { LogotipStyled } from 'components/RegisterForm/RegisterForm.styled';
 
 const ValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
-  password: Yup.string()
-    .min(6, 'Must be at least 6 characters')
-    .max(12, 'Must be 12 characters or less')
-    .required('Required'),
+  password: Yup.string().required('Required'),
 });
 
 const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    dispatch(logIn(values));
-    resetForm();
-    toast.success(`You have successfully logged in.`);
+  const handleSubmit = async (values, { resetForm }) => {
+    const name = values.email.split('@')[0];
+    const formData = {
+      email: values.email.trim(),
+      password: values.password.trim(),
+    };
 
-    console.log('Успешный вход в систему');
+    const result = await dispatch(logIn(formData));
+    if (result.error) {
+      toast.error('Login failed. Please check your credentials.', {
+        autoClose: 1200,
+      });
+    } else {
+      toast.success(`You have successfully logged in ${name}.`, {
+        autoClose: 1200,
+      });
+      resetForm();
+    }
   };
 
   return (
@@ -49,19 +57,15 @@ const LoginForm = () => {
         </LogotipStyled>
 
         <LabelStyled>
-          <ErrorContainer>
             <IconInInput>
               <IconContainer>
                 <EmailIcon />
               </IconContainer>
               <InputStyled name="email" type="email" placeholder="E-mail" />
             </IconInInput>
-            <ErrorMessage component="span" name="email" />
-          </ErrorContainer>
         </LabelStyled>
 
         <LabelStyled>
-          <ErrorContainer>
             <IconInInput>
               <IconContainer>
                 <PasswordIcon />
@@ -72,8 +76,6 @@ const LoginForm = () => {
                 placeholder="Password"
               />
             </IconInInput>
-            <ErrorMessage component="span" name="password" />
-          </ErrorContainer>
         </LabelStyled>
 
         <CustomButton type="submit">Log In</CustomButton>

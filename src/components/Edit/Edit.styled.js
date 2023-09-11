@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Form, Field } from 'formik';
-
 import Select from 'react-select';
+import { ErrorMessage } from 'formik';
 
 export const AddTitle = styled.h2`
   margin-bottom: 40px;
@@ -9,9 +9,9 @@ export const AddTitle = styled.h2`
   font-weight: 400;
   font-size: 24px;
   line-height: 1.5;
-  color: #fbfbfb;
+  color: var(--white);
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     margin-bottom: 41px;
     font-size: 30px;
   }
@@ -63,7 +63,6 @@ export const StyledForm = styled(Form)`
     width: 181px;
     background-color: transparent;
     border: none;
-    font-family: 'Poppins';
     line-height: 1.5;
     font-size: 18px;
     font-weight: 400;
@@ -71,6 +70,12 @@ export const StyledForm = styled(Form)`
     padding-bottom: 8px;
     padding-top: 5px;
     padding-left: 21px;
+  }
+
+  .react-datepicker-wrapper {
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
   }
 
   .react-datepicker__input-container {
@@ -84,7 +89,11 @@ export const StyledForm = styled(Form)`
     right: 12px;
     width: 24px;
     height: 24px;
-    fill: #734aef;
+    fill: var(--purple);
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -108,11 +117,20 @@ export const StyledSum = styled(Field)`
     font-size: 18px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.6);
-    // padding: 0 8px;
   }
 
   &:focus {
     outline: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    text-align: left;
+    padding-left: 21px;
+
+    &::placeholder {
+      text-align: left;
+    }
   }
 `;
 
@@ -184,6 +202,12 @@ export const StyledSelect = styled(Select)`
   .Select__option--is-focused {
     color: rgba(255, 134, 141, 1);
     background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+
+  .Select__option--is-selected {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 134, 141, 1);
   }
 
   .Select__dropdown-indicator {
@@ -192,6 +216,15 @@ export const StyledSelect = styled(Select)`
     &:hover {
       color: rgba(251, 251, 251, 1);
     }
+  }
+
+  @media screen and (max-width: 767px) {
+    .Select__value-container {
+      padding-left: 21px;
+    }
+
+    .Select__menu-list {
+    max-height: 352px;
   }
 `;
 
@@ -218,6 +251,11 @@ export const StyledComment = styled(Field)`
   &:focus {
     outline: 0;
   }
+
+  @media screen and (max-width: 767px) {
+    padding-left: 21px;
+    padding-bottom: 52px;
+  }
 `;
 
 export const SwitcherWrapper = styled.label`
@@ -231,10 +269,19 @@ export const SwitcherWrapper = styled.label`
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 42px;
 `;
+
 export const Label = styled.label`
   width: 181px;
   &:not(:last-child) {
     margin-right: 32px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 40px;
+    }
   }
 `;
 
@@ -244,7 +291,13 @@ export const Wrapper = styled.div`
   align-items: baseline;
   width: 100%;
 
-  @media (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     flex-direction: column;
   }
+`;
+
+export const ErrorMessageStyled = styled(ErrorMessage)`
+  color: #ff868d;
+  font-size: 14px;
+  margin-top: 2px;
 `;

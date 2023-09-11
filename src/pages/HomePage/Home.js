@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { selectorTransactions } from 'redux/transactionsRedux/transactionsSelectors';
 import { HomeStyled } from './Home.styled';
 import Modal from '../../components/Modal/Modal';
@@ -9,7 +9,7 @@ import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import { CustomButton } from 'components/CustomElements/CustomButton';
 import { BiPencil } from "react-icons/bi";
-//BiPencil
+
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
   const {
@@ -17,7 +17,7 @@ const Home = () => {
     deleteItem,
   } = require('redux/transactionsRedux/transactionsOperations');
   const dispatch = useDispatch();
-
+  const [id, setId] = useState(null);
   const modalType = useSelector(selectModalTypeState);
   const isModalOpen = useSelector(selectModalState);
 
@@ -25,12 +25,16 @@ const Home = () => {
     dispatch(deleteItem(id));
   };
 
+  const handleEditClick = id => {
+    setId(id);
+    dispatch(toggleEditModal());
+  };
+
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch, fetchTransactions]);
 
   const transactions = useSelector(selectorTransactions);
-  console.log(transactions);
 
   return (
     <HomeStyled>
@@ -79,6 +83,7 @@ const Home = () => {
         
       </table>
 
+
       <CustomButton className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</CustomButton>
       {/* <button className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button> */}
       
@@ -86,10 +91,10 @@ const Home = () => {
         <Modal children={<AddTransaction />} />
       )}
       {modalType === 'modal/toggleEditModal' && isModalOpen && (
-        <Modal children={<EditTransaction />} />
+        <Modal children={<EditTransaction id={id} />} />
       )}
       {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
-        <Modal children={Logout()} showCloseIcon={false} />
+        <Modal children={<Logout />} showCloseIcon={false} />
       )}
     </HomeStyled>
   );
