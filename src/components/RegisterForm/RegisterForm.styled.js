@@ -1,12 +1,6 @@
 import styled from 'styled-components';
-<<<<<<< Updated upstream
-import backLogIn from '../../images/backLogIn1x.jpg';
-import backRegister from '../../images/backRegister1x.jpg';
-=======
 import backLogIn from '../../images/login-bg/bg-login-web.jpg';
 import backRegister from '../../images/register-bg/bg-register-desktop.jpg';
-import { desktopStyles } from 'styles/breakpoints';
->>>>>>> Stashed changes
 
 export const MainContainer = styled.main`
   display: flex;
