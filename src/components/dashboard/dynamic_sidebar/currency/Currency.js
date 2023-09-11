@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { Table, Row, Cell } from './Currency.styled';
+import { Table, Row, Cell, Graph } from './Currency.styled';
 import { selectCurrency } from 'redux/currencyReducer/currencySelectors';
 import { fetchCurrency } from 'redux/currencyReducer/currencyOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { SpinnerLoader } from 'components/Spinner/Spinner';
 import chart from '../../../../images/chart/chart-tablet.png';
+
 export const Currency = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,8 +35,13 @@ export const Currency = () => {
               <Cell>{currency.EUR.buy.toFixed(2)}</Cell>
               <Cell>{currency.EUR.sale.toFixed(2)}</Cell>
             </Row>
+            <Graph>
+              <img src={chart} alt="Currency" />
+            </Graph>
+            <div>
+              
+            </div>
           </Table>
-          <img src={chart} alt="Currency" />
         </div>
       )}
     </div>
