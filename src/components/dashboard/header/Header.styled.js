@@ -7,6 +7,7 @@ export const HeaderContainer = styled.header`
 `;
 export const Div = styled.div`
   width: 100%;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.35), 0px -3px 2px 0px rgba(0, 0, 0, 0.10) inset;
 `;
 
 export const HeaderDiv = styled(Div)`
