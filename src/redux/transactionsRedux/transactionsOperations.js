@@ -8,8 +8,17 @@ export const fetchTransactions = createAsyncThunk(
   'transactions/fetchAll',
   async (_, thunkAPI) => {
     try {
+      const cachedData = localStorage.getItem('transactions');
+      if (cachedData) {
+        return JSON.parse(cachedData);
+      }
+
       const response = await axios.get('/transactions');
-      return response.data;
+      const data = response.data;
+
+      localStorage.setItem('transactions', JSON.stringify(data));
+
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
