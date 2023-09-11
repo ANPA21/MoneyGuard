@@ -17,10 +17,11 @@ export const HeaderDiv = styled(Div)`
   justify-content: space-between;
   height: 80px;
 
+  max-width: 1280px;
+  border: 1px solid tomato;
   @media (max-width: 767px) {
-    width: calc(100% - 40px);
+    width: 100%;
     padding: 0 20px;
-    margin: 0 auto;
     height: 60px;
   }
   @media screen and (min-width: 320px) {

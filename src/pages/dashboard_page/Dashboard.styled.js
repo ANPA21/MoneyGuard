@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const DashboardStyled = styled.div`
   width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   min-height: 100vh;
   min-width: 100vw;
@@ -36,4 +37,12 @@ export const DashboardStyled = styled.div`
   @media screen and (min-width: 1024px) {
     max-width: 100%;
   }
+`;
+
+export const DashboardContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  max-width: 1280px;
+  border: 1px solid white;
 `;
