@@ -30,6 +30,8 @@ export const Head = styled.div`
   }
   @media screen and (min-width: 1024px) {
     //max-width: 1400px;
+    padding: 16px 28px;
+    margin-bottom: 0;
   }
 `;
 export const HeadText = styled.div`
@@ -50,6 +52,7 @@ export const Body = styled.div`
   }
 `;
 export const Footer = styled.div`
+  font-weight: bold;
   .income {
     color: var(--yellow);
   }
@@ -69,6 +72,7 @@ export const Expenses = styled.div`
     //
   }
   @media screen and (min-width: 1024px) {
+    padding: 0px 28px;
     //
   }
 `;
@@ -82,6 +86,7 @@ export const Income = styled.div`
     //
   }
   @media screen and (min-width: 1024px) {
+    padding: 0px 28px;
     //
   }
 `;
@@ -111,6 +116,7 @@ export const StyledTr = styled.div`
     //max-width: 100%;
   }
   @media screen and (min-width: 1024px) {
+    padding: 16px 28px;
     //max-width: 1400px;
   }
 `;

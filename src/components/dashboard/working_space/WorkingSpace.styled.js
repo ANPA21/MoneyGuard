@@ -29,6 +29,11 @@ export const WorkingSpaceStyled = styled.div`
     margin-right: auto;
   }
   @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    max-width: 800px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     //max-width: 1400px;
   }
 `;

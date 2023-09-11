@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const DynamicSidebarStyled = styled.div`
   //flex: 0 0 auto;
   //flex-basis: 37%;
-  width: 37%;
   display: flex;
   flex-direction: column;
 
@@ -32,6 +31,7 @@ export const DynamicSidebarStyled = styled.div`
     margin-right: auto;
   }
   @media screen and (min-width: 1024px) {
+    width: 480px;
     //десктоп  ???????
   }
 `;
