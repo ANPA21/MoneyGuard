@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-// export const CurrencyStyled = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 15px;
-//   //  background-color: #734aef;
-//   padding: 5px;
-//   color: white;
-// `;
-
 export const Table = styled.div`
   display: table;
   width: 100%;
@@ -16,7 +7,33 @@ export const Table = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Row = styled.div``;
+export const Row = styled.div`
+  width: 320px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+
+  &:first-child {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+  }
+
+  &:not(:first-child) {
+    font-weight: 400;
+    background: rgba(74, 86, 226, 0.1);
+
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      font-family: Circe;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    height: 48px;
+  }
+`;
 
 export const Cell = styled.div`
   display: table-cell;

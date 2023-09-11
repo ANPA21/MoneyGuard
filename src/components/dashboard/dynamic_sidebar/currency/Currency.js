@@ -28,15 +28,11 @@ export const Currency = () => {
               <Cell>USD</Cell>
               <Cell>{currency.USD.buy.toFixed(2)}</Cell>
               <Cell>{currency.USD.sale.toFixed(2)}</Cell>
-              <Cell></Cell>
-              <Cell></Cell>
             </Row>
             <Row>
               <Cell>EUR</Cell>
               <Cell>{currency.EUR.buy.toFixed(2)}</Cell>
               <Cell>{currency.EUR.sale.toFixed(2)}</Cell>
-              <Cell></Cell>
-              <Cell></Cell>
             </Row>
           </Table>
           <img src={chart} alt="Currency" />
