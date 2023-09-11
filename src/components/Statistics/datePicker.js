@@ -19,6 +19,19 @@ function DatePicker({ getYear, getMonth, selectedMonth, selectedYear }) {
     'December',
   ];
 
+  const customScrollbarStyles = {
+    menuList: provided => ({
+      ...provided,
+      '&::-webkit-scrollbar': {
+        width: '6px',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: '#BFB4DD',
+        borderRadius: '12px',
+      },
+    }),
+  };
+
   const monthOptions = monthNames.map((month, index) => ({
     value: index + 1,
     label: month,
@@ -43,6 +56,7 @@ function DatePicker({ getYear, getMonth, selectedMonth, selectedYear }) {
         onChange={getYear}
         className="selectYear"
         name="selectYear"
+        styles={customScrollbarStyles}
       />
     </DatePickerWrapper>
   );
