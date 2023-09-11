@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 
 export const HomeStyled = styled.div`
-    width: 768px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    font-family: Poppins;
-    font-style: normal;
-    line-height: normal;
-    color: rgb(251, 251, 251);
-    padding: 0 20px;
-    background-color: rgba(0, 0, 0, 0.1);
+  width: 768px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  font-family: Poppins;
+  font-style: normal;
+  line-height: normal;
+  color: rgb(251, 251, 251);
+  padding: 0 20px;
+  background-color: rgba(0, 0, 0, 0.1);
 
   .colorIncome {
-    color: #FFB627;
+    color: #ffb627;
   }
 
   .colorExpense {
-    color: #FF868D;
+    color: #ff868d;
   }
 
   .editItem {
@@ -31,7 +31,7 @@ export const HomeStyled = styled.div`
   .addItem {
     width: 44px;
     height: 44px;
-    border-radius:50%;
+    border-radius: 50%;
     margin: 0;
     padding: 30px;
     cursor: pointer;
@@ -40,7 +40,7 @@ export const HomeStyled = styled.div`
   .deleteItem {
     width: 69px;
     height: 29px;
-    color: #FFF;
+    color: #fff;
     text-align: center;
     font-family: Poppins;
     font-size: 14px;
@@ -67,11 +67,11 @@ export const HomeStyled = styled.div`
   }
 
   thead::after {
-    content: "";
+    content: '';
     display: block;
     width: 715px;
     height: 56px;
-    background: rgba(82, 59, 126, 0.60);
+    background: rgba(82, 59, 126, 0.6);
     border-radius: 8px;
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     position: absolute;
@@ -81,11 +81,14 @@ export const HomeStyled = styled.div`
   }
 
   tbody {
+    position: relative;
+
     font-size: 14px;
     font-weight: 400;
   }
 
-  th,td {
+  th,
+  td {
     text-align: left;
   }
 
@@ -96,32 +99,38 @@ export const HomeStyled = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 0.41);
   }
 
-  th:nth-child(1), td:nth-child(1) {
+  th:nth-child(1),
+  td:nth-child(1) {
     width: 95px;
   }
-  th:nth-child(2), td:nth-child(2) {
+  th:nth-child(2),
+  td:nth-child(2) {
     width: 38px;
     text-align: center;
   }
-  th:nth-child(3), td:nth-child(3) {
+  th:nth-child(3),
+  td:nth-child(3) {
     width: 173px;
     padding-left: 50px;
   }
-  th:nth-child(4), td:nth-child(4) {
+  th:nth-child(4),
+  td:nth-child(4) {
     width: 118px;
   }
-  th:nth-child(5), td:nth-child(5) {
+  th:nth-child(5),
+  td:nth-child(5) {
     width: 96px;
     text-align: right;
   }
-  th:nth-child(6), td:nth-child(6) {
+  th:nth-child(6),
+  td:nth-child(6) {
     width: 52px;
     text-align: right;
   }
-  th:nth-child(7), td:nth-child(7) {
+  th:nth-child(7),
+  td:nth-child(7) {
     width: 52px;
     text-align: right;
-    
   }
 
   tr:last-child td {
@@ -132,11 +141,9 @@ export const HomeStyled = styled.div`
     width: 40px;
   }
 
-
-
-//
+  //
   //  .header {
-  //    
+  //
   //    padding-left: 20px;
   //    align-items: center;
   //    font-size: 16px;
@@ -145,7 +152,7 @@ export const HomeStyled = styled.div`
   //    background: rgba(82, 59, 126, 0.60);
   //    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   //    margin-bottom: 20px;
-//
+  //
   //    li:nth-child(1) {
   //      margin-right: 64px;
   //    }
@@ -155,33 +162,33 @@ export const HomeStyled = styled.div`
   //    li:nth-child(3) {
   //      margin-right: 69px;
   //    }
-  //    
+  //
   //  }
-//
+  //
   //  .heder li,
   //  .data p,
   //  .editItem :nth-child(1) {
   //    display: block;
   //    width: 100px;
   //  }
-  //  
-//
+  //
+  //
   //  .header li,
   //  .data p {
   //      display: block;
   //      width: 15%;
   //      height: 30px;
   //  }
-//
+  //
   //  .transaction {
   //      margin-bottom: 20px;
   //  }
-//
+  //
   //  .editItem,
   //  .deleteItem {
   //      cursor: pointer
   //  }
-    
+
   @media screen and (max-width: 479px) {
     //max-width: 100%;
   }
@@ -194,4 +201,15 @@ export const HomeStyled = styled.div`
   //@media screen and (min-width: 1024px) {
   //  //max-width: 1400px;
   //}
+`;
+
+export const LoaderWrapper = styled.td`
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
