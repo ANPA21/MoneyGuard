@@ -63,7 +63,7 @@ export const StyledDateSelector = styled(Select)`
 
   .Select__menu-list {
     height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
   }
 
   .css-t3ipsp-control {
