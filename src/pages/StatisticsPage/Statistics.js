@@ -67,7 +67,16 @@ const StatiscticsPage = () => {
           <TitleStyled>Statistics</TitleStyled>
 
           {categories && reduxData ? (
-            <StatiscticsChart reduxData={reduxData} categories={categories} />
+            <StatiscticsChart
+              reduxData={reduxData}
+              categories={categories}
+              style={{
+                boxSizing: 'border-box',
+                display: 'block',
+                height: '100%',
+                width: '100%',
+              }}
+            />
           ) : (
             <SpinnerLoader />
           )}

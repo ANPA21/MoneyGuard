@@ -12,7 +12,7 @@ import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import { CustomButton } from 'components/CustomElements/CustomButton';
 import { BiPencil } from 'react-icons/bi';
-import { Dna } from 'react-loader-spinner';
+import { RotatingLines } from 'react-loader-spinner';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -61,7 +61,7 @@ const Home = () => {
           {isLoading ? (
             <tr>
               <LoaderWrapper>
-                <Dna visible={true} height="80" width="80" />
+                <RotatingLines visible={true} height="80" width="80" />
               </LoaderWrapper>
             </tr>
           ) : (

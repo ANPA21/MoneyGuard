@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import 'url-search-params-polyfill';
-import { DatePickerWrapper } from './datePicker.styled';
 import { DateSelector } from './dateSelector/dateSelector';
 
 function DatePicker({ getYear, getMonth, selectedMonth, selectedYear }) {
@@ -42,7 +41,7 @@ function DatePicker({ getYear, getMonth, selectedMonth, selectedYear }) {
     label: String(currentYear - index),
   }));
   return (
-    <DatePickerWrapper>
+    <Fragment>
       <DateSelector
         options={monthOptions}
         value={selectedMonth}
@@ -58,7 +57,7 @@ function DatePicker({ getYear, getMonth, selectedMonth, selectedYear }) {
         name="selectYear"
         styles={customScrollbarStyles}
       />
-    </DatePickerWrapper>
+    </Fragment>
   );
 }
 

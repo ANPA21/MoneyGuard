@@ -22,7 +22,11 @@ export const WorkingSpaceStyled = styled.div`
     //max-width: 100%;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    //max-width: 100%;
+    flex-direction: row;
+    max-width: 768px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
   @media screen and (min-width: 1024px) {
     //max-width: 1400px;
