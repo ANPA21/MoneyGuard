@@ -1,27 +1,59 @@
 import styled from 'styled-components';
 
 export const BalanceStyled = styled.div`
-  width: 100%;
-  font-family: Poppins;
-  font-style: normal;
-  line-height: normal;
-  text-transform: uppercase;
-  padding-top: 8px;
-  padding-bottom: 11px;
-  padding-left: 12%;
-  background: rgba(82, 59, 126, 0.60);
-  box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.20);
+  width: 280px;
+  height: 80px;
+  background: rgba(82, 59, 126, 0.6);
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
+  border-radius: 8px;
 
   h3 {
+    text-transform: uppercase;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    margin-left: 32px;
     font-size: 12px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.40);
-  }
-  
-  p {
-    font-size: 30px;
-    font-weight: 700;
-    color: rgb(251, 251, 251);
+    color: var(--white);
+
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      margin-left: 40px;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-left: 56px;
+    }
   }
 
+  p1 {
+    font-size: 30px;
+    color: var(--white);
+    margin-left: 32px;
+    font-weight: 400;
+
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      margin-left: 40px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      margin-left: 56px;
+    }
+  }
+
+  p2 {
+    font-size: 30px;
+    color: var(--white);
+    margin-left: 10px;
+    font-weight: 700;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 336px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    border-radius: none;
+    width: 480px;
+    backdrop-filter: none;
+    box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
+  }
 `;
