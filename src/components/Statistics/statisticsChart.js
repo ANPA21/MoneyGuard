@@ -1,8 +1,5 @@
-import { Doughnut } from 'react-chartjs-2';
 import { ArcElement, Tooltip, Legend, Chart } from 'chart.js';
 import { colors } from './statiscticsColors';
-import { useSelector } from 'react-redux';
-import { selectorBalance } from 'redux/balance/balance.Selectors';
 import {
   Balance,
   DonutContainer,
@@ -12,7 +9,6 @@ import {
 Chart.register(ArcElement, Tooltip, Legend);
 
 const StatiscticsChart = ({ reduxData, categories }) => {
-  const balance = useSelector(selectorBalance);
   const chartData = {
     labels: categories,
     datasets: [
