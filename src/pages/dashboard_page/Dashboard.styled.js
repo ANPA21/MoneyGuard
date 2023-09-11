@@ -33,6 +33,6 @@ export const DashboardStyled = styled.div`
     max-width: 100%;
   }
   @media screen and (min-width: 1024px) {
-    max-width: 1400px;
+    max-width: 100%;
   }
 `;
