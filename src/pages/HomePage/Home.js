@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { selectorTransactions } from 'redux/transactionsRedux/transactionsSelectors';
 import { HomeStyled } from './Home.styled';
 import Modal from '../../components/Modal/Modal';
@@ -8,7 +8,7 @@ import Logout from '../../components/Logout/Logout';
 import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import { CustomButton } from 'components/CustomElements/CustomButton';
-import { BiPencil } from "react-icons/bi";
+import { BiPencil } from 'react-icons/bi';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -39,8 +39,8 @@ const Home = () => {
   return (
     <HomeStyled>
       <table className="table">
-        <thead className='head'>
-          <tr >
+        <thead className="head">
+          <tr>
             <th>Date</th>
             <th>Type</th>
             <th>Category</th>
@@ -53,13 +53,13 @@ const Home = () => {
         <tbody>
           {transactions.map(
             ({ createdAt, type, category, comment, value, _id }) => {
-              let date = new Date(createdAt).toLocaleDateString()
+              let date = new Date(createdAt).toLocaleDateString();
               let numberSign = '+';
-              let colorClassName = "colorIncome";
-                if (type === "expense") {
-                  numberSign = '-';
-                  colorClassName = "colorExpense";
-                }
+              let colorClassName = 'colorIncome';
+              if (type === 'expense') {
+                numberSign = '-';
+                colorClassName = 'colorExpense';
+              }
               return (
                 <tr key={_id} className="data">
                   <td>{date}</td>
@@ -68,10 +68,18 @@ const Home = () => {
                   <td>{comment}</td>
                   <td className={colorClassName}>{value}</td>
                   <td>
-                    <BiPencil className="icon editItem" onClick={() => dispatch(toggleEditModal())}/>
+                    <BiPencil
+                      className="icon editItem"
+                      onClick={() => handleEditClick(_id)}
+                    />
                   </td>
                   <td>
-                    <CustomButton className="deleteItem" onClick={() => { deleteTransactions(_id) }}>
+                    <CustomButton
+                      className="deleteItem"
+                      onClick={() => {
+                        deleteTransactions(_id);
+                      }}
+                    >
                       Delete
                     </CustomButton>
                   </td>
@@ -80,13 +88,17 @@ const Home = () => {
             }
           )}
         </tbody>
-        
       </table>
 
-
-      <CustomButton className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</CustomButton>
+      <CustomButton
+        className="addItem"
+        type="button"
+        onClick={() => dispatch(toggleAddModal())}
+      >
+        +
+      </CustomButton>
       {/* <button className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button> */}
-      
+
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
         <Modal children={<AddTransaction />} />
       )}
