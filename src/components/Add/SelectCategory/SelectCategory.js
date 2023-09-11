@@ -17,6 +17,19 @@ const DropdownIndicator = props => {
   );
 };
 
+const customScrollbarStyles = {
+  menuList: provided => ({
+    ...provided,
+    '&::-webkit-scrollbar': {
+      width: '6px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: '#BFB4DD',
+      borderRadius: '12px',
+    },
+  }),
+};
+
 export const CustomSelect = ({ onChange, options, value, className }) => {
   const defaultValue = (options, value) => {
     return options ? options.find(option => option.value === value) : '';
@@ -31,6 +44,7 @@ export const CustomSelect = ({ onChange, options, value, className }) => {
         onChange={value => onChange(value)}
         options={options}
         classNamePrefix="Select"
+        styles={customScrollbarStyles}
       />
     </div>
   );
