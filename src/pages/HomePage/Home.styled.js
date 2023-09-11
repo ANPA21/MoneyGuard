@@ -28,15 +28,6 @@ export const HomeStyled = styled.div`
     cursor: pointer;
   }
 
-  .addItem {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    margin: 0;
-    padding: 30px;
-    cursor: pointer;
-  }
-
   .deleteItem {
     width: 69px;
     height: 29px;
@@ -137,10 +128,6 @@ export const HomeStyled = styled.div`
     border-bottom: none;
   }
 
-  .addItem {
-    width: 40px;
-  }
-
   //
   //  .header {
   //
@@ -221,7 +208,7 @@ export const Button = styled.div`
   justify-content: center;
   width: 44px;
   height: 44px;
-  border-radius: 44px;
+  border-radius: 50%;
   background: linear-gradient(
     97deg,
     #ffc727 -16.42%,
