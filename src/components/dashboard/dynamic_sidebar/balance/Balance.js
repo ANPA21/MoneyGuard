@@ -23,9 +23,10 @@ export const Balance = () => {
     }, [dispatch,transactions]);
 
     return (
-        <BalanceStyled>
-            <h3>Your balance</h3>
-            <p>₴ {balance}</p>
-        </BalanceStyled>
+      <BalanceStyled>
+        <h3>Your balance</h3>
+        <p1>₴</p1>
+        <p2>{balance}</p2>
+      </BalanceStyled>
     );
 }
