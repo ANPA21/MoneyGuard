@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import backLogIn from '../../images/backLogIn1x.jpg';
 import backRegister from '../../images/backRegister1x.jpg';
-import { desktopStyles } from 'styles/breakpoints';
 
 export const MainContainer = styled.main`
   display: flex;
@@ -19,8 +18,6 @@ export const MainContainer = styled.main`
   width: 100%;
   height: 100%;
   z-index: 1200;
-
-  ${desktopStyles};
 
   @media screen and (min-width: 768px) {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 60px 0px;

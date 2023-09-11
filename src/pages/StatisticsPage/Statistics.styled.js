@@ -1,13 +1,18 @@
 import styled from 'styled-components';
+import { desktopStyles } from 'styles/breakpoints';
 export const StatSection = styled.section`
   display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+  max-width: 70%;
+  /* justify-content: center; */
   margin-top: 32px;
+  margin-left: 84px;
+
+  color: var(--white);
+  ${desktopStyles};
 
   @media (max-width: 767px) {
     margin-top: 20px;
+    width: 100%;
     padding: 0 20px;
   }
 `;
