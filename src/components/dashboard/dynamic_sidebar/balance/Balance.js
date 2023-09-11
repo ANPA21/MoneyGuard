@@ -5,8 +5,6 @@ import { selectorTransactions } from 'redux/transactionsRedux/transactionsSelect
 import { selectorBalance } from 'redux/balance/balance.Selectors';
 import { BalanceStyled } from './Balance.styled';
 
-
-
 export const Balance = () => {
     const dispatch = useDispatch();
     const transactions = useSelector(selectorTransactions);
@@ -27,7 +25,7 @@ export const Balance = () => {
     return (
         <BalanceStyled>
             <h3>Your balance</h3>
-            <p>${balance}</p>
+            <p>₴ {balance}</p>
         </BalanceStyled>
     );
 }
