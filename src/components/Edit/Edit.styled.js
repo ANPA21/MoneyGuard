@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Form, Field } from 'formik';
 import Select from 'react-select';
+import { ErrorMessage } from 'formik';
 
 export const AddTitle = styled.h2`
   margin-bottom: 40px;
@@ -71,6 +72,12 @@ export const StyledForm = styled(Form)`
     padding-left: 21px;
   }
 
+  .react-datepicker-wrapper {
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
   .react-datepicker__input-container {
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     display: flex;
@@ -83,6 +90,10 @@ export const StyledForm = styled(Form)`
     width: 24px;
     height: 24px;
     fill: var(--purple);
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -110,6 +121,16 @@ export const StyledSum = styled(Field)`
 
   &:focus {
     outline: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    text-align: left;
+    padding-left: 21px;
+
+    &::placeholder {
+      text-align: left;
+    }
   }
 `;
 
@@ -184,17 +205,26 @@ export const StyledSelect = styled(Select)`
     cursor: pointer;
   }
 
-    .Select__option--is-selected {
+  .Select__option--is-selected {
     background-color: rgba(255, 255, 255, 0.1);
     color: rgba(255, 134, 141, 1);
-    }
-    
+  }
+
   .Select__dropdown-indicator {
     color: rgba(251, 251, 251, 1);
 
     &:hover {
       color: rgba(251, 251, 251, 1);
     }
+  }
+
+  @media screen and (max-width: 767px) {
+    .Select__value-container {
+      padding-left: 21px;
+    }
+
+    .Select__menu-list {
+    max-height: 352px;
   }
 `;
 
@@ -221,6 +251,11 @@ export const StyledComment = styled(Field)`
   &:focus {
     outline: 0;
   }
+
+  @media screen and (max-width: 767px) {
+    padding-left: 21px;
+    padding-bottom: 52px;
+  }
 `;
 
 export const SwitcherWrapper = styled.label`
@@ -240,6 +275,14 @@ export const Label = styled.label`
   &:not(:last-child) {
     margin-right: 32px;
   }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 40px;
+    }
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -251,4 +294,10 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 767px) {
     flex-direction: column;
   }
+`;
+
+export const ErrorMessageStyled = styled(ErrorMessage)`
+  color: #ff868d;
+  font-size: 14px;
+  margin-top: 2px;
 `;

@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage, Field } from 'formik';
+import { Formik, Field } from 'formik';
 import { object, string, number } from 'yup';
 import {
   AddBtn,
@@ -10,6 +10,7 @@ import {
   StyledSum,
   StyledComment,
   Label,
+  ErrorMessageStyled,
 } from '../Edit/Edit.styled.js';
 import { forwardRef, useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
@@ -94,7 +95,6 @@ export default function EditTransaction({ id }) {
   });
 
   const handleSubmit = values => {
-    console.log(values);
     dispatch(editItem({ id, values }));
     dispatch(toggleModal());
   };
@@ -126,7 +126,7 @@ export default function EditTransaction({ id }) {
                   className="Select"
                   name="category"
                 />
-                <ErrorMessage name="category" component="div" />
+                <ErrorMessageStyled name="category" component="div" />
               </>
             ) : (
               (values.category = '')
@@ -134,7 +134,7 @@ export default function EditTransaction({ id }) {
             <Wrapper>
               <Label>
                 <StyledSum type="number" name="value" />
-                <ErrorMessage name="value" component="div" />
+                <ErrorMessageStyled name="value" component="div" />
               </Label>
               <Label>
                 <Field name="date" validate={validate}>
@@ -155,7 +155,7 @@ export default function EditTransaction({ id }) {
 
             <StyledLabel>
               <StyledComment type="textarea" name="comment" />
-              <ErrorMessage name="comment" component="div" />
+              <ErrorMessageStyled name="comment" component="div" />
             </StyledLabel>
 
             <AddBtn type="submit">Save</AddBtn>

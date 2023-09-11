@@ -22,4 +22,5 @@ export const Cell = styled.div`
   display: table-cell;
   padding: 8px;
   text-align: center;
+  color: var(--white);
 `;

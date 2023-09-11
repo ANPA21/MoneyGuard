@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage, Field } from 'formik';
+import { Formik, Field } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 import { object, string, number } from 'yup';
 import {
@@ -11,6 +11,7 @@ import {
   StyledSum,
   StyledComment,
   Label,
+  ErrorMessageStyled,
 } from './Add.styled';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/ModalSlice';
@@ -138,7 +139,7 @@ export default function AddTransaction() {
                   className="Select"
                   name="category"
                 />
-                <ErrorMessage name="category" component="div" />
+                <ErrorMessageStyled name="category" component="div" />
               </>
             ) : (
               (values.category = '')
@@ -146,7 +147,7 @@ export default function AddTransaction() {
             <Wrapper>
               <Label>
                 <StyledSum type="number" name="value" placeholder="0.00" />
-                <ErrorMessage name="value" component="div" />
+                <ErrorMessageStyled name="value" component="div" />
               </Label>
               <Label>
                 <Field name="date" validate={validate}>
@@ -170,7 +171,7 @@ export default function AddTransaction() {
                 name="comment"
                 placeholder="Comment"
               />
-              <ErrorMessage name="comment" component="div" />
+              <ErrorMessageStyled name="comment" component="div" />
             </StyledLabel>
             <AddBtn type="submit">Add</AddBtn>
           </StyledForm>
