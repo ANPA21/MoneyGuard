@@ -78,7 +78,7 @@ const Home = () => {
                   <tr key={_id} className="data">
                     <td>{date}</td>
                     <td>{numberSign}</td>
-                    <td>{category}</td>
+                    {type === 'income' ? <td>Income</td> : <td>{category}</td>}
                     <td>{comment}</td>
                     <td className={colorClassName}>{value}</td>
                     <td>
