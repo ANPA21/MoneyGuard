@@ -11,7 +11,6 @@ export const HomeStyled = styled.div`
   line-height: normal;
   color: rgb(251, 251, 251);
   padding: 0 20px;
-  background-color: rgba(0, 0, 0, 0.1);
 
   .colorIncome {
     color: #ffb627;
