@@ -24,19 +24,19 @@ export const HeaderDiv = styled(Div)`
     height: 60px;
   }
   @media screen and (min-width: 320px) {
-    width: 320px;
+    width: 100%;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1279.5px) {
     padding: 0 32px;
-    width: 704px;
+    width: 100%;
     margin: 0 auto;
     justify-content: space-between;
   }
 
   @media screen and (min-width: 1280px) {
     padding: 0 16px;
-    width: 1244px;
+    width: 100%;
     margin: 0 auto;
   }
 `;
