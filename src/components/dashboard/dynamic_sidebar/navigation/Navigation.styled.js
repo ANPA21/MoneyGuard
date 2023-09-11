@@ -1,6 +1,23 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const NavigationStyled = styled.div`
+
+  @media screen and (max-width: 767px) {
+    
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 336px;
+    height: 214px;
+    padding-left: 0;
+
+  }
+  @media screen and (min-width: 1024px) {
+  
+  }
+
+`;
+
 export const StyledNavList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -10,7 +27,10 @@ export const StyledNavList = styled.ul`
 
   list-style: none;
   padding: 0;
-  padding-left: 19px;
+  
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    padding-left: 0;
+  }
   padding-top: 42px;
   padding-bottom: 28px;
 `;
@@ -117,4 +137,5 @@ export const ActiveNavLinkMob = styled(StyledNavLinkMob)`
       }
     }
   }
+
 `;

@@ -7,8 +7,10 @@ import { Currency } from './currency/Currency';
 export const DynamicSidebar = () => {
     return (
         <DynamicSidebarStyled>
-            <Navigation />
-            <Balance />
+            <div className='styledBlock'>
+                <Navigation />
+                <Balance />
+            </div>
             <Currency />
         </DynamicSidebarStyled>
     );

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { selectorTransactions } from 'redux/transactionsRedux/transactionsSelectors';
 import { HomeStyled } from './Home.styled';
 import Modal from '../../components/Modal/Modal';
@@ -20,6 +21,7 @@ const Home = () => {
   const [id, setId] = useState(null);
   const modalType = useSelector(selectModalTypeState);
   const isModalOpen = useSelector(selectModalState);
+  const isMobile = useMediaQuery({ minWidth: 240, maxWidth: 767 });
 
   const deleteTransactions = id => {
     dispatch(deleteItem(id));
@@ -38,67 +40,74 @@ const Home = () => {
 
   return (
     <HomeStyled>
-      <table className="table">
-        <thead className="head">
-          <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Comment</th>
-            <th>Sum</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map(
-            ({ createdAt, type, category, comment, value, _id }) => {
-              let date = new Date(createdAt).toLocaleDateString();
-              let numberSign = '+';
-              let colorClassName = 'colorIncome';
-              if (type === 'expense') {
-                numberSign = '-';
-                colorClassName = 'colorExpense';
+      {!isMobile && (
+        <table className="table">
+          <thead className="head">
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Comment</th>
+              <th>Sum</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map(
+              ({ createdAt, type, category, comment, value, _id }) => {
+                let date = new Date(createdAt).toLocaleDateString();
+                let numberSign = '+';
+                let colorClassName = 'colorIncome';
+                if (type === 'expense') {
+                  numberSign = '-';
+                  colorClassName = 'colorExpense';
+                }
+                return (
+                  <tr key={_id} className="data">
+                    <td>{date}</td>
+                    <td>{numberSign}</td>
+                    <td>{category}</td>
+                    <td>{comment}</td>
+                    <td className={colorClassName}>{value}</td>
+                    <td>
+                      <BiPencil
+                        className="icon editItem"
+                        onClick={() => handleEditClick(_id)}
+                      />
+                    </td>
+                    <td>
+                      <CustomButton
+                        className="deleteItem"
+                        onClick={() => {
+                          deleteTransactions(_id);
+                        }}
+                      >
+                        Delete
+                      </CustomButton>
+                    </td>
+                  </tr>
+                );
               }
-              return (
-                <tr key={_id} className="data">
-                  <td>{date}</td>
-                  <td>{numberSign}</td>
-                  <td>{category}</td>
-                  <td>{comment}</td>
-                  <td className={colorClassName}>{value}</td>
-                  <td>
-                    <BiPencil
-                      className="icon editItem"
-                      onClick={() => handleEditClick(_id)}
-                    />
-                  </td>
-                  <td>
-                    <CustomButton
-                      className="deleteItem"
-                      onClick={() => {
-                        deleteTransactions(_id);
-                      }}
-                    >
-                      Delete
-                    </CustomButton>
-                  </td>
-                </tr>
-              );
-            }
-          )}
-        </tbody>
-      </table>
+            )}
+          </tbody>
+        </table>
+      )}
+
+    {isMobile && (
+      <div>
+          Тут будут карточки данных
+      </div>
+    )}  
 
       <CustomButton
-        className="addItem"
-        type="button"
-        onClick={() => dispatch(toggleAddModal())}
-      >
-        +
+            className="addItem"
+            type="button"
+            onClick={() => dispatch(toggleAddModal())}
+          >
+            +
       </CustomButton>
-      {/* <button className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button> */}
-
+              
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
         <Modal children={<AddTransaction />} />
       )}
@@ -108,7 +117,16 @@ const Home = () => {
       {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
         <Modal children={<Logout />} showCloseIcon={false} />
       )}
+
     </HomeStyled>
+      
+
+
+    
+    
+    
+
+
   );
 };
 
