@@ -72,6 +72,8 @@ export const HomeStyled = styled.div`
   }
 
   tbody {
+    position: relative;
+
     font-size: 14px;
     font-weight: 400;
   }
@@ -186,6 +188,17 @@ export const HomeStyled = styled.div`
   //@media screen and (min-width: 1024px) {
   //  //max-width: 1400px;
   //}
+`;
+
+export const LoaderWrapper = styled.td`
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const Button = styled.div`

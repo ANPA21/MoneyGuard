@@ -1,6 +1,6 @@
 import { DashboardStyled } from './Dashboard.styled';
 import { Header } from '../../components/dashboard/header/Header';
-import { Main } from '../../components/dashboard/main/Main';
+import { Main } from 'components/dashboard/main/Main';
 
 export const Dashboard = () => {
   return (
@@ -10,4 +10,3 @@ export const Dashboard = () => {
     </DashboardStyled>
   );
 };
-
