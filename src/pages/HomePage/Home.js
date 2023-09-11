@@ -7,7 +7,9 @@ import EditTransaction from '../../components/Edit/Edit';
 import Logout from '../../components/Logout/Logout';
 import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
-
+import { CustomButton } from 'components/CustomElements/CustomButton';
+import { BiPencil } from "react-icons/bi";
+//BiPencil
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
   const {
@@ -32,53 +34,54 @@ const Home = () => {
 
   return (
     <HomeStyled>
-      <ul className="header">
-        <li>CreatedAt</li>
-        <li>Type</li>
-        <li>Category</li>
-        <li>Comment</li>
-        <li>Sum</li>
-        <li></li>
-      </ul>
+      <table className="table">
+        <thead className='head'>
+          <tr >
+            <th>Date</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Comment</th>
+            <th>Sum</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {transactions.map(
+            ({ createdAt, type, category, comment, value, _id }) => {
+              let date = new Date(createdAt).toLocaleDateString()
+              let numberSign = '+';
+              let colorClassName = "colorIncome";
+                if (type === "expense") {
+                  numberSign = '-';
+                  colorClassName = "colorExpense";
+                }
+              return (
+                <tr key={_id} className="data">
+                  <td>{date}</td>
+                  <td>{numberSign}</td>
+                  <td>{category}</td>
+                  <td>{comment}</td>
+                  <td className={colorClassName}>{value}</td>
+                  <td>
+                    <BiPencil className="icon editItem" onClick={() => dispatch(toggleEditModal())}/>
+                  </td>
+                  <td>
+                    <CustomButton className="deleteItem" onClick={() => { deleteTransactions(_id) }}>
+                      Delete
+                    </CustomButton>
+                  </td>
+                </tr>
+              );
+            }
+          )}
+        </tbody>
+        
+      </table>
 
-      <ul className="transaction">
-        {transactions.map(
-          ({ createdAt, type, category, comment, value, _id }) => {
-            return (
-              <li key={_id} className="data">
-                <p>{createdAt}</p>
-                <p>{type}</p>
-                <p>{category}</p>
-                <p>{comment}</p>
-                <p>{value}</p>
-                <p
-                  className="editItem"
-                  onClick={() => dispatch(toggleEditModal())}
-                >
-                  edit
-                </p>
-                <button
-                  onClick={() => {
-                    deleteTransactions(_id);
-                  }}
-                >
-                  Delete
-                </button>
-              </li>
-            );
-          }
-        )}
-      </ul>
-
-      {/* <div>Кнопки пагинации Prev - Next</div> */}
-      <button
-        className="addItem"
-        type="button"
-        onClick={() => dispatch(toggleAddModal())}
-      >
-        +
-      </button>
-
+      <CustomButton className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</CustomButton>
+      {/* <button className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button> */}
+      
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
         <Modal children={<AddTransaction />} />
       )}
