@@ -26,7 +26,7 @@ export const Head = styled.div`
   margin-bottom: 16px;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    //max-width: 100%;
+    margin-bottom: 0;
   }
   @media screen and (min-width: 1024px) {
     //max-width: 1400px;

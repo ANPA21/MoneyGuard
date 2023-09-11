@@ -20,6 +20,7 @@ export const MainStyled = styled.div`
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     //max-width: 100%;
+    flex-direction: column;
   }
   @media screen and (min-width: 1024px) {
     //max-width: 1400px;

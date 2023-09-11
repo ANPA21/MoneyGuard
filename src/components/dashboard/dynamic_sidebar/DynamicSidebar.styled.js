@@ -8,7 +8,7 @@ export const DynamicSidebarStyled = styled.div`
   flex-direction: column;
 
   //background-color: rgba(0, 0, 0, 0.1);
-  border-right: 1px solid rgba(251, 251, 251, 0.83);
+  border: 1px solid rgba(251, 251, 251, 0.83);
 
   //width: 37%;
 
@@ -18,14 +18,18 @@ export const DynamicSidebarStyled = styled.div`
   //padding: 5px;
   //color: black;
 
-  @media screen and (max-width: 479px) {
-    //мобилка   (до 479px)  ?????
-  }
-  @media screen and (min-width: 480px) and (max-width: 767px) {
-    //планшет  ?????
+  @media screen and (max-width: 767px) {
+    // mobile
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    //планшет ??????
+    flex-direction: row;
+    height: 336px; // Временно для верстки статистики
+    max-height: 336px;
+    flex-direction: row;
+    max-width: 768px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
   @media screen and (min-width: 1024px) {
     //десктоп  ???????

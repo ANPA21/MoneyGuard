@@ -10,8 +10,9 @@ export const StatSection = styled.section`
   justify-content: center;
   max-width: 100%;
   padding: 0px 20px;
+
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    //max-width: 100%;
+    margin: 40px 0 0 0;
   }
   @media screen and (min-width: 1024px) {
     max-width: 70%;
@@ -23,7 +24,7 @@ export const RightSideStatWrapper = styled.div`
   @media screen and (max-width: 767px) {
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    //max-width: 100%;
+    display: flex;
   }
   @media screen and (min-width: 1024px) {
     //max-width: 1400px;
@@ -51,6 +52,8 @@ export const DatePickerWrapper = styled.div`
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin-top: 10px;
+    flex-direction: row;
   }
   @media screen and (min-width: 1024px) {
     //max-width: 1400px;
