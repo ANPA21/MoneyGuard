@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MoneyGuard/static/css/main.d871ea55.css",
-    "main.js": "/MoneyGuard/static/js/main.b948a3e0.js",
+    "main.js": "/MoneyGuard/static/js/main.b9ccdb2f.js",
     "static/media/bg-register-desktop@2x.jpg": "/MoneyGuard/static/media/bg-register-desktop@2x.1006452c317b60d35d26.jpg",
     "static/media/Poppins-Regular.woff": "/MoneyGuard/static/media/Poppins-Regular.9b9d9585fc27c8fff554.woff",
     "static/media/Poppins-Medium.woff": "/MoneyGuard/static/media/Poppins-Medium.26c20b0f1f2b2d0d7f4e.woff",
@@ -19,10 +19,10 @@
     "static/media/logo.svg": "/MoneyGuard/static/media/logo.ffeeeefcbe61417cbb56220cd92da552.svg",
     "index.html": "/MoneyGuard/index.html",
     "main.d871ea55.css.map": "/MoneyGuard/static/css/main.d871ea55.css.map",
-    "main.b948a3e0.js.map": "/MoneyGuard/static/js/main.b948a3e0.js.map"
+    "main.b9ccdb2f.js.map": "/MoneyGuard/static/js/main.b9ccdb2f.js.map"
   },
   "entrypoints": [
     "static/css/main.d871ea55.css",
-    "static/js/main.b948a3e0.js"
+    "static/js/main.b9ccdb2f.js"
   ]
 }
