@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
 `;
 export const Div = styled.div`
   width: 100%;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.35), 0px -3px 2px 0px rgba(0, 0, 0, 0.10) inset;
+  /* box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.35), 0px -3px 2px 0px rgba(0, 0, 0, 0.10) inset; */
 `;
 
 export const HeaderDiv = styled(Div)`
@@ -48,10 +48,11 @@ export const LogoBox = styled.button`
   flex-direction: column;
   background: rgba(255, 255, 255, 0);
   border: none;
-  cursor:pointer;
+  cursor: pointer;
   transition: all 400ms;
   &:hover {
-    transform: scale(1.1)}
+    transform: scale(1.1);
+  }
   @media (max-width: 767px) {
     padding: 12px 0;
     margin-right: auto;

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { desktopStyles } from 'styles/breakpoints';
 export const StatSection = styled.section`
   display: flex;
   max-width: 70%;
@@ -8,7 +7,6 @@ export const StatSection = styled.section`
   margin-left: 84px;
 
   color: var(--white);
-  ${desktopStyles};
 
   @media (max-width: 767px) {
     margin-top: 20px;

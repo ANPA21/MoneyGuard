@@ -6,6 +6,7 @@ export const DashboardStyled = styled.div`
   flex-direction: column;
   min-height: 100vh;
   min-width: 100vw;
+  overflow: hidden;
   background: radial-gradient(
       circle at 9% 90%,
       rgba(55, 15, 99, 0.7) 4%,
