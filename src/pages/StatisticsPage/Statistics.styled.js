@@ -5,7 +5,6 @@ export const StatSection = styled.section`
   /* justify-content: center; */
   margin-top: 32px;
   margin-left: 84px;
-
   color: var(--white);
 
   @media (max-width: 767px) {

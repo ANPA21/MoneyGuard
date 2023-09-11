@@ -4,7 +4,7 @@ export const WorkingSpaceStyled = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-
+  border: 1px solid teal;
   //background: linear-gradient(220deg, rgb(11, 6, 38) 44%, rgb(34 14 59) 82%);
 
   //width: -webkit-fill-available;
