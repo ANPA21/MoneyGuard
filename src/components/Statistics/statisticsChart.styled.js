@@ -22,10 +22,12 @@ export const DonutContainer = styled.div`
     height: auto;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin-top: 20px;
     //max-width: 100%;
   }
   @media screen and (min-width: 1024px) {
-    //max-width: 1400px;
+    width: 288px;
+    height: 288px;
   }
 `;
 

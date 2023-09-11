@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const StatSection = styled.section`
+export const StatSection = styled.div`
   /* display: flex; */
   /* justify-content: center; */
   color: var(--white);
@@ -15,8 +15,8 @@ export const StatSection = styled.section`
     margin: 40px 0 0 0;
   }
   @media screen and (min-width: 1024px) {
-    max-width: 70%;
-    //max-width: 1400px;
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -28,6 +28,7 @@ export const RightSideStatWrapper = styled.div`
   }
   @media screen and (min-width: 1024px) {
     //max-width: 1400px;
+    display: flex;
   }
 `;
 export const LeftSideWrapper = styled.div`
@@ -36,9 +37,11 @@ export const LeftSideWrapper = styled.div`
     align-items: center;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin-right: 32px;
   }
   @media screen and (min-width: 1024px) {
-    //max-width: 1400px;
+    margin-right: 32px;
+    margin-left: 69px;
   }
 `;
 
@@ -57,6 +60,8 @@ export const DatePickerWrapper = styled.div`
   }
   @media screen and (min-width: 1024px) {
     //max-width: 1400px;
+    flex-direction: row;
+    gap: 32px;
   }
 `;
 export const DataWrapper = styled.div`
