@@ -49,6 +49,7 @@ const StatiscticsPage = () => {
   }, [query, dispatch]);
   const reduxData = useSelector(selectStatisticsData);
   const categories = useSelector(selectCategories);
+
   const handleYearChange = event => {
     setSelectedYear(event.value);
   };

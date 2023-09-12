@@ -61,6 +61,4 @@ export const Total = styled.div`
   color: var(--white);
   margin-left: 10px;
   font-weight: 700;
-
- 
 `;

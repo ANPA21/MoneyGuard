@@ -127,54 +127,6 @@ export const HomeStyled = styled.div`
     border-bottom: none;
   }
 
-  //
-  //  .header {
-  //
-  //    padding-left: 20px;
-  //    align-items: center;
-  //    font-size: 16px;
-  //    font-weight: 600;
-  //    border-radius: 8px;
-  //    background: rgba(82, 59, 126, 0.60);
-  //    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-  //    margin-bottom: 20px;
-  //
-  //    li:nth-child(1) {
-  //      margin-right: 64px;
-  //    }
-  //    li:nth-child(2) {
-  //      margin-right: 51px;
-  //    }
-  //    li:nth-child(3) {
-  //      margin-right: 69px;
-  //    }
-  //
-  //  }
-  //
-  //  .heder li,
-  //  .data p,
-  //  .editItem :nth-child(1) {
-  //    display: block;
-  //    width: 100px;
-  //  }
-  //
-  //
-  //  .header li,
-  //  .data p {
-  //      display: block;
-  //      width: 15%;
-  //      height: 30px;
-  //  }
-  //
-  //  .transaction {
-  //      margin-bottom: 20px;
-  //  }
-  //
-  //  .editItem,
-  //  .deleteItem {
-  //      cursor: pointer
-  //  }
-
   @media screen and (max-width: 479px) {
     //max-width: 100%;
   }
