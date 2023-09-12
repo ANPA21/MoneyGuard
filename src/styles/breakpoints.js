@@ -15,12 +15,12 @@ export const mobileStyles = css`
 `;
 
 export const tabletStyles = css`
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
   }
 `;
 
 export const desktopStyles = css`
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     background-image: url(${bgDesktop});
     @media screen and (min-device-pixel-ratio: 2),
       screen and (-webkit-min-device-pixel-ratio: 2),
