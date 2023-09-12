@@ -2,7 +2,7 @@ import { DashboardContainer, DashboardStyled } from './Dashboard.styled';
 import { Header } from '../../components/dashboard/header/Header';
 import { Main } from 'components/dashboard/main/Main';
 
-export const Dashboard = () => {
+const Dashboard = () => {
   return (
     <DashboardStyled>
       <Header />
@@ -12,3 +12,5 @@ export const Dashboard = () => {
     </DashboardStyled>
   );
 };
+
+export default Dashboard;
