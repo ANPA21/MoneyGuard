@@ -6,14 +6,11 @@ export const HomeStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
-  font-family: Poppins;
-  font-style: normal;
-  line-height: normal;
-  color: rgb(251, 251, 251);
+  color: var(--white);
   padding: 0 20px;
 
   .colorIncome {
-    color: #ffb627;
+    color: var(--yellow);
   }
 
   .colorExpense {
@@ -127,18 +124,10 @@ export const HomeStyled = styled.div`
     border-bottom: none;
   }
 
-  @media screen and (max-width: 479px) {
-    //max-width: 100%;
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
   }
-  @media screen and (min-width: 480px) and (max-width: 767px) {
-    //max-width: 100%;
-  }
-  @media screen and (min-width: 768px) {
-    //max-width: 100%;
-  }
-  //@media screen and (min-width: 1024px) {
-  //  //max-width: 1400px;
-  //}
 `;
 
 export const LoaderWrapper = styled.td`
