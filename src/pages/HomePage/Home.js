@@ -1,6 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Button, HomeStyled, LoaderWrapper } from './Home.styled';
+import {
+  Container,
+  ContainerHeader,
+  TableHead,
+  Data,
+  TableRow,
+  TableData,
+  PencilButton,
+  Button,
+  CustomButton,
+} from './Home.styled';
 import {
   selectIsLoading,
   selectorTransactions,
@@ -11,7 +21,6 @@ import EditTransaction from '../../components/Edit/Edit';
 import Logout from '../../components/Logout/Logout';
 import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
-import { CustomButton } from 'components/CustomElements/CustomButton';
 import { BiPencil } from 'react-icons/bi';
 import { RotatingLines } from 'react-loader-spinner';
 
@@ -46,27 +55,23 @@ const Home = () => {
   const transactions = useSelector(selectorTransactions);
 
   return (
-    <HomeStyled>
+    <Container>
       {!isMobile && (
-        <table className="table">
-          <thead className="head">
-            <tr>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Category</th>
-              <th>Comment</th>
-              <th>Sum</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
+        <ContainerHeader>
+          <TableHead>
+            <div>Date</div>
+            <div>Type</div>
+            <div>Category</div>
+            <div>Comment</div>
+            <div>Sum</div>
+          </TableHead>
+          <Data>
             {isLoading ? (
-              <tr>
-                <LoaderWrapper>
+              <TableRow>
+                <div>
                   <RotatingLines visible={true} height="80" width="80" />
-                </LoaderWrapper>
-              </tr>
+                </div>
+              </TableRow>
             ) : (
               transactions.map(
                 ({ createdAt, type, category, comment, value, _id }) => {
@@ -78,24 +83,21 @@ const Home = () => {
                     colorClassName = 'colorExpense';
                   }
                   return (
-                    <tr key={_id} className="data">
-                      <td>{date}</td>
-                      <td>{numberSign}</td>
+                    <TableRow key={_id} className="data">
+                      <TableData>{date}</TableData>
+                      <TableData>{numberSign}</TableData>
                       {type === 'income' ? (
-                        <td>Income</td>
+                        <TableData>Income</TableData>
                       ) : (
-                        <td>{category}</td>
+                        <TableData>{category}</TableData>
                       )}
-                      <td>{comment}</td>
-                      <td className={colorClassName}>{value}</td>
-                      <td>
-                        <BiPencil
-                          className="icon editItem"
-                          onClick={() => handleEditClick(_id)}
-                        />
-                      </td>
-                      <td>
+                      <TableData>{comment}</TableData>
+                      <TableData className={colorClassName}>{value}</TableData>
+
+                      <PencilButton>
+                        <BiPencil onClick={() => handleEditClick(_id)} />
                         <CustomButton
+                          style={{}}
                           className="deleteItem"
                           onClick={() => {
                             deleteTransactions(_id);
@@ -103,14 +105,14 @@ const Home = () => {
                         >
                           Delete
                         </CustomButton>
-                      </td>
-                    </tr>
+                      </PencilButton>
+                    </TableRow>
                   );
                 }
               )
             )}
-          </tbody>
-        </table>
+          </Data>
+        </ContainerHeader>
       )}
 
       <Button
@@ -130,7 +132,7 @@ const Home = () => {
       {modalType === 'modal/toggleLogOutModal' && isModalOpen && (
         <Modal children={<Logout />} showCloseIcon={false} />
       )}
-    </HomeStyled>
+    </Container>
   );
 };
 
