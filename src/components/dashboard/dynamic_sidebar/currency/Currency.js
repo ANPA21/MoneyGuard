@@ -10,11 +10,21 @@ import tablet3x from '../../../../images/chart/chart-tablet@3x.png';
 import web1x from '../../../../images/chart/chart-web.png';
 import web2x from '../../../../images/chart/chart-web@2x.png';
 import web3x from '../../../../images/chart/chart-web@3x.png';
+import { didOneHourPass } from './didOneHourPass';
 
 export const Currency = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(fetchCurrency());
+    const savedCurrencyData = localStorage.getItem('persist:currency');
+    const savedCurrencyObj = JSON.parse(savedCurrencyData);
+    if (savedCurrencyObj.data !== 'null') {
+      if (didOneHourPass()) {
+        dispatch(fetchCurrency());
+      }
+    } else {
+      dispatch(fetchCurrency());
+    }
   }, [dispatch]);
 
   const currency = useSelector(selectCurrency);
