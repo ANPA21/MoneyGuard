@@ -2,17 +2,13 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
+// axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
+axios.defaults.baseURL = 'http://localhost:3030';
 
 export const fetchTransactions = createAsyncThunk(
   'transactions/fetchAll',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const cachedData = localStorage.getItem('transactions');
-      if (cachedData) {
-        return JSON.parse(cachedData);
-      }
-
       const response = await axios.get('/transactions');
       const data = response.data;
 
@@ -20,19 +16,20 @@ export const fetchTransactions = createAsyncThunk(
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return rejectWithValue(e.message);
     }
   }
 );
 
 export const deleteItem = createAsyncThunk(
   'transactions/deleteItem',
-  async (id, thunkAPI) => {
+  async (id, { rejectWithValue }) => {
     try {
+      console.log('id reducer:', id);
       const response = await axios.delete(`/transactions/${id}`);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return rejectWithValue(e.message);
     }
   }
 );
@@ -59,6 +56,7 @@ export const addTransaction = createAsyncThunk(
 export const editItem = createAsyncThunk(
   'transactions/editItem',
   async ({ id, values }, thunkAPI) => {
+    console.log(id);
     try {
       if (values.type === 'income') {
         const { category, ...changedData } = values;

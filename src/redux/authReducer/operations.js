@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
+// axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
+axios.defaults.baseURL = 'http://localhost:3030';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

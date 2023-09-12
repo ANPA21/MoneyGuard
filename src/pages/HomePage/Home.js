@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { selectorTransactions } from 'redux/transactionsRedux/transactionsSelectors';
-import { HomeStyled } from './Home.styled';
+import { Button, HomeStyled, LoaderWrapper } from './Home.styled';
 import {
   selectIsLoading,
   selectorTransactions,
@@ -30,8 +29,9 @@ const Home = () => {
   const isLoading = useSelector(selectIsLoading);
 
   const deleteTransactions = id => {
-    dispatch(deleteItem(id));
-    dispatch(fetchTransactions());
+    dispatch(deleteItem(id)).then(() => {
+      dispatch(fetchTransactions());
+    });
   };
 
   const handleEditClick = id => {
