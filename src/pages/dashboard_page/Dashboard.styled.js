@@ -24,16 +24,16 @@ export const DashboardStyled = styled.div`
       rgba(9, 0, 49, 0.99) 41%
     );
 
-  @media screen and (max-width: 479px) {
-    max-width: 100%;
-  }
+  //@media screen and (max-width: 479px) {
+  //  max-width: 100%;
+  //}
   @media screen and (min-width: 480px) and (max-width: 767px) {
-    max-width: 100%;
+    //max-width: 100%;
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    max-width: 100%;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    //max-width: 100%;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     max-width: 100%;
   }
 `;

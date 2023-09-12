@@ -124,6 +124,7 @@ export const HomeStyled = styled.div`
     border-bottom: none;
   }
 
+
   @media screen and (min-width: 1280px) {
     width: 1280px;
   }

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { Button, HomeStyled, LoaderWrapper } from './Home.styled';
 import {
   selectIsLoading,
   selectorTransactions,
 } from 'redux/transactionsRedux/transactionsSelectors';
-import { HomeStyled, LoaderWrapper, Button } from './Home.styled';
 import Modal from '../../components/Modal/Modal';
 import AddTransaction from '../../components/Add/Add';
 import EditTransaction from '../../components/Edit/Edit';
@@ -24,11 +25,13 @@ const Home = () => {
   const [id, setId] = useState(null);
   const modalType = useSelector(selectModalTypeState);
   const isModalOpen = useSelector(selectModalState);
+  const isMobile = useMediaQuery({ minWidth: 240, maxWidth: 767 });
   const isLoading = useSelector(selectIsLoading);
 
   const deleteTransactions = id => {
-    dispatch(deleteItem(id));
-    dispatch(fetchTransactions());
+    dispatch(deleteItem(id)).then(() => {
+      dispatch(fetchTransactions());
+    });
   };
 
   const handleEditClick = id => {
@@ -44,66 +47,71 @@ const Home = () => {
 
   return (
     <HomeStyled>
-      <table className="table">
-        <thead className="head">
-          <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Comment</th>
-            <th>Sum</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {isLoading ? (
+      {!isMobile && (
+        <table className="table">
+          <thead className="head">
             <tr>
-              <LoaderWrapper>
-                <RotatingLines visible={true} height="80" width="80" />
-              </LoaderWrapper>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Comment</th>
+              <th>Sum</th>
+              <th></th>
+              <th></th>
             </tr>
-          ) : (
-            transactions.map(
-              ({ createdAt, type, category, comment, value, _id }) => {
-                let date = new Date(createdAt).toLocaleDateString();
-                let numberSign = '+';
-                let colorClassName = 'colorIncome';
-                if (type === 'expense') {
-                  numberSign = '-';
-                  colorClassName = 'colorExpense';
+          </thead>
+          <tbody>
+            {isLoading ? (
+              <tr>
+                <LoaderWrapper>
+                  <RotatingLines visible={true} height="80" width="80" />
+                </LoaderWrapper>
+              </tr>
+            ) : (
+              transactions.map(
+                ({ createdAt, type, category, comment, value, _id }) => {
+                  let date = new Date(createdAt).toLocaleDateString();
+                  let numberSign = '+';
+                  let colorClassName = 'colorIncome';
+                  if (type === 'expense') {
+                    numberSign = '-';
+                    colorClassName = 'colorExpense';
+                  }
+                  return (
+                    <tr key={_id} className="data">
+                      <td>{date}</td>
+                      <td>{numberSign}</td>
+                      {type === 'income' ? (
+                        <td>Income</td>
+                      ) : (
+                        <td>{category}</td>
+                      )}
+                      <td>{comment}</td>
+                      <td className={colorClassName}>{value}</td>
+                      <td>
+                        <BiPencil
+                          className="icon editItem"
+                          onClick={() => handleEditClick(_id)}
+                        />
+                      </td>
+                      <td>
+                        <CustomButton
+                          className="deleteItem"
+                          onClick={() => {
+                            deleteTransactions(_id);
+                          }}
+                        >
+                          Delete
+                        </CustomButton>
+                      </td>
+                    </tr>
+                  );
                 }
-                return (
-                  <tr key={_id} className="data">
-                    <td>{date}</td>
-                    <td>{numberSign}</td>
-                    {type === 'income' ? <td>Income</td> : <td>{category}</td>}
-                    <td>{comment}</td>
-                    <td className={colorClassName}>{value}</td>
-                    <td>
-                      <BiPencil
-                        className="icon editItem"
-                        onClick={() => handleEditClick(_id)}
-                      />
-                    </td>
-                    <td>
-                      <CustomButton
-                        className="deleteItem"
-                        onClick={() => {
-                          deleteTransactions(_id);
-                        }}
-                      >
-                        Delete
-                      </CustomButton>
-                    </td>
-                  </tr>
-                );
-              }
-            )
-          )}
-        </tbody>
-      </table>
+              )
+            )}
+          </tbody>
+        </table>
+      )}
 
       <Button
         className="addItem"
@@ -112,7 +120,6 @@ const Home = () => {
       >
         +
       </Button>
-      {/* <button className='addItem' type="button" onClick={() => dispatch(toggleAddModal())}>+</button> */}
 
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
         <Modal children={<AddTransaction />} />
