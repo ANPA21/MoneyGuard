@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
 `;
 export const Div = styled.div`
   width: 100%;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.35), 0px -3px 2px 0px rgba(0, 0, 0, 0.10) inset;
+  /* box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.35), 0px -3px 2px 0px rgba(0, 0, 0, 0.10) inset; */
 `;
 
 export const HeaderDiv = styled(Div)`
@@ -17,26 +17,27 @@ export const HeaderDiv = styled(Div)`
   justify-content: space-between;
   height: 80px;
 
+  max-width: 1280px;
+  border: 1px solid tomato;
   @media (max-width: 767px) {
-    width: calc(100% - 40px);
+    width: 100%;
     padding: 0 20px;
-    margin: 0 auto;
     height: 60px;
   }
   @media screen and (min-width: 320px) {
-    width: 320px;
+    width: 100%;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1279.5px) {
     padding: 0 32px;
-    width: 704px;
+    width: 100%;
     margin: 0 auto;
     justify-content: space-between;
   }
 
   @media screen and (min-width: 1280px) {
     padding: 0 16px;
-    width: 1244px;
+    width: 100%;
     margin: 0 auto;
   }
 `;
@@ -48,10 +49,11 @@ export const LogoBox = styled.button`
   flex-direction: column;
   background: rgba(255, 255, 255, 0);
   border: none;
-  cursor:pointer;
+  cursor: pointer;
   transition: all 400ms;
   &:hover {
-    transform: scale(1.1)}
+    transform: scale(1.1);
+  }
   @media (max-width: 767px) {
     padding: 12px 0;
     margin-right: auto;

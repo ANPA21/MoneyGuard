@@ -1,9 +1,9 @@
 import { components } from 'react-select';
 import { VscChevronDown, VscChevronUp } from 'react-icons/vsc';
-import { StyledSelect } from '../Add.styled';
+import { StyledDateSelector } from './dateSelector.styled';
 
 const DropdownIndicator = props => {
-  if (props.isFocused) {
+  if (props.isF) {
     return (
       <components.DropdownIndicator {...props}>
         <VscChevronUp />
@@ -30,14 +30,14 @@ const customScrollbarStyles = {
   }),
 };
 
-export const CustomSelect = ({ onChange, options, value, className }) => {
+export const DateSelector = ({ onChange, options, value, className }) => {
   const defaultValue = (options, value) => {
     return options ? options.find(option => option.value === value) : '';
   };
 
   return (
     <div className={className}>
-      <StyledSelect
+      <StyledDateSelector
         value={defaultValue(options, value)}
         placeholder="Select a category"
         components={{ DropdownIndicator }}

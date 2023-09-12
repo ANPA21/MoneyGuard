@@ -47,11 +47,15 @@ export const DataTable = ({ reduxData }) => {
       <Footer>
         <Expenses>
           <span>Expenses:</span>
-          <StyledTdTotal>{reduxData.totalExpenses}</StyledTdTotal>
+          <StyledTdTotal className="expenses">
+            {reduxData.totalExpenses.toFixed(2)}
+          </StyledTdTotal>
         </Expenses>
         <Income>
           <span>Income:</span>
-          <StyledTdTotal>{reduxData.totalIncome}</StyledTdTotal>
+          <StyledTdTotal className="income">
+            {reduxData.totalIncome.toFixed(2)}
+          </StyledTdTotal>
         </Income>
       </Footer>
     </Container>

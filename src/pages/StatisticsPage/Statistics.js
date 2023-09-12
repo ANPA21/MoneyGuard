@@ -20,6 +20,7 @@ const {
   DatePickerWrapper,
   DataWrapper,
   TitleStyled,
+  LeftSideWrapper,
 } = require('./Statistics.styled');
 const StatiscticsPage = () => {
   const dispatch = useDispatch();
@@ -49,11 +50,11 @@ const StatiscticsPage = () => {
   const reduxData = useSelector(selectStatisticsData);
   const categories = useSelector(selectCategories);
   const handleYearChange = event => {
-    setSelectedYear(event.target.value);
+    setSelectedYear(event.value);
   };
 
   const handleMonthChange = event => {
-    setSelectedMonth(event.target.value);
+    setSelectedMonth(event.value);
   };
 
   return (
@@ -62,15 +63,24 @@ const StatiscticsPage = () => {
         <title>Statisctics</title>
       </Helmet>
       <RightSideStatWrapper>
-        <TitleStyled>Statistics</TitleStyled>
-        <div>
+        <LeftSideWrapper>
+          <TitleStyled>Statistics</TitleStyled>
+
           {categories && reduxData ? (
-            <StatiscticsChart reduxData={reduxData} categories={categories} />
+            <StatiscticsChart
+              reduxData={reduxData}
+              categories={categories}
+              style={{
+                boxSizing: 'border-box',
+                display: 'block',
+                height: '100%',
+                width: '100%',
+              }}
+            />
           ) : (
             <SpinnerLoader />
           )}
-        </div>
-
+        </LeftSideWrapper>
         <DataWrapper>
           <DatePickerWrapper>
             <DatePicker

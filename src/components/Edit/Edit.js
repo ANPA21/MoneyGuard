@@ -95,7 +95,6 @@ export default function EditTransaction({ id }) {
   });
 
   const handleSubmit = values => {
-    console.log(values);
     dispatch(editItem({ id, values }));
     dispatch(toggleModal());
   };

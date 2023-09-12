@@ -32,8 +32,8 @@ export const UserIcon = styled(FaUser)`
 `;
 
 export const IconInInput = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 `;
 
 export const IconContainer = styled.div`
@@ -47,9 +47,9 @@ export const IconStyled = styled.div`
 `;
 
 export const ErrorMessageStyled = styled.span`
-  color: #FF868D; 
+  color: #ff868d;
   font-size: 14px;
-  margin-top: 2px; 
+  margin-top: 2px;
 `;
 
 export const InputStyled = styled(Field)`
@@ -61,7 +61,7 @@ export const InputStyled = styled(Field)`
   font-size: 18px;
   font-weight: 400;
   color: rgba(255, 255, 255, 1);
-  padding: 0 35px; 
+  padding: 0 35px;
   margin: 0;
   position: relative;
 
@@ -86,9 +86,7 @@ export const InputStyled = styled(Field)`
 `;
 
 export const ErrorContainer = styled.div`
-display: flex;
-flex-direction: column;
-margin-top: 8px;
-`
-
-
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+`;

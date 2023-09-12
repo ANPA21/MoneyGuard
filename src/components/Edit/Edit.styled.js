@@ -224,7 +224,8 @@ export const StyledSelect = styled(Select)`
     }
 
     .Select__menu-list {
-    max-height: 352px;
+      max-height: 352px;
+    }
   }
 `;
 

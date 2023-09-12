@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import backLogIn from '../../images/backLogIn1x.jpg';
-import backRegister from '../../images/backRegister1x.jpg';
+import backLogIn from '../../images/login-bg/bg-login-web.jpg';
+import backRegister from '../../images/register-bg/bg-register-desktop.jpg';
 
 export const MainContainer = styled.main`
   display: flex;

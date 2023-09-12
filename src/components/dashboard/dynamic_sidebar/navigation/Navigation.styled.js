@@ -42,7 +42,6 @@ export const StyledNavLink = styled(NavLink)`
   gap: 20px;
   align-items: center;
   color: var(--white, #fbfbfb);
-  /* font-family: 'Poppins Regular'; */
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -61,7 +60,6 @@ export const StyledNavLink = styled(NavLink)`
   &:active,
   &:hover {
     font-weight: 700;
-    /* font-family: 'Poppins Bold'; */
     svg {
       background-color: rgba(255, 255, 255, 1);
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
@@ -84,6 +82,7 @@ export const StyledNavListMob = styled.ul`
   display: flex;
   flex-direction: row;
   list-style: none;
+  
   @media (max-width: 767px) {
     margin-top: 12px;
   }
@@ -116,6 +115,7 @@ export const StyledNavLinkMob = styled(NavLink)`
 
 export const ActiveNavLink = styled(StyledNavLink)`
   &.active {
+    font-weight: 800;
     svg {
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
       background-color: rgba(255, 255, 255, 1);
