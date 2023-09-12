@@ -20,7 +20,7 @@ export const DynamicSidebarStyled = styled.div`
   @media screen and (max-width: 767px) {
     // mobile
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     flex-direction: row;
     height: 336px; // Временно для верстки статистики
     max-height: 336px;
@@ -30,7 +30,7 @@ export const DynamicSidebarStyled = styled.div`
     margin-left: auto;
     margin-right: auto;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     width: 480px;
     //десктоп  ???????
   }

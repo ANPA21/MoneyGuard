@@ -25,8 +25,8 @@ export const Balance = () => {
     return (
       <BalanceStyled>
         <h3>Your balance</h3>
-        <p1>₴</p1>
-        <p2>{balance}</p2>
+        <p className="symbol">₴ </p>
+        <p className="text">{balance}</p>
       </BalanceStyled>
     );
 }
