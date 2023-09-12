@@ -21,11 +21,11 @@ export const DonutContainer = styled.div`
     width: 100%;
     height: auto;
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1267px) {
     margin-top: 20px;
     //max-width: 100%;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     width: 288px;
     height: 288px;
   }

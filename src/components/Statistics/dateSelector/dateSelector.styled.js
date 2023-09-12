@@ -4,11 +4,11 @@ import Select from 'react-select';
 export const StyledDateSelector = styled(Select)`
   font-size: 18px;
   width: 280px;
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     //max-width: 100%;
     width: 158px;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     width: 181px;
     //max-width: 1400px;
   }

@@ -21,14 +21,14 @@ export const WorkingSpaceStyled = styled.div`
   @media screen and (min-width: 480px) and (max-width: 767px) {
     //max-width: 100%;
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     flex-direction: row;
     max-width: 768px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     flex-direction: row;
     max-width: 800px;
     width: 100%;
