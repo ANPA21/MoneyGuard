@@ -8,45 +8,6 @@ export const BalanceStyled = styled.div`
   backdrop-filter: blur(50px);
   border-radius: 8px;
 
-  h3 {
-    text-transform: uppercase;
-    margin-top: 8px;
-    margin-bottom: 12px;
-    margin-left: 32px;
-    font-size: 12px;
-    color: var(--white);
-
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-      margin-left: 40px;
-    }
-
-    @media screen and (min-width: 1280px) {
-      margin-left: 56px;
-    }
-  }
-
-  p.symbol {
-    font-size: 30px;
-    color: var(--white);
-    margin-left: 32px;
-    font-weight: 400;
-
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-      margin-left: 40px;
-    }
-
-    @media screen and (min-width: 1280px) {
-      margin-left: 56px;
-    }
-  }
-
-  p.text {
-    font-size: 30px;
-    color: var(--white);
-    margin-left: 10px;
-    font-weight: 700;
-  }
-
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 336px;
   }
@@ -57,4 +18,47 @@ export const BalanceStyled = styled.div`
     backdrop-filter: none;
     box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
   }
+`;
+
+export const Text = styled.div`
+  text-transform: uppercase;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  margin-left: 32px;
+  font-size: 12px;
+  color: var(--white);
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    margin-left: 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-left: 56px;
+  }
+`;
+
+export const Line = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Symbol = styled.div`
+  font-size: 30px;
+  color: var(--white);
+  margin-left: 32px;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    margin-left: 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-left: 56px;
+  }
+`;
+
+export const Total = styled.div`
+  font-size: 30px;
+  color: var(--white);
+  margin-left: 10px;
+  font-weight: 700;
 `;
