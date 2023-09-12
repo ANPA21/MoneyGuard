@@ -18,11 +18,11 @@ export const MainStyled = styled.div`
     //max-width: 100%;
     flex-direction: column;
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     //max-width: 100%;
     flex-direction: column;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     //max-width: 1400px;
   }
 `;

@@ -196,6 +196,7 @@ export const StyledSelect = styled(Select)`
 
   .Select__menu-list {
     height: 100%;
+    overflow: hidden;
   }
 
   .Select__option--is-focused {
