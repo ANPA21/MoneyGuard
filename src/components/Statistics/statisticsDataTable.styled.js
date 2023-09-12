@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     //max-width: 100%;
     width: 336px;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     //max-width: 1400px;
     width: 395px;
   }
@@ -25,10 +25,10 @@ export const Head = styled.div`
   padding: 16px 16px;
   margin-bottom: 16px;
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin-bottom: 0;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     //max-width: 1400px;
     padding: 16px 28px;
     margin-bottom: 0;
@@ -44,10 +44,10 @@ export const HeadText = styled.div`
 
 export const Body = styled.div`
   margin-bottom: 16px;
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     //max-width: 100%;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     //max-width: 1400px;
   }
 `;
@@ -68,10 +68,10 @@ export const Expenses = styled.div`
   justify-content: space-between;
   padding: 0px 16px;
   margin-bottom: 16px;
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     //
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     padding: 0px 28px;
     //
   }
@@ -82,10 +82,10 @@ export const Income = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0px 16px;
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     //
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     padding: 0px 28px;
     //
   }
@@ -112,10 +112,10 @@ export const StyledTr = styled.div`
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 16px 16px;
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     //max-width: 100%;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     padding: 16px 28px;
     //max-width: 1400px;
   }
