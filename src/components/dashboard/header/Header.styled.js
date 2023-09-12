@@ -25,11 +25,13 @@ export const HeaderDiv = styled(Div)`
 
   max-width: 1280px;
   border: 1px solid tomato;
+
   @media (max-width: 767px) {
     width: 100%;
     padding: 0 20px;
     height: 60px;
   }
+
   @media screen and (min-width: 320px) {
     width: 100%;
   }
@@ -60,6 +62,7 @@ export const LogoBox = styled.button`
   &:hover {
     transform: scale(1.1);
   }
+
   @media (max-width: 767px) {
     padding: 12px 0;
     margin-right: auto;
@@ -82,6 +85,7 @@ export const Box = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   @media screen and (max-width: 767px) {
     margin-left: auto;
   }
@@ -93,6 +97,7 @@ export const Name = styled.p`
   font-size: 16px;
   margin: 0;
   margin-right: 12px;
+
   @media (max-width: 767px) {
     margin-right: 8px;
   }
@@ -103,6 +108,7 @@ export const Stick = styled.div`
   width: 1px;
   background-color: rgba(255, 255, 255, 0.6);
   margin-right: 12px;
+  
   @media (max-width: 767px) {
     display: none;
   }

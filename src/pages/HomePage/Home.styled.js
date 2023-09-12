@@ -7,10 +7,7 @@ export const HomeStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
-  font-family: Poppins;
-  font-style: normal;
-  line-height: normal;
-  color: rgb(251, 251, 251);
+  color: var(--white);
   padding: 0 20px;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -22,7 +19,7 @@ export const HomeStyled = styled.div`
   }
 
   .colorIncome {
-    color: #ffb627;
+    color: var(--yellow);
   }
 
   .colorExpense {
