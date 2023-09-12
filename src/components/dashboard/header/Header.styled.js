@@ -7,8 +7,14 @@ export const HeaderContainer = styled.header`
     0px -3px 2px 0px rgba(0, 0, 0, 0.1) inset;
 `;
 export const Div = styled.div`
+  max-width: 320px;
   width: 100%;
-  /* box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.35), 0px -3px 2px 0px rgba(0, 0, 0, 0.10) inset; */
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    max-width: 768px;
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 1280px;
+  }
 `;
 
 export const HeaderDiv = styled(Div)`

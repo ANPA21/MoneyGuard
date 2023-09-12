@@ -7,6 +7,7 @@ export const DashboardStyled = styled.div`
   flex-direction: column;
   min-height: 100vh;
   min-width: 100vw;
+
   background: radial-gradient(
       circle at 9% 90%,
       rgba(55, 15, 99, 0.7) 4%,
@@ -24,17 +25,11 @@ export const DashboardStyled = styled.div`
       rgba(9, 0, 49, 0.99) 41%
     );
 
-  //@media screen and (max-width: 479px) {
-  //  max-width: 100%;
-  //}
-  @media screen and (min-width: 480px) and (max-width: 767px) {
-    //max-width: 100%;
-  }
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    //max-width: 100%;
+    max-width: 768px;
   }
   @media screen and (min-width: 1280px) {
-    max-width: 100%;
+    max-width: 1280px;
   }
 `;
 
@@ -42,6 +37,16 @@ export const DashboardContainer = styled.div`
   display: flex;
   width: 100%;
   height: auto;
-  max-width: 1280px;
-  border: 1px solid white;
+  max-width: 320px;
+  border: 1px solid yellow;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    max-width: 768px;
+    flex-direction: column;
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 1280px;
+    flex-direction: row;
+  }
 `;

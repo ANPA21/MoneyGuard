@@ -5,6 +5,8 @@ export const WorkingSpaceStyled = styled.div`
   flex-direction: column;
   flex-grow: 1;
   border: 1px solid teal;
+  width: 100%;
+  max-width: 320px;
   //background: linear-gradient(220deg, rgb(11, 6, 38) 44%, rgb(34 14 59) 82%);
 
   //width: -webkit-fill-available;
@@ -15,9 +17,6 @@ export const WorkingSpaceStyled = styled.div`
   //padding: 5px;
   //color: #fff;
 
-  @media screen and (max-width: 479px) {
-    //max-width: 100%;
-  }
   @media screen and (min-width: 480px) and (max-width: 767px) {
     //max-width: 100%;
   }

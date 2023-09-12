@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const HomeStyled = styled.div`
-  width: 768px;
+  width: 320px;
+
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,6 +12,14 @@ export const HomeStyled = styled.div`
   line-height: normal;
   color: rgb(251, 251, 251);
   padding: 0 20px;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 768px;
+    //max-width: 100%;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
 
   .colorIncome {
     color: #ffb627;
@@ -126,19 +135,6 @@ export const HomeStyled = styled.div`
   tr:last-child td {
     border-bottom: none;
   }
-
-  @media screen and (max-width: 479px) {
-    //max-width: 100%;
-  }
-  @media screen and (min-width: 480px) and (max-width: 767px) {
-    //max-width: 100%;
-  }
-  @media screen and (min-width: 768px) {
-    //max-width: 100%;
-  }
-  //@media screen and (min-width: 1024px) {
-  //  //max-width: 1400px;
-  //}
 `;
 
 export const LoaderWrapper = styled.td`
