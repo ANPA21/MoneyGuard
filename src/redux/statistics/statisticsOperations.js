@@ -2,8 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import 'url-search-params-polyfill';
 
-// axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
-axios.defaults.baseURL = 'http://localhost:3030';
+axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
 
 export const getStatistics = createAsyncThunk(
   'statistics/getStatistics',
