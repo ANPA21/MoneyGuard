@@ -22,7 +22,8 @@ export const fetchCurrency = createAsyncThunk(
           }
           return result;
         }, {});
-      return fetchedCurrency;
+      const fetchingTime = new Date().toString();
+      return { data: fetchedCurrency, fetchingTime };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

@@ -9,6 +9,7 @@ const initialState = {
   data: null,
   isLoading: false,
   error: null,
+  fetchingTime: null,
 };
 
 const currencySlice = createSlice({
@@ -21,14 +22,15 @@ const currencySlice = createSlice({
       .addCase(fetchCurrency.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.data = action.payload;
+        state.data = action.payload.data;
+        state.fetchingTime = action.payload.fetchingTime;
       }),
 });
 
 const authPersistConfig = {
   key: 'currency',
   storage,
-  whitelist: ['data'],
+  whitelist: ['data', 'fetchingTime'],
 };
 const currencyReducer = currencySlice.reducer;
 
