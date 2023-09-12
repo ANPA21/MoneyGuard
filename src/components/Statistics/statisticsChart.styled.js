@@ -6,6 +6,7 @@ export const Balance = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: var(--dashboard-text);
 
   font-size: 18px;
   font-weight: 600;
