@@ -60,6 +60,10 @@ export const TableRow = styled.div`
   align-items: center;
   margin-left: 20px;
   font-size: 14px;
+  
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 export const TableDataDate = styled.div`
