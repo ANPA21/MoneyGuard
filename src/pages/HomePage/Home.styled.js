@@ -62,7 +62,35 @@ export const TableRow = styled.div`
   font-size: 14px;
 `;
 
-export const TableData = styled.div``;
+export const TableDataDate = styled.div`
+  width: 63px;
+`;
+
+export const TableDataType = styled.div`
+  width: 11px;
+  margin-left: 40px;
+`;
+
+export const TableDataCategory = styled.div`
+  width: 70px;
+  margin-left: 70px;
+`;
+
+export const TableDataComment = styled.div`
+  width: 114px;
+  margin-left: 50px;
+
+  @media screen and (min-width: 1280px) {
+    margin-left: 90px;
+  }
+`;
+
+export const TableDataColor = styled.div`
+  width: 70px;
+  margin-left: 20px;
+  /* color: ${props =>
+    props.type === 'expense' ? '#ff868d' : 'var(--yellow)'}; */
+`;
 
 export const PencilButton = styled.div`
   display: inline-flex;
@@ -71,12 +99,6 @@ export const PencilButton = styled.div`
   width: 91px;
 `;
 
-export const BiPencil = styled.div`
-  width: 24px;
-  height: 24px;
-  padding: 5px;
-  cursor: pointer;
-`;
 export const CustomButton = styled.div`
   height: 29px;
   display: flex;
@@ -87,7 +109,6 @@ export const CustomButton = styled.div`
     --button-gradient,
     linear-gradient(97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%)
   );
-
   box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
 `;
 
@@ -115,26 +136,12 @@ export const AddButton = styled.button`
   cursor: pointer;
 `;
 
-export const TableDataColor = styled.div`
-  /* color: ${props =>
-    props.type === 'expense' ? '#ff868d' : 'var(--yellow)'}; */
+export const TableDataSum = styled.div`
+  width: 70px;
+  margin-left: 50px;
 `;
 
-export const TableDataComment = styled.div`
-  width: 140px;
-  justify-content: space-between;
-  align-items: center;
-`;
-export const TableDataDate = styled.div`
-  width: 74px;
-`;
-export const TableDataType = styled.div`
-  width: 65px;
-  justify-content: space-between;
-  align-items: center;
-`;
-export const TableDataCategory = styled.div`
-  width: 65px;
-  justify-content: space-between;
-  align-items: center;
+export const TableData = styled.div`
+  width: 70px;
+  margin-left: 70px;
 `;

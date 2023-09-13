@@ -8,13 +8,13 @@ import {
   TableRow,
   TableDataDate,
   TableDataType,
-  TableDataCategory,
-  TableDataColor,
   TableData,
+  TableDataCategory,
   TableDataComment,
+  TableDataColor,
   PencilButton,
-  AddButton,
   CustomButton,
+  AddButton,
 } from './Home.styled';
 import {
   selectIsLoading,
