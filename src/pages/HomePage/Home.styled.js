@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 704px;
-  height: 312px;
-
+  width: 100%;
+  height: 100%;
+  max-width: 320px;
+  min-height: 568px;
   @media screen and (min-width: 1280px) {
     width: 715px;
     height: 308px;
+    margin: 40px 0 0 69px;
   }
 `;
 
@@ -85,11 +87,33 @@ export const CustomButton = styled.div`
   box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
 `;
 
-export const Button = styled.div``;
-
+export const AddButton = styled.button`
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(
+    97deg,
+    rgba(255, 199, 39, 1) -16.42%,
+    rgba(158, 64, 186, 1) 97.04%,
+    rgba(112, 0, 255, 1) 150.71%
+  );
+  border: none;
+  border-radius: 20px;
+  line-height: 1.5;
+  font-size: 18px;
+  color: rgba(251, 251, 251, 1);
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  cursor: pointer;
+`;
 
 export const TableDataColor = styled.div`
-  /* color: ${props => (props.type === 'expense' ? '#ff868d' : 'var(--yellow)')}; */
+  /* color: ${props =>
+    props.type === 'expense' ? '#ff868d' : 'var(--yellow)'}; */
 `;
 
 export const TableDataComment = styled.div`
@@ -110,5 +134,3 @@ export const TableDataCategory = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-
-

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 export const StatSection = styled.div`
-  /* display: flex; */
-  /* justify-content: center; */
   color: var(--white);
   margin-top: 40px;
   width: 320px;
@@ -12,10 +10,11 @@ export const StatSection = styled.div`
   padding: 0px 20px;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin: 40px 0 0 0;
+    margin: 0 0 0 -444px;
+    padding: 0 32px;
   }
   @media screen and (min-width: 1280px) {
-    margin: 0;
+    margin: 40px 0 0 0;
     padding: 0;
   }
 `;
@@ -37,7 +36,7 @@ export const LeftSideWrapper = styled.div`
     align-items: center;
   }
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 32px;
+    margin-right: 68px;
   }
   @media screen and (min-width: 1280px) {
     margin-right: 32px;
@@ -69,7 +68,7 @@ export const DataWrapper = styled.div`
   padding-bottom: 45px;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    //
+    width: 336px;
   }
   @media screen and (min-width: 1280px) {
     //

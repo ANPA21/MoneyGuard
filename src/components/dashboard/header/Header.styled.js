@@ -24,7 +24,6 @@ export const HeaderDiv = styled(Div)`
   height: 80px;
 
   max-width: 1280px;
-  border: 1px solid tomato;
 
   @media (max-width: 767px) {
     width: 100%;
@@ -108,7 +107,7 @@ export const Stick = styled.div`
   width: 1px;
   background-color: rgba(255, 255, 255, 0.6);
   margin-right: 12px;
-  
+
   @media (max-width: 767px) {
     display: none;
   }

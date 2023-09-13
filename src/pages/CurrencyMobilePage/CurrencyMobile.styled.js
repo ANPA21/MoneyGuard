@@ -7,6 +7,4 @@ export const CurrencyContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-
-  border: 1px solid coral;
 `;

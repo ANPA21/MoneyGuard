@@ -26,10 +26,8 @@ export const DashboardStyled = styled.div`
     );
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    max-width: 768px;
   }
   @media screen and (min-width: 1280px) {
-    max-width: 1280px;
   }
 `;
 
@@ -38,7 +36,6 @@ export const DashboardContainer = styled.div`
   width: 100%;
   height: auto;
   max-width: 320px;
-  border: 1px solid yellow;
   flex-direction: column;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {

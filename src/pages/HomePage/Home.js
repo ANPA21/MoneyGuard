@@ -13,7 +13,7 @@ import {
   TableData,
   TableDataComment,
   PencilButton,
-  Button,
+  AddButton,
   CustomButton,
 } from './Home.styled';
 import {
@@ -133,13 +133,13 @@ const Home = () => {
         </ContainerHeader>
       )}
 
-      <Button
+      <AddButton
         className="addItem"
         type="button"
         onClick={() => dispatch(toggleAddModal())}
       >
         +
-      </Button>
+      </AddButton>
 
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
         <Modal children={<AddTransaction />} />
@@ -151,9 +151,6 @@ const Home = () => {
         <Modal children={<Logout />} showCloseIcon={false} />
       )}
     </Container>
-    
-    // </div>
-
   );
 };
 
