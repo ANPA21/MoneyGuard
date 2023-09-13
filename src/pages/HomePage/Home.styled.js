@@ -60,7 +60,7 @@ export const TableRow = styled.div`
   align-items: center;
   margin-left: 20px;
   font-size: 14px;
-  
+
   &:last-child {
     border-bottom: none;
   }
@@ -72,7 +72,7 @@ export const TableDataDate = styled.div`
 
 export const TableDataType = styled.div`
   width: 11px;
-  margin-left: 40px;
+  margin-left: 60px;
 `;
 
 export const TableDataCategory = styled.div`
@@ -92,8 +92,8 @@ export const TableDataComment = styled.div`
 export const TableDataColor = styled.div`
   width: 70px;
   margin-left: 20px;
-  /* color: ${props =>
-    props.type === 'expense' ? '#ff868d' : 'var(--yellow)'}; */
+  color: ${props => (props.type === 'expense' ? '#ff868d' : 'var(--yellow)')};
+  text-align: end;
 `;
 
 export const PencilButton = styled.div`
@@ -140,12 +140,13 @@ export const AddButton = styled.button`
   cursor: pointer;
 `;
 
-export const TableDataSum = styled.div`
-  width: 70px;
-  margin-left: 50px;
-`;
+// export const TableDataSum = styled.div`
+//   width: 70px;
+//   margin-left: 50px;
+// `;
 
 export const TableData = styled.div`
   width: 70px;
   margin-left: 70px;
+  
 `;
