@@ -56,6 +56,14 @@ const Home = () => {
 
   return (
     <Container>
+
+      {/* <div>
+      <TransactionCard
+        transactions={transactions}
+        handleEditClick={handleEditClick}
+        deleteTransactions={deleteTransactions}
+      /> */}
+
       {!isMobile && (
         <ContainerHeader>
           <TableHead>
@@ -133,6 +141,7 @@ const Home = () => {
         <Modal children={<Logout />} showCloseIcon={false} />
       )}
     </Container>
+  // </div>
   );
 };
 
