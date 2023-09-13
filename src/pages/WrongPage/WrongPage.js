@@ -8,7 +8,7 @@ const WrongPage = () => {
   return (
     <DivStyle>
       <Img src={wrongPageImage} 
-      srcSet={`${wrongPageImageWebp}`}
+      srcSet={wrongPageImageWebp}
       alt="Oops, wrong page" />
 
       <CustomButton
