@@ -5,6 +5,10 @@ export const Container = styled.div`
   height: 100%;
   max-width: 320px;
   min-height: 568px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    max-width: 768px;
+    width: unset;
+  }
   @media screen and (min-width: 1280px) {
     width: 715px;
     height: 308px;
