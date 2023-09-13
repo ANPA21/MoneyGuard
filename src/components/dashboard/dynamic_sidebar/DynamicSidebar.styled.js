@@ -8,7 +8,7 @@ export const DynamicSidebarStyled = styled.div`
 
   max-width: 320px;
   width: 100%;
-  
+
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     height: 214px;
     flex-direction: row;
@@ -16,6 +16,7 @@ export const DynamicSidebarStyled = styled.div`
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
   }
   @media screen and (min-width: 1280px) {
     max-width: 480px;

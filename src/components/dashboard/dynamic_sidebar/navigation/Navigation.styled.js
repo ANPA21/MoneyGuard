@@ -13,13 +13,10 @@ export const StyledNavList = styled.ul`
   padding-left: 19px;
   padding-top: 42px;
 
-
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-      padding-left: 35px;
-      padding-top: 40px;
-
-    }
-
+    padding-left: 35px;
+    padding-top: 40px;
+  }
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -32,7 +29,7 @@ export const StyledNavLink = styled(NavLink)`
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: calc(18 / 27);
+  line-height: calc(27 / 18);
 
   svg {
     width: 18px;
