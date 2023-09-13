@@ -11,7 +11,7 @@ export const Table = styled.div`
   border-collapse: collapse;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 
   @media screen and (min-width: 1280px) {
@@ -23,22 +23,23 @@ export const Row = styled.div`
   width: 320px;
   height: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  // padding: 16px;
+  font-family: Poppins;
 
   &:first-child {
     background-color: rgba(255, 255, 255, 0.2);
     font-weight: 600;
-    padding: 12px;
+    
 
     @media screen and (min-width: 768px) and (max-width: 1279px) {
-      font-family: Circe;
-      padding: 12px 20px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     @media screen and (min-width: 1280px) {
-      padding: 16px;
+      padding-left: 62px;
+      padding-right: 131px;
 
     }
   }
@@ -46,14 +47,13 @@ export const Row = styled.div`
   &:not(:first-child) {
     font-weight: 400;
     background: rgba(74, 86, 226, 0.1);
-    padding: 24px 16px 0 16px;
 
 
     @media screen and (min-width: 768px) and (max-width: 1279px) {
       display: flex;
       justify-content: space-between;
-      font-family: Circe;
-      padding: 10px 20px 0 20px;
+      height: 0;
+      padding: 20px 20px 7px 20px;
     }
   }
 
@@ -70,6 +70,8 @@ export const Row = styled.div`
   @media screen and (min-width: 1280px) {
     width: 480px;
     height: 56px;
+    padding-left: 84px;
+    padding-right: 131px;
   }
 `;
 
@@ -80,24 +82,39 @@ export const CellHead = styled.div`
 
   &:first-child {
     margin-right: 48px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  margin-right: 30px;
+  }
+    
   }
 
   &:last-child {
     margin-left: 50px;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+  margin-left: 67px;
+  }
   }
 `;
 
 export const Cell = styled.div`
   display: table-cell;
   text-align: center;
+  padding: 8px;
   color: var(--white);
   
   &:first-child {
     margin-right: 88px;
+    padding: 20px 2px 20px 0;
   }
   &:last-child {
     margin-left: 74px;
+
+    @media screen and (min-width: 1280px) {
+    margin-left: 40px;
   }
+  }
+  
 `;
 
 export const Graph = styled.div`
