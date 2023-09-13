@@ -86,3 +86,29 @@ export const CustomButton = styled.div`
 `;
 
 export const Button = styled.div``;
+
+
+export const TableDataColor = styled.div`
+  /* color: ${props => (props.type === 'expense' ? '#ff868d' : 'var(--yellow)')}; */
+`;
+
+export const TableDataComment = styled.div`
+  width: 140px;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const TableDataDate = styled.div`
+  width: 74px;
+`;
+export const TableDataType = styled.div`
+  width: 65px;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const TableDataCategory = styled.div`
+  width: 65px;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+
