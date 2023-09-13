@@ -8,12 +8,9 @@ export const DynamicSidebarStyled = styled.div`
 
   max-width: 320px;
   width: 100%;
-  @media screen and (max-width: 767px) {
-  }
+  
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    flex-direction: row;
-    height: 336px; // Временно для верстки статистики
-    max-height: 336px;
+    height: 214px;
     flex-direction: row;
     max-width: 768px;
     width: 100%;

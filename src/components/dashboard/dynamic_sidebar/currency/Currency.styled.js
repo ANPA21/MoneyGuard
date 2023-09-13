@@ -39,6 +39,7 @@ export const Row = styled.div`
 
     @media screen and (min-width: 1280px) {
       padding: 16px;
+
     }
   }
 
@@ -47,7 +48,10 @@ export const Row = styled.div`
     background: rgba(74, 86, 226, 0.1);
     padding: 24px 16px 0 16px;
 
+
     @media screen and (min-width: 768px) and (max-width: 1279px) {
+      display: flex;
+      justify-content: space-between;
       font-family: Circe;
       padding: 10px 20px 0 20px;
     }
@@ -55,7 +59,12 @@ export const Row = styled.div`
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 336px;
-    height: 48px;
+    height: 46px;
+    padding: 0;
+
+    &:last-child {
+    padding-bottom: 0;
+  }
   }
 
   @media screen and (min-width: 1280px) {
@@ -82,7 +91,7 @@ export const Cell = styled.div`
   display: table-cell;
   text-align: center;
   color: var(--white);
-
+  
   &:first-child {
     margin-right: 88px;
   }

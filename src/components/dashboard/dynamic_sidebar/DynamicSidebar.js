@@ -1,9 +1,11 @@
 import { DynamicSidebarStyled } from './DynamicSidebar.styled';
+import { DivForNavigBalancyStaled } from './DivForNavigBalancyStaled.styled';
 import { Navigation } from './navigation/Navigation';
 import { Balance } from './balance/Balance';
 import { Currency } from './currency/Currency';
 import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+
 
 export const DynamicSidebar = () => {
   const location = useLocation();
@@ -14,8 +16,10 @@ export const DynamicSidebar = () => {
 
   return !isMobile ? (
     <DynamicSidebarStyled>
-      <Navigation />
-      <Balance />
+      <DivForNavigBalancyStaled>
+        <Navigation />
+        <Balance />
+      </DivForNavigBalancyStaled>
       <Currency />
     </DynamicSidebarStyled>
   ) : (
