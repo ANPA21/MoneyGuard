@@ -28,6 +28,7 @@ import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import { BiPencil } from 'react-icons/bi';
 import { RotatingLines } from 'react-loader-spinner';
+// import { TransactionCard } from './TransactionCard/TransactionCard';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -150,7 +151,9 @@ const Home = () => {
         <Modal children={<Logout />} showCloseIcon={false} />
       )}
     </Container>
+    
     // </div>
+
   );
 };
 

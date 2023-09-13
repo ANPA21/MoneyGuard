@@ -45,10 +45,5 @@ const CustomNavLinkBtnBase = styled(NavLink)`
 
 export const CustomButton = ({ isNavLink, customStyles, ...props }) => {
   const StyledComponent = isNavLink ? CustomNavLinkBtnBase : CustomButtonBase;
-  const StyledButton = styled(StyledComponent)`
-    && {
-      ${customStyles}
-    }
-  `;
-  return <StyledButton {...props} />;
+  return <StyledComponent {...props} />;
 };
