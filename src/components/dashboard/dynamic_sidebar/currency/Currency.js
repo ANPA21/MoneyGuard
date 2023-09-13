@@ -1,14 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  Table,
-  Row,
-  Cell,
-  Graph,
-  Ball,
-  BallEur,
-  Wrapper,
-  CellHead,
-} from './Currency.styled';
+import { Graph, Ball, BallEur, Wrap, StyledTable } from './Currency.styled';
 import { selectCurrency } from 'redux/currencyReducer/currencySelectors';
 import { fetchCurrency } from 'redux/currencyReducer/currencyOperations';
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,41 +33,44 @@ export const Currency = () => {
       {!currency ? (
         <SpinnerLoader />
       ) : (
-        <Wrapper>
-          <Table>
-            <Row>
-              <CellHead>Currency</CellHead>
-              <CellHead>Purchase</CellHead>
-              <CellHead>Sale</CellHead>
-            </Row>
-            <Row>
-              <Cell>USD</Cell>
-              <Cell>{currency.USD.buy.toFixed(2)}</Cell>
-              <Cell>{currency.USD.sale.toFixed(2)}</Cell>
-            </Row>
-            <Row>
-              <Cell>EUR</Cell>
-              <Cell>{currency.EUR.buy.toFixed(2)}</Cell>
-              <Cell>{currency.EUR.sale.toFixed(2)}</Cell>
-            </Row>
-            <Graph>
-              <source
-                srcSet={`${tablet1x} 1x, ${tablet2x} 2x, ${tablet3x} 3x`}
-                alt="Currency"
-                media="(min-width: 768px) and (max-width: 1023px)"
-              />
-              <source
-                srcSet={`${web1x} 1x, ${web2x} 2x, ${web3x} 3x`}
-                alt="Currency"
-                media="(min-width: 1024px)"
-              />
-              <img src={tablet1x} alt="Currency" />
-              <Ball>{currency.USD.buy.toFixed(2)}</Ball>
-              <BallEur>{currency.EUR.buy.toFixed(2)}</BallEur>
-            </Graph>
-            <div></div>
-          </Table>
-        </Wrapper>
+        <Wrap>
+          <StyledTable>
+            <thead>
+              <tr>
+                <th>Currency</th>
+                <th>Purchase</th>
+                <th>Sale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>USD</td>
+                <td>{currency.USD.buy.toFixed(2)}</td>
+                <td>{currency.USD.sale.toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td>EUR</td>
+                <td>{currency.EUR.buy.toFixed(2)}</td>
+                <td>{currency.EUR.sale.toFixed(2)}</td>
+              </tr>
+            </tbody>
+          </StyledTable>
+          <Graph>
+            <source
+              srcSet={`${tablet1x} 1x, ${tablet2x} 2x, ${tablet3x} 3x`}
+              alt="Currency"
+              media="(min-width: 768px) and (max-width: 1023px)"
+            />
+            <source
+              srcSet={`${web1x} 1x, ${web2x} 2x, ${web3x} 3x`}
+              alt="Currency"
+              media="(min-width: 1024px)"
+            />
+            <img src={tablet1x} alt="Currency" />
+            <Ball>{currency.USD.buy.toFixed(2)}</Ball>
+            <BallEur>{currency.EUR.buy.toFixed(2)}</BallEur>
+          </Graph>
+        </Wrap>
       )}
     </div>
   );
