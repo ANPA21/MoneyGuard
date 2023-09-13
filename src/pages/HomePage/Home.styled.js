@@ -134,6 +134,11 @@ export const AddButton = styled.button`
   text-transform: uppercase;
   letter-spacing: 1.8px;
   cursor: pointer;
+
+  @media screen and (max-width: 767px) {
+    bottom: 10px;
+    right: 137.5px;
+  }
 `;
 
 export const TableDataSum = styled.div`

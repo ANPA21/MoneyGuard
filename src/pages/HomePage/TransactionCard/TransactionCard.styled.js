@@ -6,10 +6,12 @@ export const StyledListCard = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 32px 0 54px 0;
 `;
 
 export const StyledCard = styled.li`
   width: 280px;
+  margin-bottom: 10px;
   background: linear-gradient(
     220deg,
     rgba(82, 59, 126, 0.6) 28.31%,
