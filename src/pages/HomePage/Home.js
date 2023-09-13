@@ -108,7 +108,7 @@ const Home = () => {
 
                       <TableDataComment>{comment}</TableDataComment>
 
-                      <TableDataColor className={colorClassName}>
+                      <TableDataColor type={type} className={colorClassName}>
                         {value}
                       </TableDataColor>
 
