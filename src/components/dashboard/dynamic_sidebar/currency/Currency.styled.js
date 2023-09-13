@@ -43,13 +43,16 @@ export const Wrap = styled.div`
   background: rgba(74, 86, 226, 0.1);
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   width: 320px;
+  margin-top: 24px;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 336px;
+    margin-top: 0px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 480px;
+    margin-top: 0px;
   }
 `;
 
@@ -135,8 +138,10 @@ export const StyledTable = styled.table`
       padding-right: 130px;
     }
   }
-  tbody:last-child {
-    padding-bottom: 0px;
+  tbody tr:nth-child(2) {
+    td {
+      padding-bottom: 0px;
+    }
   }
 
   thead {
