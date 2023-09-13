@@ -7,5 +7,6 @@ export const CurrencyContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  background-color: rgba(82, 59, 126, 0.6);
+
+  border: 1px solid coral;
 `;

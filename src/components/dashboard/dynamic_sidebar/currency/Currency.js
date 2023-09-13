@@ -1,5 +1,14 @@
 import React, { useEffect } from 'react';
-import { Table, Row, Cell, Graph } from './Currency.styled';
+import {
+  Table,
+  Row,
+  Cell,
+  Graph,
+  Ball,
+  BallEur,
+  Wrapper,
+  CellHead,
+} from './Currency.styled';
 import { selectCurrency } from 'redux/currencyReducer/currencySelectors';
 import { fetchCurrency } from 'redux/currencyReducer/currencyOperations';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,12 +42,12 @@ export const Currency = () => {
       {!currency ? (
         <SpinnerLoader />
       ) : (
-        <div>
+        <Wrapper>
           <Table>
             <Row>
-              <Cell>Currency</Cell>
-              <Cell>Purchase</Cell>
-              <Cell>Sale</Cell>
+              <CellHead>Currency</CellHead>
+              <CellHead>Purchase</CellHead>
+              <CellHead>Sale</CellHead>
             </Row>
             <Row>
               <Cell>USD</Cell>
@@ -62,10 +71,12 @@ export const Currency = () => {
                 media="(min-width: 1024px)"
               />
               <img src={tablet1x} alt="Currency" />
+              <Ball>{currency.USD.buy.toFixed(2)}</Ball>
+              <BallEur>{currency.EUR.buy.toFixed(2)}</BallEur>
             </Graph>
             <div></div>
           </Table>
-        </div>
+        </Wrapper>
       )}
     </div>
   );
