@@ -23,6 +23,7 @@ import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import { BiPencil } from 'react-icons/bi';
 import { RotatingLines } from 'react-loader-spinner';
+// import { TransactionCard } from './TransactionCard/TransactionCard';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -55,7 +56,16 @@ const Home = () => {
   const transactions = useSelector(selectorTransactions);
 
   return (
+<<<<<<< Updated upstream
     <Container>
+=======
+    <HomeStyled>
+      {/* <TransactionCard
+        transactions={transactions}
+        handleEditClick={handleEditClick}
+        deleteTransactions={deleteTransactions}
+      /> */}
+>>>>>>> Stashed changes
       {!isMobile && (
         <ContainerHeader>
           <TableHead>
@@ -83,6 +93,7 @@ const Home = () => {
                     colorClassName = 'colorExpense';
                   }
                   return (
+<<<<<<< Updated upstream
                     <TableRow key={_id} className="data">
                       <TableData>{date}</TableData>
                       <TableData>{numberSign}</TableData>
@@ -96,6 +107,25 @@ const Home = () => {
 
                       <PencilButton>
                         <BiPencil onClick={() => handleEditClick(_id)} />
+=======
+                    <tr key={_id} className="data">
+                      <td>{date}</td>
+                      <td>{numberSign}</td>
+                     {type === 'income' ? (
+                        <td>Income</td>
+                      ) : (
+                        <td>{category}</td>
+                      )} 
+                      <td>{comment}</td>
+                      <td className={colorClassName}>{value}</td>
+                      <td>
+                        <BiPencil
+                          className="icon editItem"
+                          onClick={() => handleEditClick(_id)}
+                        />
+                      </td>
+                      <td>
+>>>>>>> Stashed changes
                         <CustomButton
                           style={{}}
                           className="deleteItem"
