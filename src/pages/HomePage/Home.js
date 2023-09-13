@@ -6,7 +6,12 @@ import {
   TableHead,
   Data,
   TableRow,
+  TableDataDate,
+  TableDataType,
+  TableDataCategory,
+  TableDataColor,
   TableData,
+  TableDataComment,
   PencilButton,
   Button,
   CustomButton,
@@ -56,7 +61,6 @@ const Home = () => {
 
   return (
     <Container>
-
       {/* <div>
       <TransactionCard
         transactions={transactions}
@@ -92,15 +96,20 @@ const Home = () => {
                   }
                   return (
                     <TableRow key={_id} className="data">
-                      <TableData>{date}</TableData>
-                      <TableData>{numberSign}</TableData>
+                      <TableDataDate>{date}</TableDataDate>
+                      <TableDataType>{numberSign}</TableDataType>
+
                       {type === 'income' ? (
                         <TableData>Income</TableData>
                       ) : (
-                        <TableData>{category}</TableData>
+                        <TableDataCategory>{category}</TableDataCategory>
                       )}
-                      <TableData>{comment}</TableData>
-                      <TableData className={colorClassName}>{value}</TableData>
+
+                      <TableDataComment>{comment}</TableDataComment>
+
+                      <TableDataColor className={colorClassName}>
+                        {value}
+                      </TableDataColor>
 
                       <PencilButton>
                         <BiPencil onClick={() => handleEditClick(_id)} />
@@ -141,7 +150,7 @@ const Home = () => {
         <Modal children={<Logout />} showCloseIcon={false} />
       )}
     </Container>
-  // </div>
+    // </div>
   );
 };
 
