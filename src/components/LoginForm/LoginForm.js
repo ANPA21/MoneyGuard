@@ -52,30 +52,36 @@ const LoginForm = () => {
     >
       <FormStyled>
         <LogotipStyled>
-          <img src={Logotip} alt="Logo MoneyGuard" width="36px" height="36px" />
+          <img
+            src={Logotip}
+            alt="Logo MoneyGuard"
+            width="36px"
+            height="36px"
+            draggable="false"
+          />
           <h3>MoneyGuard</h3>
         </LogotipStyled>
 
         <LabelStyled>
-            <IconInInput>
-              <IconContainer>
-                <EmailIcon />
-              </IconContainer>
-              <InputStyled name="email" type="email" placeholder="E-mail" />
-            </IconInInput>
+          <IconInInput>
+            <IconContainer>
+              <EmailIcon />
+            </IconContainer>
+            <InputStyled name="email" type="email" placeholder="E-mail" />
+          </IconInInput>
         </LabelStyled>
 
         <LabelStyled>
-            <IconInInput>
-              <IconContainer>
-                <PasswordIcon />
-              </IconContainer>
-              <InputStyled
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
-            </IconInInput>
+          <IconInInput>
+            <IconContainer>
+              <PasswordIcon />
+            </IconContainer>
+            <InputStyled
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+          </IconInInput>
         </LabelStyled>
 
         <CustomButton type="submit">Log In</CustomButton>

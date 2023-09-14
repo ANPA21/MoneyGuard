@@ -16,10 +16,7 @@ import {
   CustomButton,
   AddButton,
 } from './Home.styled';
-import {
-  selectIsLoading,
-  // selectorTransactions,
-} from 'redux/transactionsRedux/transactionsSelectors';
+import { selectIsLoading } from 'redux/transactionsRedux/transactionsSelectors';
 import Modal from '../../components/Modal/Modal';
 import AddTransaction from '../../components/Add/Add';
 import EditTransaction from '../../components/Edit/Edit';
@@ -28,8 +25,8 @@ import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import { BiPencil } from 'react-icons/bi';
 import { RotatingLines } from 'react-loader-spinner';
+import { TransactionCard } from './TransactionCard/TransactionCard';
 import { transactionSlice } from '../../redux/transactionsRedux/transactionsSlice';
-// import { TransactionCard } from './TransactionCard/TransactionCard';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -70,14 +67,7 @@ const Home = () => {
 
   return (
     <Container>
-      {/* <div>
-      <TransactionCard
-        transactions={transactions}
-        handleEditClick={handleEditClick}
-        deleteTransactions={deleteTransactions}
-      /> */}
-
-      {!isMobile && (
+      {!isMobile ? (
         <ContainerHeader>
           <TableHead>
             <div>Date</div>
@@ -107,19 +97,16 @@ const Home = () => {
                     <TableRow key={_id} className="data">
                       <TableDataDate>{date}</TableDataDate>
                       <TableDataType>{numberSign}</TableDataType>
-
                       {type === 'income' ? (
                         <TableData>Income</TableData>
                       ) : (
                         <TableDataCategory>{category}</TableDataCategory>
                       )}
-
                       <TableDataComment>{comment}</TableDataComment>
 
                       <TableDataColor type={type} className={colorClassName}>
                         {value}
                       </TableDataColor>
-
                       <PencilButton>
                         <BiPencil onClick={() => handleEditClick(_id)} />
                         <CustomButton
@@ -139,6 +126,13 @@ const Home = () => {
             )}
           </Data>
         </ContainerHeader>
+      ) : (
+        // Render Cards
+        <TransactionCard
+          transactions={top5Transactions}
+          handleEditClick={handleEditClick}
+          deleteTransactions={deleteTransactions}
+        />
       )}
 
       <AddButton

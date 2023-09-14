@@ -90,7 +90,7 @@ export const TableDataComment = styled.div`
 
 export const TableDataColor = styled.div`
   width: 70px;
-  margin-left: 20px;
+  margin-right: 35px;
   color: ${props => (props.type === 'expense' ? '#ff868d' : 'var(--yellow)')};
   text-align: end;
 `;
@@ -137,6 +137,11 @@ export const AddButton = styled.button`
   text-transform: uppercase;
   letter-spacing: 1.8px;
   cursor: pointer;
+
+  @media screen and (max-width: 767px) {
+    bottom: 10px;
+    right: 137.5px;
+  }
 `;
 
 // export const TableDataSum = styled.div`
@@ -147,5 +152,4 @@ export const AddButton = styled.button`
 export const TableData = styled.div`
   width: 70px;
   margin-left: 70px;
-  
 `;
