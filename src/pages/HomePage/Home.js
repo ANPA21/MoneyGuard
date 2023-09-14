@@ -18,7 +18,7 @@ import {
 } from './Home.styled';
 import {
   selectIsLoading,
-  selectorTransactions,
+  // selectorTransactions,
 } from 'redux/transactionsRedux/transactionsSelectors';
 import Modal from '../../components/Modal/Modal';
 import AddTransaction from '../../components/Add/Add';
@@ -28,6 +28,7 @@ import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import { BiPencil } from 'react-icons/bi';
 import { RotatingLines } from 'react-loader-spinner';
+import { transactionSlice } from '../../redux/transactionsRedux/transactionsSlice';
 // import { TransactionCard } from './TransactionCard/TransactionCard';
 
 const Home = () => {
@@ -58,7 +59,14 @@ const Home = () => {
     dispatch(fetchTransactions());
   }, [dispatch, fetchTransactions]);
 
-  const transactions = useSelector(selectorTransactions);
+  const allTransactions = useSelector(
+    state => state[transactionSlice.name].transactions
+  );
+  const sortedTransactions = allTransactions
+    .slice()
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  const top5Transactions = sortedTransactions.slice(0, 5);
 
   return (
     <Container>
@@ -86,7 +94,7 @@ const Home = () => {
                 </div>
               </TableRow>
             ) : (
-              transactions.map(
+              top5Transactions.map(
                 ({ createdAt, type, category, comment, value, _id }) => {
                   let date = new Date(createdAt).toLocaleDateString();
                   let numberSign = '+';
