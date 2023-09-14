@@ -3,13 +3,16 @@ import styled from 'styled-components';
 export const Graph = styled.div`
   position: relative;
   background: rgba(74, 86, 226, 0.1);
-
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   img {
     width: 100%;
   }
 
   @media screen and (min-width: 1280px) {
     padding-top: 40px;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
   }
 `;
 
@@ -44,6 +47,8 @@ export const Wrap = styled.div`
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   width: 320px;
   margin-top: 24px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 336px;
@@ -53,6 +58,8 @@ export const Wrap = styled.div`
   @media screen and (min-width: 1280px) {
     width: 480px;
     margin-top: 0px;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
   }
 `;
 

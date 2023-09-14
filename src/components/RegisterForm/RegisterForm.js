@@ -16,7 +16,7 @@ import {
 } from 'components/LoginForm/LoginForm.styled';
 import { toast } from 'react-toastify';
 import { LogotipStyled } from './RegisterForm.styled';
-import {ProgressBar} from './ProgressBar';
+import { ProgressBar } from './ProgressBar';
 import { useState } from 'react';
 
 const ValidationSchema = Yup.object().shape({
@@ -33,7 +33,6 @@ const ValidationSchema = Yup.object().shape({
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const [password, setPassword] = useState('');
-
 
   const handleSubmit = (values, { resetForm }) => {
     const name = values.email.split('@')[0];
@@ -62,76 +61,82 @@ const RegisterForm = () => {
       autoComplete="off"
     >
       {({ values, handleChange }) => (
-      <FormStyled>
-        <LogotipStyled>
-          <img src={Logotip} alt="Logo MoneyGuard" width="36px" height="36px" />
-          <h3>MoneyGuard</h3>
-        </LogotipStyled>
-
-        <LabelStyled>
-          <ErrorContainer>
-            <IconContainer>
-              <EmailIcon />
-            </IconContainer>
-            <InputStyled
-              name="email"
-              type="email"
-              placeholder="E-mail"
-              autoComplete="off"
+        <FormStyled>
+          <LogotipStyled>
+            <img
+              src={Logotip}
+              alt="Logo MoneyGuard"
+              width="36px"
+              height="36px"
+              draggable="false"
             />
-            <ErrorMessageStyled>
-            <ErrorMessage component="span" name="email" />
-            </ErrorMessageStyled>
-          </ErrorContainer>
-        </LabelStyled>
+            <h3>MoneyGuard</h3>
+          </LogotipStyled>
 
-        <LabelStyled>
-          <ErrorContainer>
-            <IconContainer>
-              <PasswordIcon />
-            </IconContainer>
-            <InputStyled
-              name="password"
-              type="password"
-              placeholder="Password"
-              autoComplete="off"
-              value={values.password}
-              onChange={(e) => {
-                handleChange(e);
-                setPassword(e.target.value);
-              }}
-            />
-            <ErrorMessageStyled>
-            <ErrorMessage component="span" name="password" />
-            </ErrorMessageStyled>
-          </ErrorContainer>
-        </LabelStyled>
-
-        <LabelStyled>
-          <ErrorContainer>
-            <IconContainer>
-              <PasswordIcon />
-            </IconContainer>
-            <div>
+          <LabelStyled>
+            <ErrorContainer>
+              <IconContainer>
+                <EmailIcon />
+              </IconContainer>
               <InputStyled
-                name="passwordConfirm"
-                type="password"
-                placeholder="Confirm password"
+                name="email"
+                type="email"
+                placeholder="E-mail"
                 autoComplete="off"
               />
-              <ProgressBar password={password} />
-            </div>
-            <ErrorMessageStyled>
-            <ErrorMessage component="span" name="passwordConfirm" />
-            </ErrorMessageStyled>
-          </ErrorContainer>
-        </LabelStyled>
+              <ErrorMessageStyled>
+                <ErrorMessage component="span" name="email" />
+              </ErrorMessageStyled>
+            </ErrorContainer>
+          </LabelStyled>
 
-        <CustomButton type="submit">Register</CustomButton>
-        <CustomButton isNavLink to="/login">
-          Log In
-        </CustomButton>
-      </FormStyled>
+          <LabelStyled>
+            <ErrorContainer>
+              <IconContainer>
+                <PasswordIcon />
+              </IconContainer>
+              <InputStyled
+                name="password"
+                type="password"
+                placeholder="Password"
+                autoComplete="off"
+                value={values.password}
+                onChange={e => {
+                  handleChange(e);
+                  setPassword(e.target.value);
+                }}
+              />
+              <ErrorMessageStyled>
+                <ErrorMessage component="span" name="password" />
+              </ErrorMessageStyled>
+            </ErrorContainer>
+          </LabelStyled>
+
+          <LabelStyled>
+            <ErrorContainer>
+              <IconContainer>
+                <PasswordIcon />
+              </IconContainer>
+              <div>
+                <InputStyled
+                  name="passwordConfirm"
+                  type="password"
+                  placeholder="Confirm password"
+                  autoComplete="off"
+                />
+                <ProgressBar password={password} />
+              </div>
+              <ErrorMessageStyled>
+                <ErrorMessage component="span" name="passwordConfirm" />
+              </ErrorMessageStyled>
+            </ErrorContainer>
+          </LabelStyled>
+
+          <CustomButton type="submit">Register</CustomButton>
+          <CustomButton isNavLink to="/login">
+            Log In
+          </CustomButton>
+        </FormStyled>
       )}
     </Formik>
   );

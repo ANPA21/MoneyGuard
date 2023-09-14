@@ -90,7 +90,7 @@ export const TableDataComment = styled.div`
 
 export const TableDataColor = styled.div`
   width: 70px;
-  margin-left: 20px;
+  margin-right: 35px;
   color: ${props => (props.type === 'expense' ? '#ff868d' : 'var(--yellow)')};
   text-align: end;
 `;
@@ -152,5 +152,4 @@ export const AddButton = styled.button`
 export const TableData = styled.div`
   width: 70px;
   margin-left: 70px;
-  
 `;

@@ -66,7 +66,7 @@ export const Currency = () => {
               alt="Currency"
               media="(min-width: 1024px)"
             />
-            <img src={tablet1x} alt="Currency" />
+            <img src={tablet1x} alt="Currency" draggable="false" />
             <Ball>{currency.USD.buy.toFixed(2)}</Ball>
             <BallEur>{currency.EUR.buy.toFixed(2)}</BallEur>
           </Graph>

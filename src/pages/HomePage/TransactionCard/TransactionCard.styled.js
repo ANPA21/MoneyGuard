@@ -6,7 +6,7 @@ export const StyledListCard = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 32px 0 54px 0;
+  margin: 32px 0 52px 0;
 `;
 
 export const StyledCard = styled.li`

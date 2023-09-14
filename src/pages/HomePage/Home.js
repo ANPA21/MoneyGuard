@@ -16,10 +16,7 @@ import {
   CustomButton,
   AddButton,
 } from './Home.styled';
-import {
-  selectIsLoading,
-  // selectorTransactions,
-} from 'redux/transactionsRedux/transactionsSelectors';
+import { selectIsLoading } from 'redux/transactionsRedux/transactionsSelectors';
 import Modal from '../../components/Modal/Modal';
 import AddTransaction from '../../components/Add/Add';
 import EditTransaction from '../../components/Edit/Edit';
@@ -29,9 +26,7 @@ import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import { BiPencil } from 'react-icons/bi';
 import { RotatingLines } from 'react-loader-spinner';
 import { TransactionCard } from './TransactionCard/TransactionCard';
-import { scrollUp } from './scrollUp';
 import { transactionSlice } from '../../redux/transactionsRedux/transactionsSlice';
-// import { TransactionCard } from './TransactionCard/TransactionCard';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -73,7 +68,6 @@ const Home = () => {
   return (
     <Container>
       {!isMobile ? (
-        // Render Table
         <ContainerHeader>
           <TableHead>
             <div>Date</div>
@@ -148,7 +142,6 @@ const Home = () => {
       >
         +
       </AddButton>
-      <BiPencil onClick={scrollUp()} />
 
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
         <Modal children={<AddTransaction />} />
