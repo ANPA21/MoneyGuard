@@ -36,10 +36,6 @@ export const transactionSlice = createSlice({
       .addCase(deleteItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // const index = state.transactions.findIndex(
-        //   item => item._id === action.payload._id
-        // );
-        // state.transactions.splice(index, 1);
       })
       .addCase(deleteItem.rejected, (state, action) => {
         state.isLoading = false;

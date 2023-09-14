@@ -144,11 +144,6 @@ export const AddButton = styled.button`
   }
 `;
 
-// export const TableDataSum = styled.div`
-//   width: 70px;
-//   margin-left: 50px;
-// `;
-
 export const TableData = styled.div`
   width: 70px;
   margin-left: 70px;

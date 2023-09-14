@@ -26,7 +26,6 @@ export const RightSideStatWrapper = styled.div`
     display: flex;
   }
   @media screen and (min-width: 1280px) {
-    //max-width: 1400px;
     display: flex;
   }
 `;
@@ -58,7 +57,6 @@ export const DatePickerWrapper = styled.div`
     flex-direction: row;
   }
   @media screen and (min-width: 1280px) {
-    //max-width: 1400px;
     flex-direction: row;
     gap: 32px;
   }
@@ -71,7 +69,6 @@ export const DataWrapper = styled.div`
     width: 336px;
   }
   @media screen and (min-width: 1280px) {
-    //
   }
 `;
 export const TitleStyled = styled.h1`
