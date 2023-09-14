@@ -28,6 +28,7 @@ import plusIcon from '../../icons/+btn.svg';
 import { RotatingLines } from 'react-loader-spinner';
 import { TransactionCard } from './TransactionCard/TransactionCard';
 import { transactionSlice } from '../../redux/transactionsRedux/transactionsSlice';
+import { ScrollToTopButton } from './ScrollToTopButton/ScrollToTopButton';
 
 const Home = () => {
   const { useDispatch, useSelector } = require('react-redux');
@@ -128,11 +129,15 @@ const Home = () => {
           </Data>
         </ContainerHeader>
       ) : (
-        <TransactionCard
-          transactions={top5Transactions}
-          handleEditClick={handleEditClick}
-          deleteTransactions={deleteTransactions}
-        />
+        // Render Cards
+        <>
+          <ScrollToTopButton />
+          <TransactionCard
+            transactions={top5Transactions}
+            handleEditClick={handleEditClick}
+            deleteTransactions={deleteTransactions}
+          />
+        </>
       )}
 
       <AddButton
@@ -140,7 +145,7 @@ const Home = () => {
         type="button"
         onClick={() => dispatch(toggleAddModal())}
       >
-      <img src={plusIcon} alt="Plus Icon" width="44" height="44" />
+        <img src={plusIcon} alt="Plus Icon" width="44" height="44" />
       </AddButton>
 
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
