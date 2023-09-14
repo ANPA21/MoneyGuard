@@ -47,19 +47,16 @@ a {
   text-decoration: none;
 }
 
-/* Для Webkit-браузеров (Chrome, Safari) */
 input:-webkit-autofill,
 textarea:-webkit-autofill {
   background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Для Firefox */
 input:-moz-autofill,
 textarea:-moz-autofill {
   background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Для других браузеров */
 input:-ms-autofill,
 textarea:-ms-autofill {
   background-color: rgba(255, 255, 255, 0.9) !important;

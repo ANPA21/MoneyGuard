@@ -24,7 +24,6 @@ export const deleteItem = createAsyncThunk(
   'transactions/deleteItem',
   async (id, { rejectWithValue }) => {
     try {
-      console.log('id reducer:', id);
       const response = await axios.delete(`/transactions/${id}`);
       return response.data;
     } catch (e) {
@@ -55,7 +54,6 @@ export const addTransaction = createAsyncThunk(
 export const editItem = createAsyncThunk(
   'transactions/editItem',
   async ({ id, values }, thunkAPI) => {
-    console.log(id);
     try {
       if (values.type === 'income') {
         const { category, ...changedData } = values;

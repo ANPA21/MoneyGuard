@@ -127,7 +127,6 @@ const Home = () => {
           </Data>
         </ContainerHeader>
       ) : (
-        // Render Cards
         <TransactionCard
           transactions={top5Transactions}
           handleEditClick={handleEditClick}

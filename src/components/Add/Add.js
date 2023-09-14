@@ -25,8 +25,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { forwardRef, useState, useEffect } from 'react';
 import axios from 'axios';
-// import { useSelector } from 'react-redux';
-// import { selectError } from 'redux/transactionsRedux/transactionsSelectors';
 const addSchema = object({
   value: number().positive().required('Amount is required'),
   comment: string()
@@ -101,16 +99,6 @@ export default function AddTransaction() {
     resetForm();
     dispatch(toggleModal());
   };
-
-  // const handleSubmit = async (values, { resetForm }) => {
-  //   try {
-  //     await dispatch(addTransaction(values));
-  //     resetForm();
-  //     dispatch(toggleModal());
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   return (
     <>
