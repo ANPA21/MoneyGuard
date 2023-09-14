@@ -117,12 +117,13 @@ export const CustomButton = styled.div`
 
 export const AddButton = styled.button`
   position: absolute;
+  display: flex;
   bottom: 40px;
   right: 40px;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(
     97deg,
     rgba(255, 199, 39, 1) -16.42%,
