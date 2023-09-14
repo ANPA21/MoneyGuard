@@ -22,7 +22,6 @@ export const ContainerHeader = styled.div`
   border-radius: 8px;
   background: rgba(82, 59, 126, 0.6);
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(50px);
 
   @media screen and (min-width: 1280px) {
     width: 715px;
@@ -60,6 +59,10 @@ export const TableRow = styled.div`
   align-items: center;
   margin-left: 20px;
   font-size: 14px;
+
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 export const TableDataDate = styled.div`
@@ -68,7 +71,7 @@ export const TableDataDate = styled.div`
 
 export const TableDataType = styled.div`
   width: 11px;
-  margin-left: 40px;
+  margin-left: 60px;
 `;
 
 export const TableDataCategory = styled.div`
@@ -88,8 +91,8 @@ export const TableDataComment = styled.div`
 export const TableDataColor = styled.div`
   width: 70px;
   margin-left: 20px;
-  /* color: ${props =>
-    props.type === 'expense' ? '#ff868d' : 'var(--yellow)'}; */
+  color: ${props => (props.type === 'expense' ? '#ff868d' : 'var(--yellow)')};
+  text-align: end;
 `;
 
 export const PencilButton = styled.div`
@@ -141,12 +144,13 @@ export const AddButton = styled.button`
   }
 `;
 
-export const TableDataSum = styled.div`
-  width: 70px;
-  margin-left: 50px;
-`;
+// export const TableDataSum = styled.div`
+//   width: 70px;
+//   margin-left: 50px;
+// `;
 
 export const TableData = styled.div`
   width: 70px;
   margin-left: 70px;
+  
 `;
