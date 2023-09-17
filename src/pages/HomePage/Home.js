@@ -15,6 +15,7 @@ import {
   PencilButton,
   CustomButton,
   AddButton,
+  PlusIcon,
 } from './Home.styled';
 import { selectIsLoading } from 'redux/transactionsRedux/transactionsSelectors';
 import Modal from '../../components/Modal/Modal';
@@ -24,7 +25,6 @@ import Logout from '../../components/Logout/Logout';
 import { toggleAddModal, toggleEditModal } from 'redux/modal/ModalSlice';
 import { selectModalState, selectModalTypeState } from 'redux/modal/selectors';
 import { BiPencil } from 'react-icons/bi';
-import plusIcon from '../../icons/+btn.svg';
 import { RotatingLines } from 'react-loader-spinner';
 import { TransactionCard } from './TransactionCard/TransactionCard';
 import { transactionSlice } from '../../redux/transactionsRedux/transactionsSlice';
@@ -145,7 +145,7 @@ const Home = () => {
         type="button"
         onClick={() => dispatch(toggleAddModal())}
       >
-        <img src={plusIcon} alt="Plus Icon" width="44" height="44" />
+        <PlusIcon />
       </AddButton>
 
       {modalType === 'modal/toggleAddModal' && isModalOpen && (
