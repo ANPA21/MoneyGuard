@@ -1,3 +1,4 @@
+import { AiOutlinePlus } from 'react-icons/ai';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -133,7 +134,7 @@ export const AddButton = styled.button`
   border: none;
   border-radius: 20px;
   line-height: 1.5;
-  font-size: 18px;
+  font-size: 0;
   color: rgba(251, 251, 251, 1);
   text-transform: uppercase;
   letter-spacing: 1.8px;
@@ -148,4 +149,9 @@ export const AddButton = styled.button`
 export const TableData = styled.div`
   width: 70px;
   margin-left: 70px;
+`;
+
+export const PlusIcon = styled(AiOutlinePlus)`
+  width: 24px;
+  height: 24px;
 `;
