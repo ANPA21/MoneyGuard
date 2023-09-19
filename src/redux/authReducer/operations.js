@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://moneyguardbackend.onrender.com/';
 
@@ -17,9 +18,23 @@ export const register = createAsyncThunk(
     try {
       const response = await axios.post('/users/register', credentials);
       setAuthHeader(response.data.token);
+      if (response.data && response.status === 201) {
+        const name = credentials.name;
+        toast.success(`Welcome to Money Guard, ${name}!`, {
+          autoClose: 1200,
+        });
+      }
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      if (error.response) {
+        if (error.response.status === 409) {
+          toast.error('Email is already in use!', {
+            position: 'top-right',
+            autoClose: 1200,
+          });
+          return rejectWithValue(error.message);
+        }
+      }
     }
   }
 );

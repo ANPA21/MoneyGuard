@@ -14,7 +14,6 @@ import {
   LabelStyled,
   PasswordIcon,
 } from 'components/LoginForm/LoginForm.styled';
-import { toast } from 'react-toastify';
 import { LogotipStyled } from './RegisterForm.styled';
 import { ProgressBar } from './ProgressBar';
 import { useState } from 'react';
@@ -41,12 +40,8 @@ const RegisterForm = () => {
       password: values.password.trim(),
       name,
     };
-
     dispatch(register(formData));
     resetForm();
-    toast.success(`Welcome to Money Guard, ${name}!`, {
-      autoClose: 1200,
-    });
   };
 
   return (
