@@ -120,7 +120,6 @@ export const StyledTable = styled.table`
     padding: 8px 8px 4px;
 
     @media screen and (min-width: 768px) and (max-width: 1279px) {
-      font-family: Circe;
     }
 
     @media screen and (min-width: 1280px) {
